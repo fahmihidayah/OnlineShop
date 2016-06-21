@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * Created by Damian Bartos on 20.06.2016.
  */
 @EnableAutoConfiguration
-@ComponentScan({"controllers"})
+@ComponentScan({"onlineShop"})
 @SpringBootApplication
 public class OnlineShopApp {
     public static void main(String[] args) {
