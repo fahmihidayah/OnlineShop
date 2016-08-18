@@ -11,7 +11,6 @@ import javax.persistence.*;
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @SequenceGenerator(name="my_entity_seq_gen", sequenceName="HIBERNATE_SEQUENCE")
     @Column(name = "id")
     private Integer id;
 
