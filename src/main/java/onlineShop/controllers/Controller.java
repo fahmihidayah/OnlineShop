@@ -26,6 +26,7 @@ public class Controller {
         List<User> bartos = userRepository.findByLastName("bartos");
         String out = "";
         for (User barto : bartos) {
+            System.out.println(barto.getFirstName() + " " + barto.getLastName());
             out += barto.getFirstName() + ";";
         }
 
@@ -38,6 +39,7 @@ public class Controller {
         List<User> bartos = userRepository.findAll();
         String out = "";
         for (User barto : bartos) {
+            System.out.println(barto.getFirstName() + " " + barto.getLastName());
             out += barto.getFirstName() + ";";
         }
 
@@ -48,9 +50,9 @@ public class Controller {
     @ResponseBody
     public String add(){
         User u1 = new User("damian", "bartos");
-//        User u2 = new User("maciej", "bartos");
+        User u2 = new User("łąśćź", "Óśćźżł");
         userRepository.save(u1);
-//        userRepository.save(u2);
+        userRepository.save(u2);
         return "done";
     }
 

@@ -1,6 +1,7 @@
 package onlineShop.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Damian Bartos
@@ -15,6 +16,7 @@ public class User{
     private Integer id;
 
     @Column(name = "firstname")
+    @Size(min = 5, max = 20)
     private String firstName;
 
     @Column(name = "lastname")
