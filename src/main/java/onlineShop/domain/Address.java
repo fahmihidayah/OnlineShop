@@ -11,8 +11,8 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Integer id;
+    @Column(name = "ADDRESS_ID")
+    private Integer addressId;
     @Column(name = "USER_ID")
     private Integer userId;
     @Column(name = "STREET")
@@ -33,12 +33,12 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getAddressId() {
+        return addressId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     public String getStreet() {
