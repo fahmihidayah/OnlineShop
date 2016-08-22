@@ -18,8 +18,11 @@ public class Order {
     private Integer orderId;
     @Column(name = "USER_ID")
     private Integer userId;
+    @Column(name = "SUBMIT_DATE")
     private Date submitDate;
+    @Column(name = "PAID_DATE")
     private Date paidDate;
+    @Column(name = "SEND_DATE")
     private Date sendDate;
     @ManyToMany
     @JoinColumn(name = "ITEM_ID")
