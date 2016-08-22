@@ -1,17 +1,14 @@
 package onlineShop.controllers;
 
-import onlineShop.dao.AddressRepository;
-import onlineShop.dao.RoleRepository;
-import onlineShop.dao.UserRepository;
-import onlineShop.domain.Address;
-import onlineShop.domain.Role;
-import onlineShop.domain.User;
+import onlineShop.dao.*;
+import onlineShop.domain.*;
 import onlineShop.utility.RoleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,6 +27,50 @@ public class Controller {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
+    @RequestMapping("/i")
+    public String items(){
+        Item i1 = new Item(1, "item1");
+        Item i2 = new Item(2, "item2");
+        Item i3 = new Item(3, "item3");
+        Item i4 = new Item(4, "item4");
+        itemRepository.save(i1);
+        itemRepository.save(i2);
+        itemRepository.save(i3);
+        itemRepository.save(i4);
+        return "item added";
+    }
+
+    @RequestMapping("/or")
+    public String rO(){
+        orderRepository.delete(1);
+        return "deleted";
+    }
+
+    @RequestMapping("/o")
+    public String order(){
+        User u = userRepository.findOne(1);
+        Order or = new Order(new Date());
+
+        or.getItems().add(itemRepository.findOne(0));
+        or.getItems().add(itemRepository.findOne(1));
+        or.getItems().add(itemRepository.findOne(2));
+        or.getItems().add(itemRepository.findOne(3));
+        or.setUserId(u.getUserId());
+        orderRepository.save(or);
+        return "order added";
+    }
+
+    @RequestMapping("/r")
+    public String rem(){
+        userRepository.delete(4);
+        return "removed";
+    }
 
     @RequestMapping("/b")
     @ResponseBody
