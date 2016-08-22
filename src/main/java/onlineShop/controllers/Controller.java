@@ -57,10 +57,10 @@ public class Controller {
         User u = userRepository.findOne(1);
         Order or = new Order(new Date());
 
-        or.getItems().add(itemRepository.findOne(0));
         or.getItems().add(itemRepository.findOne(1));
         or.getItems().add(itemRepository.findOne(2));
         or.getItems().add(itemRepository.findOne(3));
+        or.getItems().add(itemRepository.findOne(4));
         or.setUserId(u.getUserId());
         orderRepository.save(or);
         return "order added";
