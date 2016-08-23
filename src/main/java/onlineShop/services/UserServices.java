@@ -50,8 +50,6 @@ public class UserServices {
         return userRepository.findOne(userId);
     }
 
-
-
     private User getUserFromRepository(Integer userId) {
         return userRepository.findOne(userId);
     }
