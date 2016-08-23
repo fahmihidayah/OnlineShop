@@ -27,9 +27,10 @@ public class Item {
 
     protected Item(){}
 
-    public Item(long itemCode, String name){
+    public Item(long itemCode, String name, BigDecimal price){
         this.itemCode = itemCode;
         this.name = name;
+        this.price = price;
     }
 
     public Integer getItemId() {
