@@ -2,6 +2,7 @@ package onlineShop.services;
 
 import onlineShop.dao.UserRepository;
 import onlineShop.domain.Address;
+import onlineShop.domain.Role;
 import onlineShop.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,9 @@ public class UserServices {
     @Autowired
     UserRepository userRepository;
 
-    public void registerUser(String login, String hashedPassword, String email){
+    public void registerUser(String login, String hashedPassword, String email, Role role){
         User newUser = new User(login, hashedPassword, email);
+        newUser.setRole(role);
         saveUserToRepository(newUser);
     }
 
@@ -43,6 +45,12 @@ public class UserServices {
         User user = getUserFromRepository(userId);
         return hashedPassword.equals(user.getHashedPassword());
     }
+
+    public User getUserById(int userId){
+        return userRepository.findOne(userId);
+    }
+
+
 
     private User getUserFromRepository(Integer userId) {
         return userRepository.findOne(userId);

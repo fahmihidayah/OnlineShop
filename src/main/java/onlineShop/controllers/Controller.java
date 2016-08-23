@@ -1,15 +1,15 @@
 package onlineShop.controllers;
 
-import onlineShop.dao.*;
-import onlineShop.domain.*;
-import onlineShop.utility.RoleName;
+import onlineShop.dao.AddressRepository;
+import onlineShop.dao.ItemRepository;
+import onlineShop.dao.OrderRepository;
+import onlineShop.dao.RoleRepository;
+import onlineShop.domain.Item;
+import onlineShop.domain.Role;
+import onlineShop.services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Damian Bartos
@@ -20,8 +20,7 @@ import java.util.List;
 public class Controller {
 
     @Autowired
-    UserRepository userRepository;
-
+    UserServices userServices;
     @Autowired
     AddressRepository addressRepository;
 
@@ -52,75 +51,9 @@ public class Controller {
         return "deleted";
     }
 
-    @RequestMapping("/o")
-    public String order(){
-        User u = userRepository.findOne(1);
-        Order or = new Order(new Date());
-
-        or.getItems().add(itemRepository.findOne(1));
-        or.getItems().add(itemRepository.findOne(2));
-        or.getItems().add(itemRepository.findOne(3));
-        or.getItems().add(itemRepository.findOne(4));
-        or.setUserId(u.getUserId());
-        orderRepository.save(or);
-        return "order added";
+    @RequestMapping("/reg")
+    public String reg(){
+        userServices.registerUser("damian483", "32sssd11", "damian483@wp.pl", Role.USER);
+        return "ok\n";
     }
-
-    @RequestMapping("/r")
-    public String rem(){
-        userRepository.delete(4);
-        return "removed";
-    }
-
-    @RequestMapping("/b")
-    @ResponseBody
-    public String bb(){
-        List<User> bartos = userRepository.findByLastName("bartos");
-        String out = "";
-        for (User barto : bartos) {
-            System.out.println(barto.getFirstName() + " " + barto.getLastName());
-            out += barto.getFirstName() + ";";
-        }
-
-        return out;
-    }
-
-    @RequestMapping("/a")
-    @ResponseBody
-    public String aa(){
-        List<User> bartos = userRepository.findAll();
-        Address a1 = new Address("kasz", "23", "alk", "93-233");
-        bartos.get(0).getAddresses().add(a1);
-        addressRepository.save(a1);
-        userRepository.save(bartos.get(0));
-        return "done";
-    }
-
-    @RequestMapping("/")
-    @ResponseBody
-    public String hello(){
-        List<User> bartos = userRepository.findAll();
-        String out = "";
-        for (User barto : bartos) {
-            System.out.println(barto.getFirstName() + " " + barto.getLastName());
-            out += barto.getFirstName() + ";";
-        }
-
-        return out;
-    }
-
-    @RequestMapping("/add")
-    @ResponseBody
-    public String add(){
-        User u = new User("login", "pass", "mail");
-        u.setLastName("bartos");
-        u.setFirstName("damian");
-        Address a = new Address("kasztanowa", "4", "95-041", "95-041");
-        u.getAddresses().add(a);
-        Role role = new Role(RoleName.ADMIN);
-        u.setRole(role);
-        userRepository.save(u);
-        return "done";
-    }
-
 }

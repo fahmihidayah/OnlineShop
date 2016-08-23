@@ -16,6 +16,9 @@ public class Role {
     @Column(name = "ROLE_NAME")
     private String roleName;
 
+    public static Role ADMIN = new Role("ADMIN");
+    public static Role USER = new Role("USER");
+
     protected Role(){}
 
     public Role(String roleName) {
