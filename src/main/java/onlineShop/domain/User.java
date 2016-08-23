@@ -38,9 +38,9 @@ public class User{
         addresses = new LinkedList<>();
     }
 
-    public User(String login, String password, String email) {
+    public User(String login, String hashedPassword, String email) {
         this.login = login;
-        this.hashedPassword = password;
+        this.hashedPassword = hashedPassword;
         this.email = email;
         addresses = new LinkedList<>();
     }
