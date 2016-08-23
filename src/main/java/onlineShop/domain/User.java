@@ -1,5 +1,7 @@
 package onlineShop.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +34,7 @@ public class User{
     @JoinColumn(name = "USER_ID")
     private List<Address> addresses;
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     private Role role;
 
     protected User(){

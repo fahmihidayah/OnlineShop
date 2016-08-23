@@ -16,33 +16,33 @@ public class UserServices {
     @Autowired
     UserRepository userRepository;
 
-    public void registerUser(String login, String hashedPassword, String email, Role role){
+    public User registerUser(String login, String hashedPassword, String email, Role role){
         User newUser = new User(login, hashedPassword, email);
         newUser.setRole(role);
-        saveUserToRepository(newUser);
+        return userRepository.save(newUser);
     }
 
-    public void setNames(Integer userId, String firstName, String lastName){
-        User user = getUserFromRepository(userId);
+    public User setNames(Integer userId, String firstName, String lastName){
+        User user = userRepository.findOne(userId);
         user.setFirstName(firstName);
         user.setLastName(lastName);
-        saveUserToRepository(user);
+        return userRepository.save(user);
     }
 
-    public void setPhoneNumber(Integer userId, String phoneNumber){
-        User user = getUserFromRepository(userId);
+    public User setPhoneNumber(Integer userId, String phoneNumber){
+        User user = userRepository.findOne(userId);
         user.setPhoneNumber(phoneNumber);
-        saveUserToRepository(user);
+        return userRepository.save(user);
     }
 
-    public void addAddress(Integer userId, Address address){
-        User user = getUserFromRepository(userId);
+    public User addAddress(Integer userId, Address address){
+        User user = userRepository.findOne(userId);
         user.getAddresses().add(address);
-        saveUserToRepository(user);
+        return userRepository.save(user);
     }
 
     public boolean checkPassword(Integer userId, String hashedPassword){
-        User user = getUserFromRepository(userId);
+        User user = userRepository.findOne(userId);
         return hashedPassword.equals(user.getHashedPassword());
     }
 
@@ -50,11 +50,4 @@ public class UserServices {
         return userRepository.findOne(userId);
     }
 
-    private User getUserFromRepository(Integer userId) {
-        return userRepository.findOne(userId);
-    }
-
-    private void saveUserToRepository(User user) {
-        userRepository.save(user);
-    }
 }
