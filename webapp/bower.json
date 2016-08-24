@@ -1,0 +1,25 @@
+{
+  "name": "onlineshop",
+  "homepage": "https://github.com/damian483/OnlineShop",
+  "description": "Simple Spring Online Shop",
+  "main": "",
+  "keywords": [
+    "onlineShop"
+  ],
+  "authors": [
+    "Damian Bartos"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.5",
+    "bootstrap": "^3.3.6"
+  }
+}
