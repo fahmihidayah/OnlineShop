@@ -22,14 +22,14 @@ public class UserServices {
         return userRepository.save(newUser);
     }
 
-    public User setNames(Integer userId, String firstName, String lastName){
+    public User updateNames(Integer userId, String firstName, String lastName){
         User user = userRepository.findOne(userId);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         return userRepository.save(user);
     }
 
-    public User setPhoneNumber(Integer userId, String phoneNumber){
+    public User updatePhoneNumber(Integer userId, String phoneNumber){
         User user = userRepository.findOne(userId);
         user.setPhoneNumber(phoneNumber);
         return userRepository.save(user);
