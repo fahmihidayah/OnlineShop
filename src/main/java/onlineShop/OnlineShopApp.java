@@ -3,12 +3,14 @@ package onlineShop;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Created by Damian Bartos on 20.06.2016.
  */
 @EnableAutoConfiguration
+@EnableConfigurationProperties
 @ComponentScan({"onlineShop"})
 @SpringBootApplication
 public class OnlineShopApp {
