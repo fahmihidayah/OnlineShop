@@ -49,6 +49,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public void deleteUser(User user){
+        userRepository.delete(user);
+    }
+
     public boolean checkPassword(Integer userId, String hashedPassword){
         User user = userRepository.findOne(userId);
         return hashedPassword.equals(user.getHashedPassword());
