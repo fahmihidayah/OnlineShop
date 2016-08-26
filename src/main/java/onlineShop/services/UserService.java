@@ -1,5 +1,6 @@
 package onlineShop.services;
 
+import onlineShop.dao.RoleRepository;
 import onlineShop.dao.UserRepository;
 import onlineShop.domain.Address;
 import onlineShop.domain.Role;
@@ -15,7 +16,8 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-
+    @Autowired
+    RoleRepository roleRepository;
     public User registerUser(String login, String hashedPassword, String email, Role role){
         User newUser = new User(login, hashedPassword, email);
         newUser.setRole(role);
@@ -38,6 +40,12 @@ public class UserService {
     public User addAddress(Integer userId, Address address){
         User user = userRepository.findOne(userId);
         user.getAddresses().add(address);
+        return userRepository.save(user);
+    }
+
+    public User updateRole(Integer userId, Role newRole){
+        User user = userRepository.findOne(userId);
+        user.setRole(newRole);
         return userRepository.save(user);
     }
 
