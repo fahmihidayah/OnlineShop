@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * 23.08.2016.
  */
 @Service
-public class UserServices {
+public class UserService {
     @Autowired
     UserRepository userRepository;
 
