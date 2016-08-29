@@ -39,20 +39,25 @@ public class Controller {
     OrderRepository orderRepository;
 
     @RequestMapping("/item")
-    public Item items(){
+    public Item items() {
         return itemService.createItem(3213, "item 1", new BigDecimal(12.33));
     }
 
     @RequestMapping("/or")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public String rO(@CurrentlyLoggedUser User user){
+    public String rO(@CurrentlyLoggedUser User user) {
 //        orderRepository.delete(1);
         userService.deleteUser(user);
         return "deleted";
     }
 
+    @RequestMapping("test")
+    public String test(){
+        return "tes32t";
+    }
+
     @RequestMapping("/reg")
-    public User reg(){
+    public User reg() {
         return userService.registerUser("damian483", "32sssd11", "damian483@wp.pl", Role.USER());
     }
 }
