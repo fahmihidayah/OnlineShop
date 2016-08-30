@@ -44,4 +44,12 @@ public class Role {
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "userId=" + userId +
+                ", roleName='" + roleName + '\'' +
+                '}';
+    }
 }
