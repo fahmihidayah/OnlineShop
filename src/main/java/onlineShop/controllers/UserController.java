@@ -1,13 +1,12 @@
 package onlineShop.controllers;
 
 import onlineShop.Routes.Route;
+import onlineShop.Utils.PasswordUtils;
+import onlineShop.domain.Role;
 import onlineShop.domain.User;
 import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Damian Bartos
@@ -19,8 +18,11 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = Route.REGISTER, method = RequestMethod.POST)
-    public String registerUser(User user) {
+    public String registerUser(@RequestBody User user) {
         System.out.println(user);
+        //TODO: hash password
+        String hashedPassword = PasswordUtils.hash(user.getHashedPassword());
+        user = userService.registerUser(user.getLogin(), hashedPassword, user.getEmail(), Role.USER());
         return "ok";
     }
 
