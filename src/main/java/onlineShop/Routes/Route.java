@@ -1,4 +1,4 @@
-package onlineShop.Routes;
+package onlineShop.routes;
 
 /**
  * Created by Damian Bartos

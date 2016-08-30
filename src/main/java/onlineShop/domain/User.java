@@ -2,7 +2,7 @@ package onlineShop.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import onlineShop.Utils.Messages;
+import onlineShop.utils.Messages;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

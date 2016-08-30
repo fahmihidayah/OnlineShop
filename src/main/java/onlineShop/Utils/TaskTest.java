@@ -1,4 +1,4 @@
-package onlineShop.Utils;
+package onlineShop.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
