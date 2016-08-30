@@ -1,9 +1,7 @@
 package onlineShop.controllers;
 
-import onlineShop.Routes.Route;
-import onlineShop.Utils.PasswordUtils;
-import onlineShop.domain.Role;
 import onlineShop.domain.User;
+import onlineShop.routes.Route;
 import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +17,11 @@ public class UserController {
 
     @RequestMapping(value = Route.REGISTER, method = RequestMethod.POST)
     public String registerUser(@RequestBody User user) {
-        System.out.println(user);
-        //TODO: hash password
-        String hashedPassword = PasswordUtils.hash(user.getHashedPassword());
-        user = userService.registerUser(user.getLogin(), hashedPassword, user.getEmail(), Role.USER());
         return "ok";
     }
 
     @RequestMapping(value = Route.LOGIN, method = RequestMethod.POST)
     public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password){
-        System.out.println(userName);
-        System.out.println(password);
         return "OK";
     }
 
