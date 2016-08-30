@@ -1,5 +1,5 @@
 {
-  "name": "onlineshop",
+  "name": "online-shop",
   "homepage": "https://github.com/damian483/OnlineShop",
   "description": "Simple Spring Online Shop",
   "main": "",
@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "angular": "^1.5.9",
+    "angular-bootstrap": "1.0",
     "bootstrap": "^4.0.0"
   }
 }
