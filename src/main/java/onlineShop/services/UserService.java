@@ -1,65 +1,96 @@
 package onlineShop.services;
 
+import onlineShop.dao.AddressRepository;
 import onlineShop.dao.RoleRepository;
 import onlineShop.dao.UserRepository;
 import onlineShop.domain.Address;
 import onlineShop.domain.Role;
 import onlineShop.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by Damian Bartos
  * 23.08.2016.
  */
 @Service
-public class UserService {
+public class UserService implements IUserService {
     @Autowired
     UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
-    public User registerUser(String login, String hashedPassword, String email, Role role){
-        User newUser = new User(login, hashedPassword, email);
-        newUser.setRole(role);
-        return userRepository.save(newUser);
-    }
+    @Autowired
+    AddressRepository addressRepository;
 
-    public User updateNames(Integer userId, String firstName, String lastName){
-        User user = userRepository.findOne(userId);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
+    @Override
+    public User create(User user) {
+        //TODO: add validation if login and mail exist
         return userRepository.save(user);
     }
 
-    public User updatePhoneNumber(Integer userId, String phoneNumber){
+    @Override
+    public void deleteUserById(long userId) {
         User user = userRepository.findOne(userId);
-        user.setPhoneNumber(phoneNumber);
+        userRepository.delete(user);
+    }
+
+    @Override
+    public boolean exist(long userId) {
+        return userRepository.exists(userId);
+    }
+
+    @Override
+    public List<User> getAllUsers(Pageable pageable) {
+        return userRepository.findAll(pageable).getContent();
+    }
+
+    @Override
+    public User getUserById(long userId) {
+        return userRepository.findOne(userId);
+    }
+
+    @Override
+    public User getUserByLogin(String login) {
+        return userRepository.findByLogin(login);
+    }
+
+    @Override
+    public User getCurrentLoggedUser() {
+        return null;
+    }
+
+    @Override
+    public User changeUserRole(long userId, Role role) {
+        User user = userRepository.findOne(userId);
+        user.setRole(role);
         return userRepository.save(user);
     }
 
-    public User addAddress(Integer userId, Address address){
+    @Override
+    public User updateUserById(long userId, User userData) {
+        User user = userRepository.findOne(userId);
+//        if(userData.getFirstName()!=null)
+        user.setFirstName(userData.getFirstName());
+//        if(userData.getLastName()!=null)
+        user.setLastName(userData.getLastName());
+//        if(userData.getPhoneNumber()!=null)
+        user.setPhoneNumber(userData.getPhoneNumber());
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User addAddress(long userId, Address address) {
         User user = userRepository.findOne(userId);
         user.getAddresses().add(address);
         return userRepository.save(user);
     }
 
-    public User updateRole(Integer userId, Role newRole){
-        User user = userRepository.findOne(userId);
-        user.setRole(newRole);
-        return userRepository.save(user);
-    }
-
-    public void deleteUser(User user){
-        userRepository.delete(user);
-    }
-
-    public boolean checkPassword(Integer userId, String hashedPassword){
-        User user = userRepository.findOne(userId);
-        return hashedPassword.equals(user.getHashedPassword());
-    }
-
-    public User getUserById(int userId){
-        return userRepository.findOne(userId);
+    @Override
+    public List<Address> getAllAddressesByUserId(long userId) {
+        return userRepository.findOne(userId).getAddresses();
     }
 
 }

@@ -12,7 +12,8 @@ import java.util.List;
  * 16.08.2016.
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByLogin(String login);
     List<User> findByFirstName(String firstName);
     List<User> findByLastName(String lastName);
     List<User> findByPhoneNumber(String phoneNumber);

@@ -1,8 +1,12 @@
 package onlineShop.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import onlineShop.Utils.Messages;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,25 +20,39 @@ public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
-    private Integer userId;
-    @Column(name = "LOGIN")
+    private long userId;
+
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(name = "LOGIN", unique = true)
+    @Length(min = 4, max = 15, message = Messages.USERNAME_LENGTH)
     private String login;
+
+    @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "HASHED_PASSWORD")
     private String hashedPassword;
-    @Column(name = "EMAIL")
+
+    @NotNull
+    @Column(name = "EMAIL", unique = true)
     private String email;
+
     @Column(name = "FIRST_NAME")
     private String firstName;
+
     @Column(name = "LAST_NAME")
     private String lastName;
+
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private List<Address> addresses;
-    @OneToOne(cascade = CascadeType.ALL)
+
+    @NotNull
     @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
     private Role role;
 
     protected User(){
@@ -48,11 +66,11 @@ public class User{
         addresses = new LinkedList<>();
     }
 
-    public Integer getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
