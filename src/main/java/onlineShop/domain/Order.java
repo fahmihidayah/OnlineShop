@@ -29,7 +29,7 @@ public class Order {
     private Date paidDate;
 
     @Column(name = "SEND_DATE")
-    private Date sentDate;
+    private Date sendDate;
 
     @ManyToMany
     @JoinColumn(name = "ITEM_ID")
@@ -76,12 +76,12 @@ public class Order {
         this.paidDate = paidDate;
     }
 
-    public Date getSentDate() {
-        return sentDate;
+    public Date getSendDate() {
+        return sendDate;
     }
 
-    public void setSentDate(Date sentDate) {
-        this.sentDate = sentDate;
+    public void setSendDate(Date sentDate) {
+        this.sendDate = sentDate;
     }
 
     public List<Item> getItems() {
@@ -99,7 +99,7 @@ public class Order {
                 ", userId=" + userId +
                 ", submitDate=" + submitDate +
                 ", paidDate=" + paidDate +
-                ", sentDate=" + sentDate +
+                ", sendDate=" + sendDate +
                 ", items=" + items +
                 '}';
     }
