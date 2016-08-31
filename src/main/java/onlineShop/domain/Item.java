@@ -1,6 +1,7 @@
 package onlineShop.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 /**
@@ -13,32 +14,55 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ITEM_ID")
-    private Integer itemId;
+    private long itemId;
+
+    @NotNull
     @Column(name = "NAME")
     private String name;
+
     @Column(name = "DESCRIPTION")
     private String description;
-    @Column(name = "ITEM_CODE")
+
+    @NotNull
+    @Column(name = "ITEM_CODE", unique = true)
     private long itemCode;
+
+    @NotNull
     @Column(name = "QUANTITY")
     private long quantity;
+
+    @NotNull
+    @Column(name = "RESERVED_QUANTITY")
+    private long reservedQuantity;
+
+    @NotNull
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    protected Item(){}
+    protected Item() {
+    }
 
-    public Item(long itemCode, String name, BigDecimal price){
+    public Item(long itemCode, String name, BigDecimal price) {
         this.itemCode = itemCode;
         this.name = name;
         this.price = price;
+        this.reservedQuantity = 0;
     }
 
-    public Integer getItemId() {
+    public long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(long itemId) {
         this.itemId = itemId;
+    }
+
+    public long getReservedQuantity() {
+        return reservedQuantity;
+    }
+
+    public void setReservedQuantity(long reservedQuantity) {
+        this.reservedQuantity = reservedQuantity;
     }
 
     public String getName() {

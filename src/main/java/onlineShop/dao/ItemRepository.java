@@ -12,7 +12,7 @@ import java.util.List;
  * 22.08.2016.
  */
 @Repository
-public interface ItemRepository extends JpaRepository<Item, Integer> {
+public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findByName(String name);
     List<Item> findByItemCode(long itemCode);
     List<Item> findByPrice(BigDecimal price);
