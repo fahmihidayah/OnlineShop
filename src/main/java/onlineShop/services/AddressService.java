@@ -12,11 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-public class AddressService {
+public class AddressService implements IAddressService{
     @Autowired
     AddressRepository addressRepository;
 
-    public Address getAddressById(int addressId){
+    @Override
+    public Address getAddressById(long addressId){
         return addressRepository.findOne(addressId);
     }
 

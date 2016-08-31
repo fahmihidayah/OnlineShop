@@ -1,6 +1,7 @@
 package onlineShop.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by Damian Bartos
@@ -12,17 +13,31 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ADDRESS_ID")
-    private Integer addressId;
+    private long addressId;
+
+    @NotNull
     @Column(name = "USER_ID")
-    private Integer userId;
+    private long userId;
+
     @Column(name = "STREET")
     private String street;
+
+    @NotNull
     @Column(name = "HOUSE_NUMBER")
     private String houseNumber;
+
+    @NotNull
     @Column(name = "CITY")
     private String city;
+
+    @NotNull
     @Column(name = "ZIP_CODE")
     private String zipCode;
+
+
+    @NotNull
+    @Column(name = "PRIMARY_ADDRESS")
+    private boolean mainAddress;
 
     protected Address(){}
 
@@ -31,13 +46,14 @@ public class Address {
         this.houseNumber = houseNumber;
         this.city = city;
         this.zipCode = zipCode;
+        this.mainAddress = false;
     }
 
-    public Integer getAddressId() {
+    public long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(Integer addressId) {
+    public void setAddressId(long addressId) {
         this.addressId = addressId;
     }
 
@@ -73,12 +89,20 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public Integer getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public boolean isMainAddress() {
+        return mainAddress;
+    }
+
+    public void setMainAddress(boolean mainAddress) {
+        this.mainAddress = mainAddress;
     }
 
     @Override

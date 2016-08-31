@@ -11,7 +11,7 @@ import java.util.List;
  * 22.08.2016.
  */
 @Repository
-public interface AddressRepository extends JpaRepository<Address, Integer> {
+public interface AddressRepository extends JpaRepository<Address, Long> {
     List<Address> findByCity(String city);
     List<Address> findByZipCode(String zipCode);
 }
