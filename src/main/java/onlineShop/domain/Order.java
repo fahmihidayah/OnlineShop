@@ -1,6 +1,7 @@
 package onlineShop.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,15 +16,21 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ORDER_ID")
-    private Integer orderId;
+    private long orderId;
+
     @Column(name = "USER_ID")
-    private Integer userId;
+    private long userId;
+
+    @NotNull
     @Column(name = "SUBMIT_DATE")
     private Date submitDate;
+
     @Column(name = "PAID_DATE")
     private Date paidDate;
+
     @Column(name = "SEND_DATE")
-    private Date sendDate;
+    private Date sentDate;
+
     @ManyToMany
     @JoinColumn(name = "ITEM_ID")
     private List<Item> items;
@@ -37,19 +44,19 @@ public class Order {
         items = new LinkedList<>();
     }
 
-    public Integer getOrderId() {
+    public long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(long orderId) {
         this.orderId = orderId;
     }
 
-    public Integer getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -69,12 +76,12 @@ public class Order {
         this.paidDate = paidDate;
     }
 
-    public Date getSendDate() {
-        return sendDate;
+    public Date getSentDate() {
+        return sentDate;
     }
 
-    public void setSendDate(Date sendDate) {
-        this.sendDate = sendDate;
+    public void setSentDate(Date sentDate) {
+        this.sentDate = sentDate;
     }
 
     public List<Item> getItems() {
@@ -92,7 +99,7 @@ public class Order {
                 ", userId=" + userId +
                 ", submitDate=" + submitDate +
                 ", paidDate=" + paidDate +
-                ", sendDate=" + sendDate +
+                ", sentDate=" + sentDate +
                 ", items=" + items +
                 '}';
     }

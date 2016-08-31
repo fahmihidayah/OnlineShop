@@ -12,7 +12,7 @@ import java.util.List;
  * 22.08.2016.
  */
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Integer> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findBySubmitDate(Date submitDate);
     List<Order> findByPaidDate(Date paidDate);
     List<Order> findBySendDate(Date sendDate);
