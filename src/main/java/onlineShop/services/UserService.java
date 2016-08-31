@@ -18,7 +18,6 @@ import java.util.List;
  * 23.08.2016.
  */
 @Service
-@Transactional
 public class UserService implements IUserService {
     @Autowired
     UserRepository userRepository;
