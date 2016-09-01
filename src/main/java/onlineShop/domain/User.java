@@ -50,6 +50,9 @@ public class User{
     @JoinColumn(name = "USER_ID")
     private List<Address> addresses;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private ShoppingCart shoppingCart;
+
     @NotNull
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
