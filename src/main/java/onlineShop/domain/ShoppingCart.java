@@ -26,7 +26,7 @@ public class ShoppingCart {
     @JoinColumn(name = "ITEM_ID")
     private List<Item> items;
 
-    protected ShoppingCart(){
+    protected ShoppingCart() {
         items = new LinkedList<>();
     }
 

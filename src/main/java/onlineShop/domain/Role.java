@@ -16,14 +16,16 @@ public class Role {
     @Column(name = "ROLE_NAME")
     private String roleName;
 
-    public static Role ADMIN(){
+    public static Role ADMIN() {
         return new Role("ADMIN");
     }
-    public static Role USER(){
+
+    public static Role USER() {
         return new Role("USER");
     }
 
-    protected Role(){}
+    protected Role() {
+    }
 
     public Role(String roleName) {
         this.roleName = roleName;

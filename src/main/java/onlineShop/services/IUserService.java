@@ -13,16 +13,24 @@ import java.util.List;
  */
 public interface IUserService {
     User create(User user);
+
     void deleteUserById(long userId);
+
     boolean exist(long userId);
 
     List<User> getAllUsers(Pageable pageable);
+
     User getUserById(long userId);
+
     User getUserByLogin(String login);
+
     User getCurrentLoggedUser();
+
     User changeUserRole(long userId, Role role);
+
     User updateUserById(long userId, User userData);
 
     User addAddress(long userId, Address address);
+
     List<Address> getAllAddressesByUserId(long userId);
 }

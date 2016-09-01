@@ -39,7 +39,8 @@ public class Address {
     @Column(name = "PRIMARY_ADDRESS")
     private boolean mainAddress;
 
-    protected Address(){}
+    protected Address() {
+    }
 
     public Address(String street, String houseNumber, String city, String zipCode) {
         this.street = street;

@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "USERS")
-public class User{
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -58,7 +58,7 @@ public class User{
     @OneToOne(cascade = CascadeType.ALL)
     private Role role;
 
-    protected User(){
+    protected User() {
         addresses = new LinkedList<>();
     }
 

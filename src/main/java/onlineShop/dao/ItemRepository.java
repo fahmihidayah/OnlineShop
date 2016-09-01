@@ -14,9 +14,14 @@ import java.util.List;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
     List<Item> findByName(String name);
+
     List<Item> findByItemCode(long itemCode);
+
     List<Item> findByPrice(BigDecimal price);
+
     List<Item> findByPriceGreaterThan(BigDecimal price);
+
     List<Item> findByPriceLessThan(BigDecimal price);
+
     List<Item> findByPriceBetween(BigDecimal fromPrice, BigDecimal toPrice);
 }

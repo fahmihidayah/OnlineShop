@@ -35,11 +35,11 @@ public class Order {
     @JoinColumn(name = "ITEM_ID")
     private List<Item> items;
 
-    protected Order(){
+    protected Order() {
         items = new LinkedList<>();
     }
 
-    public Order(Date submitDate){
+    public Order(Date submitDate) {
         this.submitDate = submitDate;
         items = new LinkedList<>();
     }

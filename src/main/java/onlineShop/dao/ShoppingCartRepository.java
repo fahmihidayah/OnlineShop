@@ -13,5 +13,5 @@ import java.util.List;
  */
 @Repository
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
-        List<ShoppingCart> findByExpiredDate(Date expiredDate);
+    List<ShoppingCart> findByExpiredDate(Date expiredDate);
 }

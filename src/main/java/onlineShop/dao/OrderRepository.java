@@ -14,7 +14,10 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findBySubmitDate(Date submitDate);
+
     List<Order> findByPaidDate(Date paidDate);
+
     List<Order> findBySendDate(Date sendDate);
+
     List<Order> findBySubmitDateBetween(Date from, Date to);
 }

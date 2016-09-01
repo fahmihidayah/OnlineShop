@@ -13,7 +13,6 @@ import java.util.List;
  * 23.08.2016.
  */
 @Service
-//@Transactional
 public class ItemService implements IItemService {
     @Autowired
     ItemRepository itemRepository;

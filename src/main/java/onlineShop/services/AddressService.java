@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
  * 25.08.2016.
  */
 @Service
-//@Transactional
-public class AddressService implements IAddressService{
+public class AddressService implements IAddressService {
     @Autowired
     AddressRepository addressRepository;
 
     @Override
-    public Address getAddressById(long addressId){
+    public Address getAddressById(long addressId) {
         return addressRepository.findOne(addressId);
     }
 
