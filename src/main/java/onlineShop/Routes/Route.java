@@ -12,6 +12,7 @@ public abstract class Route {
     private static final String ITEM    = API + "/item";
     private static final String ORDER   = API + "/order";
     private static final String ADDRESS = API + "/address";
+    private static final String CART    = API + "/cart";
 
     //  CRUD
     private static final String CREATE = "/create";
@@ -41,5 +42,11 @@ public abstract class Route {
     public static final String ADDRESS_READ   = ADDRESS + READ + "";
     public static final String ADDRESS_UPDATE = ADDRESS + UPDATE + "";
     public static final String ADDRESS_DELETE = ADDRESS + DELETE + "";
+
+    //  SHOPPING CART
+    public static final String CART_CREATE = CART + CREATE;
+    public static final String CART_READ   = CART + READ + "";
+    public static final String CART_UPDATE = CART + UPDATE + "";
+    public static final String CART_DELETE = CART + DELETE + "";
 
 }
