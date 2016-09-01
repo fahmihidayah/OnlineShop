@@ -15,13 +15,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableScheduling
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //TODO: add spring security configuration
         http.csrf().disable();
     }
-//    @Autowired
+
+    //    @Autowired
     javax.sql.DataSource dataSource;
 
     @Autowired

@@ -7,6 +7,6 @@ package onlineShop.utils;
 public class PasswordUtils {
     public static String hash(String hashedPassword) {
         //TODO: change hash method
-        return hashedPassword+"QWERTY";
+        return hashedPassword + "QWERTY";
     }
 }

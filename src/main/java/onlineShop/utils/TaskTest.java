@@ -17,9 +17,9 @@ public class TaskTest {
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
-//    @Scheduled(cron = "0 */1 * * * *")
+    //    @Scheduled(cron = "0 */1 * * * *")
 //    @Scheduled(fixedRate = 5000)
-    public void test(){
+    public void test() {
         log.info("TASK: ", dateFormat.format(new Date()));
     }
 }
