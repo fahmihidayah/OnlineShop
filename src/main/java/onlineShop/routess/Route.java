@@ -1,4 +1,4 @@
-package onlineShop.routes;
+package onlineShop.routess;
 
 /**
  * Created by Damian Bartos
@@ -40,7 +40,7 @@ public abstract class Route {
     //  ADDRESS
     public static final String ADDRESS_CREATE = ADDRESS + CREATE;
     public static final String ADDRESS_READ   = ADDRESS + READ + "";
-    public static final String ADDRESS_UPDATE = ADDRESS + UPDATE + "";
+    public static final String ADDESS_UPDATE = ADDRESS + UPDATE + "";
     public static final String ADDRESS_DELETE = ADDRESS + DELETE + "";
 
     //  SHOPPING CART
