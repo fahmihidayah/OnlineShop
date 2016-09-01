@@ -1,4 +1,4 @@
-package onlineShop.utilss;
+package onlineShop.utils;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

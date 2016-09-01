@@ -1,4 +1,4 @@
-package onlineShop.utilss;
+package onlineShop.utils;
 
 /**
  * Created by Damian Bartos

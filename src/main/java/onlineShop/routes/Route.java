@@ -1,4 +1,4 @@
-package onlineShop.routess;
+package onlineShop.routes;
 
 /**
  * Created by Damian Bartos
