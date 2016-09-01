@@ -21,12 +21,12 @@ public class UserController {
     }
 
     @RequestMapping(value = Route.LOGIN, method = RequestMethod.POST)
-    public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password){
+    public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password) {
         return "OK";
     }
 
     @RequestMapping(value = Route.LOGOUT, method = RequestMethod.GET)
-    public String logout(){
+    public String logout() {
         return "OK";
     }
 }
