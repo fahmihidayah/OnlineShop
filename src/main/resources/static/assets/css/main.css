@@ -1,0 +1,19 @@
+/*body{*/
+    /*margin-top: 50px;*/
+/*}*/
+
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    /*margin-right:-10px;*/
+}
+
+.row-margin-3 {
+    margin-top: 3%;
+}
