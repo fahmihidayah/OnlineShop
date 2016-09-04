@@ -1,6 +1,6 @@
-/*body{*/
-    /*margin-top: 50px;*/
-/*}*/
+body{
+    margin-top: 70px;
+}
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
@@ -8,8 +8,13 @@
     word-wrap:break-word;
 }
 
+/* rules for xs*/
 @media (max-width: 767px) /* @grid-float-breakpoint -1 */
 {
+    body
+    {
+        margin-top: 0px;
+    }
     .navbar-fixed-top
     {
         position: relative;
@@ -17,6 +22,7 @@
     }
 }
 
+/* center tags*/
 .row-centered {
     text-align:center;
 }
@@ -28,6 +34,8 @@
     /* inline-block space fix */
     /*margin-right:-10px;*/
 }
+
+/* extra margin*/
 .row-margin-1 {
     margin-top: 1%;
 }
@@ -36,13 +44,4 @@
 }
 .row-margin-3 {
     margin-top: 3%;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    background-color: #f5f5f5;
 }
