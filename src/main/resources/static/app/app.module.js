@@ -7,5 +7,7 @@
 
 angular.module('onlineShop', [
     'ngRoute',
+    'ui.bootstrap',
     'onlineShop.routes',
-    'onlineShop.home']);
+    'onlineShop.home',
+    'onlineShop.items']);

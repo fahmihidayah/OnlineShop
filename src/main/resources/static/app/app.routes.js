@@ -12,4 +12,8 @@ angular.module('onlineShop.routes', ['ngRoute'])
                 templateUrl: URL + '/home/home-view.html',
                 controller: 'HomeCtrl'
             })
+            .when('/items',{
+                templateUrl: URL + '/items/items-view.html',
+                controller: 'PaginationController'
+            });
     });

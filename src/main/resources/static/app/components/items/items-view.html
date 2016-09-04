@@ -1,0 +1,28 @@
+<div>
+    <div class="row row-margin-3">
+        <div class="col-xs-12 col-sm-3">
+            <a href="#/" class="thumbnail">
+                <img src="/assets/img/maxresdefault.jpg" alt="item-sale-1">
+            </a>
+        </div>
+        <div class="col-xs-12 col-sm-7">
+            <strong class="col-sm-12">{{productName}}NAZWA</strong>
+            <p class="text-info col-sm-12">item code: {{itemCode}}951132</p>
+            <div class="text-muted wrap col-sm-12">{{itemDescription}}dsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsa</div>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+            <strong class="col-xs-6 col-sm-12">{{price}}CENA</strong>
+            <p class="col-xs-6 col-sm-12">dostepne: {{quantity}}12</p>
+            <button class="btn btn-primary col-xs-12 col-sm-12">Add to cart</button>
+        </div>
+    </div>
+    <div class="row">
+        <hr>
+    </div>
+</div>
+
+<div class="row row-centered" ng-controller="PaginationController">
+    <ul uib-pagination class="pagination-sm col-centered" ng-model="currentPage" ng-change="pageChanged()"
+        total-items="totalItems"  max-size="maxSize" items-per-page="itemsPerPage"
+        boundary-links="true" num-pages="numPages"></ul>
+</div>
