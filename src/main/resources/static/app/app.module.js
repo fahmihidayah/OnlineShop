@@ -10,4 +10,10 @@ angular.module('onlineShop', [
     'ui.bootstrap',
     'onlineShop.routes',
     'onlineShop.home',
-    'onlineShop.items']);
+    'onlineShop.items'])
+
+.controller('NavHeaderController', function($scope, $location){
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+});
