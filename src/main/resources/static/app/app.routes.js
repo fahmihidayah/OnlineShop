@@ -15,5 +15,9 @@ angular.module('onlineShop.routes', ['ngRoute'])
             .when('/items',{
                 templateUrl: URL + '/items/items-view.html',
                 controller: 'PaginationController'
+            })
+            .when('/cart',{
+                templateUrl: URL + '/cart/cart-view.html',
+                controller: 'CartController'
             });
     });
