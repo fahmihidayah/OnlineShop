@@ -1,12 +1,19 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
 body{
     margin-top: 70px;
+    margin-bottom: 20px;
 }
 
+/* for angular ui-bootstrap empty href*/
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 
 .wrap{
     word-wrap:break-word;
 }
+
 
 /* rules for xs*/
 @media (max-width: 767px) /* @grid-float-breakpoint -1 */
