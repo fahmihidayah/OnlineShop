@@ -19,6 +19,8 @@ public interface IItemService {
 
     Page<Item> getAllItems(Pageable pageable);
 
+    long maxItems();
+
     Item getItemById(long itemId);
 
     List<Item> getItemsByName(String name);

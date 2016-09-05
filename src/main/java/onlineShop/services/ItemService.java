@@ -41,6 +41,11 @@ public class ItemService implements IItemService {
     }
 
     @Override
+    public long maxItems() {
+        return itemRepository.count();
+    }
+
+    @Override
     public Item getItemById(long itemId) {
         return itemRepository.findOne(itemId);
     }

@@ -48,4 +48,9 @@ public class ItemController {
         System.out.println(pageable);
         return itemService.getAllItems(pageable).getContent();
     }
+
+    @RequestMapping(value = Route.ITEM_MAX_ELEM)
+    public long maxElements(){
+        return itemService.maxItems();
+    }
 }

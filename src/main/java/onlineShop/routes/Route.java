@@ -6,7 +6,7 @@ package onlineShop.routes;
  */
 public abstract class Route {
     //  MAIN
-    private static final String API = "/api";
+    private static final String API = "/rest";
 
     private static final String USER = API + "/user";
     private static final String ITEM = API + "/item";
@@ -22,7 +22,7 @@ public abstract class Route {
     private static final String DELETE = "/delete";
     private static final String LIST = "/all";  // for list /all?page=x%size=y
     private static final String ID = "";        // for id   /?id=x
-
+    private static final String MAX_ELEM = "/num";
     //  AUTH
     public static final String REGISTER = AUTH + "/register";
     public static final String LOGIN = AUTH + "/login";
@@ -41,6 +41,7 @@ public abstract class Route {
     public static final String ITEM_READ_LIST = ITEM + READ + LIST;
     public static final String ITEM_UPDATE = ITEM + UPDATE + "";
     public static final String ITEM_DELETE = ITEM + DELETE + "";
+    public static final String ITEM_MAX_ELEM = ITEM + MAX_ELEM;
 
     //  ORDER
     public static final String ORDER_CREATE = ORDER + CREATE;
