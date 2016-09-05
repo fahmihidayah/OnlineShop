@@ -24,7 +24,10 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
                     console.log($scope.currentItems);
                 });
         };
-
+        $scope.addToCartButton = function(pressedIndex) {
+            var itemIndex = $scope.currentItems[pressedIndex].itemId;
+            console.log(itemIndex);
+        };
         //init
         $scope.init = function () {
             $http.get('rest/item/num').success(function (number) {
