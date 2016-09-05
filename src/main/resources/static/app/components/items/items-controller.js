@@ -3,18 +3,33 @@
  */
 
 angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
-    .controller('PaginationController', function($scope){
-        $scope.totalItems = 10;
-        $scope.itemsPerPage = 10;
-        $scope.currentPage = 1;
-        $scope.setPage = function (pageNo) {
-            $scope.currentPage = pageNo;
+    .controller('ItemsController', ['$scope', '$http', function ($scope, $http) {
+        //pagination
+        $scope.pagination = {
+            totalItems: 1,
+            itemsPerPage: 10,
+            currentPage: 1,
+            maxSize: 6
         };
-        $scope.pageChanged = function() {
-            console.log('Page changed to: ' + $scope.currentPage);
+        $scope.pageChanged = function () {
+            $scope.updateItems();
         };
-        $scope.maxSize = 6;
-    })
-    .controller('ItemsController', function($scope){
 
-    });
+        //items
+        $scope.currentItems = [];
+        $scope.updateItems = function () {
+            $http.get('rest/item/all' + '?page=' + ($scope.pagination.currentPage - 1) + '&size=' + $scope.pagination.itemsPerPage)
+                .success(function (items) {
+                    $scope.currentItems = items;
+                    console.log($scope.currentItems);
+                });
+        };
+
+        //init
+        $scope.init = function () {
+            $http.get('rest/item/num').success(function (number) {
+                $scope.pagination.totalItems = number;
+            });
+            $scope.updateItems();
+        }
+    }]);

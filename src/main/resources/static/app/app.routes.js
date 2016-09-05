@@ -13,8 +13,8 @@ angular.module('onlineShop.routes', ['ngRoute'])
                 controller: 'HomeCtrl'
             })
             .when('/items', {
-                templateUrl: URL + '/items/items-view.html',
-                controller: 'PaginationController'
+                templateUrl: URL + '/items/items-view.html'
+                //controller: 'ItemsController'
             })
             .when('/cart', {
                 templateUrl: URL + '/cart/cart-view.html',
