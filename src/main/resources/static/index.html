@@ -14,6 +14,11 @@
     <link href="assets/libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <!-- Custom styles -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body ng-app="onlineShop">
@@ -26,7 +31,6 @@
         <ul class="nav navbar-nav" ng-controller="NavHeaderController">
             <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
             <li ng-class="{ active: isActive('/items')}"><a href="#/items">Items</a></li>
-            <li ng-class="{ active: isActive('/categories')}"><a href="#/categories">Categories</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -76,8 +80,8 @@
 <!-- angular libs -->
 <script src="assets/libs/angular/angular.min.js"></script>
 <script src="assets/libs/angular-route/angular-route.min.js"></script>
-<!--<script src="assets/libs/angular-bootstrap/ui-bootstrap.min.js"></script>-->
 <script src="assets/libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="assets/libs/tg-angular-validator/dist/angular-validator.min.js"></script>
 <!-- core files-->
 <script src="app/app.module.js"></script>
 <script src="app/app.routes.js"></script>
@@ -85,6 +89,7 @@
 <script src="app/components/home/home-controller.js"></script>
 <script src="app/components/items/items-controller.js"></script>
 <script src="app/components/cart/cart-controller.js"></script>
-
+<script src="app/components/login/login-controller.js"></script>
+<script src="app/components/register/register-controller.js"></script>
 </body>
 </html>

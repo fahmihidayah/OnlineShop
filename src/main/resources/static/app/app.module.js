@@ -6,15 +6,18 @@
 'use strict';
 
 angular.module('onlineShop', [
-    'ngRoute',
-    'ui.bootstrap',
-    'onlineShop.routes',
-    'onlineShop.home',
-    'onlineShop.items',
-    'onlineShop.cart'])
+        'ngRoute',
+        'ui.bootstrap',
+        'angularValidator',
+        'onlineShop.routes',
+        'onlineShop.home',
+        'onlineShop.items',
+        'onlineShop.cart',
+        'onlineShop.login',
+        'onlineShop.register'])
 
-.controller('NavHeaderController', function($scope, $location){
-    $scope.isActive = function (viewLocation) {
-        return viewLocation === $location.path();
-    };
-});
+    .controller('NavHeaderController', function ($scope, $location) {
+        $scope.isActive = function (viewLocation) {
+            return viewLocation === $location.path();
+        };
+    });
