@@ -13,20 +13,27 @@ public abstract class Route {
     private static final String ORDER = API + "/order";
     private static final String ADDRESS = API + "/address";
     private static final String CART = API + "/cart";
+    private static final String AUTH = API + "/auth";
 
     //  CRUD
     private static final String CREATE = "/create";
     private static final String READ = "";
     private static final String UPDATE = "/update";
     private static final String DELETE = "/delete";
-    private static final String LIST = "/all";
-    // for list user /all?page=x%size=y
-    private static final String ID = "";
+    private static final String LIST = "/all";  // for list /all?page=x%size=y
+    private static final String ID = "";        // for id   /?id=x
+
+    //  AUTH
+    public static final String REGISTER = AUTH + "/register";
+    public static final String LOGIN = AUTH + "/login";
+    public static final String LOGOUT = AUTH + "/logout";
 
     //  USER
-    public static final String REGISTER = USER + "/register";
-    public static final String LOGIN = USER + "/login";
-    public static final String LOGOUT = USER + "/logout";
+    public static final String USER_READ = USER + READ + ID;
+    public static final String USER_LIST = USER + READ + LIST;
+    public static final String USER_UPDATE = USER + UPDATE;
+    public static final String USER_DELETE = USER + DELETE;
+    public static final String USER_ADD_ADDRESS = USER + "/address" + CREATE;
 
     //  ITEM
     public static final String ITEM_CREATE = ITEM + CREATE;

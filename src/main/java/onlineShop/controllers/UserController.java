@@ -1,10 +1,16 @@
 package onlineShop.controllers;
 
+import onlineShop.domain.Address;
 import onlineShop.domain.User;
 import onlineShop.routes.Route;
 import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by Damian Bartos
@@ -15,18 +21,31 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = Route.REGISTER, method = RequestMethod.POST)
-    public String registerUser(@RequestBody User user) {
-        return "ok";
+    @RequestMapping(value = Route.USER_LIST)
+    public List<User> getAllUser(Pageable pageable){
+        return userService.getAllUsers(pageable);
     }
 
-    @RequestMapping(value = Route.LOGIN, method = RequestMethod.POST)
-    public String loginUser(@RequestParam("userName") String userName, @RequestParam("password") String password) {
+    @RequestMapping(value = Route.USER_READ)
+    public User getUserById(@RequestParam("id") long userId){
+        return userService.getUserById(userId);
+    }
+
+    @RequestMapping(value = Route.USER_UPDATE)
+    public String updateUser(@RequestParam("id") long userId, User user){
+        userService.updateUserById(userId, user);
         return "OK";
     }
 
-    @RequestMapping(value = Route.LOGOUT, method = RequestMethod.GET)
-    public String logout() {
+    @RequestMapping(value = Route.USER_DELETE)
+    public String deleteUser(@RequestParam("id") long userId){
+        userService.deleteUserById(userId);
+        return "OK";
+    }
+
+    @RequestMapping(value = Route.USER_ADD_ADDRESS)
+    public String addAddress(@RequestParam("id") long userId, Address address){
+        userService.addAddress(userId, address);
         return "OK";
     }
 

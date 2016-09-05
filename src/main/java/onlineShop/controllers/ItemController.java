@@ -34,7 +34,7 @@ public class ItemController {
 
     @RequestMapping(value = Route.ITEM_UPDATE)
     public String updateItem(@RequestParam("id")long itemId, Item item){
-//        itemService.updateItemById(itemId, item);
+        itemService.updateItemById(itemId, item);
         return "OK";
     }
 
