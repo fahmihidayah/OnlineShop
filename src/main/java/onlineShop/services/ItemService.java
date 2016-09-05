@@ -3,6 +3,7 @@ package onlineShop.services;
 import onlineShop.dao.ItemRepository;
 import onlineShop.domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -35,8 +36,8 @@ public class ItemService implements IItemService {
     }
 
     @Override
-    public List<Item> getAllItems(Pageable pageable) {
-        return itemRepository.findAll(pageable).getContent();
+    public Page<Item> getAllItems(Pageable pageable) {
+        return itemRepository.findAll(pageable);
     }
 
     @Override

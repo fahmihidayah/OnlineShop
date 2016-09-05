@@ -16,9 +16,12 @@ public abstract class Route {
 
     //  CRUD
     private static final String CREATE = "/create";
-    private static final String READ = "/";
+    private static final String READ = "";
     private static final String UPDATE = "/update";
     private static final String DELETE = "/delete";
+    private static final String LIST = "/all";
+    // for list user /all?page=x%size=y
+    private static final String ID = "";
 
     //  USER
     public static final String REGISTER = USER + "/register";
@@ -27,7 +30,8 @@ public abstract class Route {
 
     //  ITEM
     public static final String ITEM_CREATE = ITEM + CREATE;
-    public static final String ITEM_READ = ITEM + READ + "";
+    public static final String ITEM_READ = ITEM + READ + ID;
+    public static final String ITEM_READ_LIST = ITEM + READ + LIST;
     public static final String ITEM_UPDATE = ITEM + UPDATE + "";
     public static final String ITEM_DELETE = ITEM + DELETE + "";
 
@@ -40,7 +44,7 @@ public abstract class Route {
     //  ADDRESS
     public static final String ADDRESS_CREATE = ADDRESS + CREATE;
     public static final String ADDRESS_READ = ADDRESS + READ + "";
-    public static final String ADDESS_UPDATE = ADDRESS + UPDATE + "";
+    public static final String ADDRESS_UPDATE = ADDRESS + UPDATE + "";
     public static final String ADDRESS_DELETE = ADDRESS + DELETE + "";
 
     //  SHOPPING CART
