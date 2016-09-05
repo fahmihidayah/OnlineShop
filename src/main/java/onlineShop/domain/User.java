@@ -20,6 +20,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY )
     private long userId;
 
     @NotNull
@@ -31,15 +32,17 @@ public class User {
     @NotNull
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "HASHED_PASSWORD")
-    private String hashedPassword;
+    private String password;
 
     @NotNull
     @Column(name = "EMAIL", unique = true)
     private String email;
 
+    @NotNull
     @Column(name = "FIRST_NAME")
     private String firstName;
 
+    @NotNull
     @Column(name = "LAST_NAME")
     private String lastName;
 
@@ -48,23 +51,25 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<Address> addresses;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private ShoppingCart shoppingCart;
 
-    @NotNull
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Role role;
 
     protected User() {
         addresses = new LinkedList<>();
     }
 
-    public User(String login, String hashedPassword, String email) {
+    public User(String login, String password, String email) {
         this.login = login;
-        this.hashedPassword = hashedPassword;
+        this.password = password;
         this.email = email;
         addresses = new LinkedList<>();
     }
@@ -85,12 +90,12 @@ public class User {
         this.login = login;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHashedPassword(String hashedPassword) {
-        this.hashedPassword = hashedPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -154,7 +159,7 @@ public class User {
         return "User{" +
                 "userId=" + userId +
                 ", login='" + login + '\'' +
-                ", hashedPassword='" + hashedPassword + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
