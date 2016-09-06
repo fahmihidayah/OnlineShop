@@ -1,7 +1,5 @@
 package onlineShop.domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -17,26 +15,21 @@ public class Item {
     @Column(name = "ITEM_ID")
     private long itemId;
 
-    @NotBlank
     @Column(name = "NAME")
     private String name;
 
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @NotBlank
     @Column(name = "ITEM_CODE", unique = true)
     private long itemCode;
 
-    @NotBlank
     @Column(name = "QUANTITY")
     private long quantity;
 
-    @NotBlank
     @Column(name = "RESERVED_QUANTITY")
     private long reservedQuantity;
 
-    @NotBlank
     @Column(name = "PRICE")
     private BigDecimal price;
 
