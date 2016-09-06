@@ -4,10 +4,10 @@
  */
 
 angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator'])
-    .controller('LoginController',['$scope', '$rootScope', function ($scope, $rootScope) {
-        $scope.login = '';
-        $scope.password = '';
-        $scope.submitForm = function() {
+    .controller('LoginController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+        $scope.myForm = {};
+        $scope.user = {};
+        $scope.submitForm = function () {
             if ($scope.loginForm.$valid) {
                 //login here
                 $rootScope.isLogged = true;
