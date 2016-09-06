@@ -1,9 +1,10 @@
 /**
- * Created by Damian Bartos on 04.09.2016.
+ * Created by Damian Bartos
+ * 04.09.2016.
  */
 
 angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
-    .controller('ItemsController', ['$scope', '$http', function ($scope, $http) {
+    .controller('ItemsController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
         //pagination
         $scope.pagination = {
             totalItems: 1,
@@ -13,6 +14,7 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
         };
         $scope.pageChanged = function () {
             $scope.updateItems();
+            $window.scrollTo(0, 0);
         };
 
         //items
@@ -24,7 +26,7 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
                     console.log($scope.currentItems);
                 });
         };
-        $scope.addToCartButton = function(pressedIndex) {
+        $scope.addToCartButton = function (pressedIndex) {
             var itemIndex = $scope.currentItems[pressedIndex].itemId;
             console.log(itemIndex);
         };
