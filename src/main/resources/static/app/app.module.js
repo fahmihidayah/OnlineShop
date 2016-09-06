@@ -9,6 +9,7 @@ angular.module('onlineShop', [
         'ngRoute',
         'ui.bootstrap',
         'angularValidator',
+        'onlineShop.focus',
         'onlineShop.auth',
         'onlineShop.routes',
         'onlineShop.home',
