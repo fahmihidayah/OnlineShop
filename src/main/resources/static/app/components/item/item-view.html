@@ -1,3 +1,28 @@
-<div ng-controller="ItemController">
-
+<div ng-controller="ItemController" ng-init="init()">
+    <div class="col-sm-6">
+        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <h1>NAME</h1>
+        <p>itemCode: <span class="text-info">1242</span></p>
+        <p>On stock: <span class="text-muted">12</span></p>
+        <div class="">
+            <a class="glyphicon glyphicon-chevron-left"></a>
+            <span>{{orderedQuantity}}1</span>
+            <a class="glyphicon glyphicon-chevron-right"></a>
+            <button class="btn btn-primary">Add to cart</button>
+        </div>
+    </div>
+    <div class="col-sm-8 col-md-offset-2">
+        <h3 class="text-center">DESCRIPTION</h3>
+        <p class="wrap">OPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPIS
+            OPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPIS
+            OPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPIS
+            OPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPIS
+            OPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPISOPIS</p>
+    </div>
 </div>
