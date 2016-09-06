@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Simple Online Shop made with Spring and Angular">
+    <meta name="author" content="Damian Bartos">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Online Shop</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -32,8 +32,8 @@
             <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
             <li ng-class="{ active: isActive('/items')}"><a href="#/items">Items</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <ul class="nav navbar-nav navbar-right" ng-controller="AuthController">
+            <li ng-show=""><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
             <!-- after login -->
@@ -69,10 +69,6 @@
     <div ng-view></div>
 </div>
 
-<!--<div ng-controller="HomeCtrl">-->
-    <!--{{test}}-->
-<!--</div>-->
-
 <!-- include assets/libs -->
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="assets/libs/tether/dist/js/tether.min.js"></script>
@@ -86,9 +82,11 @@
 <!-- core files-->
 <script src="app/app.module.js"></script>
 <script src="app/app.routes.js"></script>
+<script src="app/shared/authentification.js"></script>
 <!-- modules-->
 <script src="app/components/home/home-controller.js"></script>
 <script src="app/components/items/items-controller.js"></script>
+<script src="app/components/item/item-controller.js"></script>
 <script src="app/components/cart/cart-controller.js"></script>
 <script src="app/components/login/login-controller.js"></script>
 <script src="app/components/register/register-controller.js"></script>
