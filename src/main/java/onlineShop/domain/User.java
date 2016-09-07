@@ -34,6 +34,10 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Column(name = "ENABLED")
+    private boolean enabled;
+
     @NotNull
     @Column(name = "EMAIL", unique = true)
     private String email;
@@ -65,6 +69,7 @@ public class User {
 
     protected User() {
         addresses = new LinkedList<>();
+        enabled = true;
     }
 
     public User(String userName, String password, String email) {
@@ -72,6 +77,7 @@ public class User {
         this.password = password;
         this.email = email;
         addresses = new LinkedList<>();
+        enabled = true;
     }
 
     public long getUserId() {
@@ -167,5 +173,13 @@ public class User {
                 ", addresses=" + addresses +
                 ", role=" + role +
                 '}';
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

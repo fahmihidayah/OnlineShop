@@ -25,6 +25,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic()
+//                .formLogin()
+//                .loginPage("/login")
+//                .passwordParameter("password").usernameParameter("username")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
@@ -48,9 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery("select userName, password from users where userName=?")
-                .authoritiesByUsernameQuery("select userName, role_name from users, roles where userName=?");
+                .usersByUsernameQuery("select username,password,enabled from users where username=?")
+                .authoritiesByUsernameQuery("select username, role from users, roles where username=? and users.role_user_id = roles.user_id");
 //        auth.inMemoryAuthentication()
-//                .withUser("damian483").password("Damian1").roles("USER");
+//                .withUser("damian483").password("Damian1").roles("USER")
+//                .and()
+//                .withUser("admin").password("admin").roles("ADMIN");
     }
 }

@@ -14,30 +14,30 @@ public class Role {
     @Column(name = "USER_ID", unique = true)
     private Integer userId;
 
-    @Column(name = "ROLE_NAME")
-    private String roleName;
+    @Column(name = "ROLE")
+    private String role;
 
     public static Role ADMIN() {
-        return new Role("ADMIN");
+        return new Role("ROLE_ADMIN");
     }
 
     public static Role USER() {
-        return new Role("USER");
+        return new Role("ROLE_USER");
     }
 
     protected Role() {
     }
 
-    public Role(String roleName) {
-        this.roleName = roleName;
+    public Role(String role) {
+        this.role = role;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public Integer getUserId() {
@@ -52,7 +52,7 @@ public class Role {
     public String toString() {
         return "Role{" +
                 "userId=" + userId +
-                ", roleName='" + roleName + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
