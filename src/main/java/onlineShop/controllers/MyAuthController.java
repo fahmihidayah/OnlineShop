@@ -22,7 +22,7 @@ public class MyAuthController {
 
     @RequestMapping(value = Route.REGISTER, method = RequestMethod.POST)
     public User registerUser(@RequestBody User user){
-        User newUser = new User(user.getLogin(), user.getPassword(), user.getEmail());
+        User newUser = new User(user.getUserName(), user.getPassword(), user.getEmail());
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setRole(Role.USER());

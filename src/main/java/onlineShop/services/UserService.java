@@ -27,7 +27,7 @@ public class UserService implements IUserService {
 
     @Override
     public User create(User user) {
-        //TODO: add validation if login and mail exist
+        //TODO: add validation if userName and mail exist
         return userRepository.save(user);
     }
 
@@ -53,8 +53,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User getUserByLogin(String login) {
-        return userRepository.findByLogin(login);
+    public User getUserByUserName(String userName) {
+        return userRepository.findByUserName(userName);
     }
 
     @Override

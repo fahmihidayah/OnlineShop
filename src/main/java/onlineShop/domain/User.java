@@ -25,9 +25,9 @@ public class User {
 
     @NotNull
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(name = "LOGIN", unique = true)
+    @Column(name = "USERNAME", unique = true)
     @Length(min = 4, max = 15, message = Messages.USERNAME_LENGTH)
-    private String login;
+    private String userName;
 
     @NotNull
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -67,8 +67,8 @@ public class User {
         addresses = new LinkedList<>();
     }
 
-    public User(String login, String password, String email) {
-        this.login = login;
+    public User(String userName, String password, String email) {
+        this.userName = userName;
         this.password = password;
         this.email = email;
         addresses = new LinkedList<>();
@@ -82,12 +82,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -158,7 +158,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", login='" + login + '\'' +
+                ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +

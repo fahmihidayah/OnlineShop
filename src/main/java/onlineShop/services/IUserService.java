@@ -22,7 +22,7 @@ public interface IUserService {
 
     User getUserById(long userId);
 
-    User getUserByLogin(String login);
+    User getUserByUserName(String userName);
 
     User getCurrentLoggedUser();
 

@@ -46,11 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .jdbcAuthentication().dataSource(dataSource)
-//                .usersByUsernameQuery("select login, password from users where login=?")
-//                .authoritiesByUsernameQuery("select login, role_name from users, roles where login=?");
-        auth.inMemoryAuthentication()
-                .withUser("damian483").password("Damian1").roles("USER");
+        auth
+                .jdbcAuthentication().dataSource(dataSource)
+                .usersByUsernameQuery("select userName, password from users where userName=?")
+                .authoritiesByUsernameQuery("select userName, role_name from users, roles where userName=?");
+//        auth.inMemoryAuthentication()
+//                .withUser("damian483").password("Damian1").roles("USER");
     }
 }
