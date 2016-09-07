@@ -4,7 +4,7 @@
  */
 
 angular.module('onlineShop.routes', ['ngRoute'])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $httpProvider) {
         var URL = '/app/components/';
         $routeProvider
             .otherwise('/')
@@ -24,11 +24,12 @@ angular.module('onlineShop.routes', ['ngRoute'])
                 //controller: 'CartController'
             })
             .when('/login', {
-                templateUrl: URL + '/login/login-view.html'
-                //controller: 'LoginController'
+                templateUrl: URL + '/login/login-view.html',
+                controller: 'LoginController'
             })
             .when('/register', {
                 templateUrl: URL + '/register/register-view.html'
                 //controller: 'RegisterController'
             });
+        $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });

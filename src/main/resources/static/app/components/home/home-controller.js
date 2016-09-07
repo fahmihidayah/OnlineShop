@@ -8,7 +8,7 @@ angular.module('onlineShop.home', ['ngRoute'])
         $scope.currentItems = [];
         $scope.init = function () {
             console.log('test');
-            $http.get('rest/item/all')
+            $http.get('public/item/all')
                 .success(function (items) {
                     $scope.currentItems = items;
                     console.log(items);

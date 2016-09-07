@@ -8,4 +8,5 @@ angular.module('onlineShop.auth', ['ngRoute', 'ui.bootstrap'])
 .controller('AuthController', ['$rootScope', function($rootScope){
     $rootScope.test = "rootScope";
     $rootScope.isLogged = false;
+    $rootScope.currentUserId = -1;
 }]);

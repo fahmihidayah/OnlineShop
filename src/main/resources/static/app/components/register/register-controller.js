@@ -12,7 +12,7 @@ angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValida
             console.log($scope.user);
             $http({
                 method: 'POST',
-                url: '/test/test',
+                url: 'public/auth/register',
                 data: angular.toJson($scope.user)
             }).success(function(){
                 console.log('wyslano');

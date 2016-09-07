@@ -20,7 +20,7 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
         //items
         $scope.currentItems = [];
         $scope.updateItems = function () {
-            $http.get('rest/item/all' + '?page=' + ($scope.pagination.currentPage - 1) + '&size=' + $scope.pagination.itemsPerPage)
+            $http.get('public/item/all' + '?page=' + ($scope.pagination.currentPage - 1) + '&size=' + $scope.pagination.itemsPerPage)
                 .success(function (items) {
                     $scope.currentItems = items;
                     console.log($scope.currentItems);
@@ -32,7 +32,7 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
         };
         //init
         $scope.init = function () {
-            $http.get('rest/item/num').success(function (number) {
+            $http.get('public/item/num').success(function (number) {
                 $scope.pagination.totalItems = number;
             });
             $scope.updateItems();
