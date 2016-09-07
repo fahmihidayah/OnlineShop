@@ -9,8 +9,8 @@ angular.module('onlineShop', [
         'ngRoute',
         'ui.bootstrap',
         'angularValidator',
+        'LocalStorageModule',
         'onlineShop.focus',
-        'onlineShop.auth',
         'onlineShop.routes',
         'onlineShop.home',
         'onlineShop.items',
@@ -19,8 +19,15 @@ angular.module('onlineShop', [
         'onlineShop.login',
         'onlineShop.register'])
 
-    .controller('NavHeaderController', function ($scope, $location) {
+    .config(function (localStorageServiceProvider) {
+        localStorageServiceProvider.setPrefix('OSls');
+    })
+
+    .controller('NavHeaderController', ['$scope', '$location', function ($scope, $location) {
         $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
         };
-    });
+        $scope.isLogged = function () {
+            return $rootScope.authenticated;
+        }
+    }]);

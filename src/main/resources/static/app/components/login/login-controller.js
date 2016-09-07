@@ -11,13 +11,14 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
             $scope.login();
         };
 
-        var authenticate = function(credentials, callback) {
-            var headers = credentials ? {authorization : "Basic "
-            + btoa(credentials.username + ":" + credentials.password)
+        var authenticate = function (credentials, callback) {
+            var headers = credentials ? {
+                authorization: "Basic "
+                + btoa(credentials.username + ":" + credentials.password)
             } : {};
             console.log(credentials);
             console.log(headers);
-            $http.get('/user', {headers : headers}).success(function(data) {
+            $http.get('/user', {headers: headers}).success(function (data) {
                 console.log('from user');
                 console.log(data);
                 if (data.name) {
@@ -28,7 +29,7 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
                     console.log("NIE");
                 }
                 callback && callback();
-            }).error(function() {
+            }).error(function () {
                 $rootScope.authenticated = false;
                 callback && callback();
             });
@@ -37,8 +38,8 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
         //login part
         authenticate();
         $scope.credentials = {};
-        $scope.login = function() {
-            authenticate($scope.credentials, function() {
+        $scope.login = function () {
+            authenticate($scope.credentials, function () {
                 if ($rootScope.authenticated) {
                     console.log('NO JEST');
                     $location.path("/");
@@ -50,5 +51,4 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
                 }
             });
         };
-
     }]);
