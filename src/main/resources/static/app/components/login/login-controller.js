@@ -4,7 +4,7 @@
  */
 
 angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator'])
-    .controller('LoginController', ['$scope', '$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
+    .controller('LoginController', ['$scope', '$rootScope', '$location', '$http','$window', function ($scope, $rootScope, $location, $http, $window) {
         $scope.myForm = {};
         $scope.user = {};
         $scope.submitForm = function () {
@@ -16,39 +16,39 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
                 authorization: "Basic "
                 + btoa(credentials.username + ":" + credentials.password)
             } : {};
-            console.log(credentials);
-            console.log(headers);
             $http.get('/user', {headers: headers}).success(function (data) {
-                console.log('from user');
-                console.log(data);
                 if (data.name) {
                     $rootScope.authenticated = true;
-                    console.log('TAK');
+                    //save header
+                    $window.localStorage.setItem('header', headers);
                 } else {
                     $rootScope.authenticated = false;
-                    console.log("NIE");
                 }
+                //save auth
+                $window.localStorage.setItem("authenticated", $rootScope.authenticated);
                 callback && callback();
             }).error(function () {
                 $rootScope.authenticated = false;
+                //save auth
+                $window.localStorage.setItem("authenticated", $rootScope.authenticated);
                 callback && callback();
             });
         };
 
         //login part
-        authenticate();
+        authenticate(); //read auth
+        $scope.error = false;
         $scope.credentials = {};
         $scope.login = function () {
             authenticate($scope.credentials, function () {
                 if ($rootScope.authenticated) {
-                    console.log('NO JEST');
                     $location.path("/");
                     $scope.error = false;
                 } else {
-                    console.log('NO NIE MA');
                     $location.path("/login");
                     $scope.error = true;
                 }
+                $window.localStorage.setItem("authenticated", $rootScope.authenticated);
             });
         };
     }]);
