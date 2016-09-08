@@ -16,6 +16,7 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
                 authorization: "Basic "
                 + btoa(credentials.username + ":" + credentials.password)
             } : {};
+            console.log(headers);
             $http.get('/user', {headers: headers}).success(function (data) {
                 if (data.name) {
                     $rootScope.authenticated = true;

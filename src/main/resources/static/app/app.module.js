@@ -18,7 +18,7 @@ angular.module('onlineShop', [
         'onlineShop.login',
         'onlineShop.register'])
 
-    .controller('NavHeaderController', ['$scope', '$location', '$rootScope', '$window', function ($scope, $location, $rootScope, $window) {
+    .controller('NavHeaderController', ['$scope', '$location', '$rootScope', '$window', '$http', function ($scope, $location, $rootScope, $window, $http) {
         //init if needed
         if ($window.localStorage.getItem("authenticated") === null) {
             $window.localStorage.setItem("authenticated", false);
@@ -35,5 +35,19 @@ angular.module('onlineShop', [
         $scope.isLogged = function () {
             var temp = $window.localStorage.getItem("authenticated");
             return temp == 'true';
-        }
+        };
+
+        $scope.logout = function(){
+            $http.post('/logout', {}).finally(function() {
+                $rootScope.authenticated = false;
+                $window.localStorage.removeItem("authenticated");
+                $window.localStorage.removeItem("header");
+                $location.path("/");
+            });
+            //    .error(function(data) {
+            //    $rootScope.authenticated = false;
+            //    $window.localStorage.removeItem("authenticated");
+            //    $window.localStorage.removeItem("header");
+            //});
+        };
     }]);

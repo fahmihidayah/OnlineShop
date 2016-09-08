@@ -43,7 +43,7 @@
                     <li><a href="#/settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
                     <li><a href="#/orderd"><span class="glyphicon glyphicon-th-list"></span> Your orders</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li><a ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </li>
             <li ng-show="isLogged() == true"><a href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart <strong class="badge">1</strong></a></li>

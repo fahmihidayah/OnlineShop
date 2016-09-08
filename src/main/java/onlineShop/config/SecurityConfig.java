@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/logout").permitAll()
                 .antMatchers("/app/**").permitAll()
                 .antMatchers("/assets/**").permitAll()
                 .antMatchers("/public/**").permitAll()
@@ -37,6 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/api/**").authenticated()
                 .antMatchers("/user").authenticated()
+                .and()
+                .logout().logoutUrl("/logout")
                 .and()
                 .csrf().disable();
     }
