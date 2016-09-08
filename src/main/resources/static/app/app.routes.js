@@ -30,6 +30,9 @@ angular.module('onlineShop.routes', ['ngRoute'])
             .when('/register', {
                 templateUrl: URL + '/register/register-view.html'
                 //controller: 'RegisterController'
+            })
+            .when('/addItem', {
+                templateUrl: URL + '/admin-addItem/add-item.html'
             });
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });
