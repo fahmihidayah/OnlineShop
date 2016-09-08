@@ -1,8 +1,19 @@
 <div ng-controller="ItemsController" ng-init="init()">
-    <div ng-repeat="item in currentItems">
+
+    <div class="container">
+        <div class="row row-centered">
+            <div class="col-sm-5 col-centered">
+                <input type="text" ng-model="searchString" class="form-control" placeholder="Search for...">
+            </div>
+        </div> <!-- /search box -->
+    </div>
+
+    <hr>
+
+    <div ng-repeat="item in currentItems | searchFor:searchString">
         <div class="row">
             <div class="col-xs-12 col-sm-3">
-                <a href="#/" class="thumbnail">
+                <a href="#/item/{{item.itemId}}" class="thumbnail">
                     <img src="/assets/img/maxresdefault.jpg" alt="item-sale-1">
                 </a>
             </div>
@@ -16,7 +27,10 @@
             <div class="col-xs-12 col-sm-2">
                 <strong class="col-xs-6 col-sm-12">{{item.price}}$</strong>
                 <p class="col-xs-6 col-sm-12">dostepne: {{item.quantity}}</p>
-                <button class="btn btn-primary col-xs-12 col-sm-12" ng-click="addToCartButton($index)">Add to cart</button>
+                <button class="btn btn-primary col-xs-12 col-sm-12" ng-click="addToCartButton($index)">Add to cart
+                </button>
+                <button class="btn btn-danger col-xs-12 col-sm-6" ng-click="deleteButton($index)">Delete</button>
+                <a href="#/item/edit/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6">Edit</a>
             </div>
         </div>
         <div class="row">
@@ -24,7 +38,8 @@
         </div>
     </div>
     <div class="row row-centered">
-        <ul uib-pagination class="pagination-sm col-centered" ng-model="pagination.currentPage" ng-change="pageChanged()"
+        <ul uib-pagination class="pagination-sm col-centered" ng-model="pagination.currentPage"
+            ng-change="pageChanged()"
             total-items="pagination.totalItems" max-size="pagination.maxSize" items-per-page="pagination.itemsPerPage"
             boundary-links="true" num-pages="numPages"></ul>
     </div>

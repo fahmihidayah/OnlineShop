@@ -4,7 +4,7 @@
  */
 
 angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
-    .controller('ItemsController', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+    .controller('ItemsController', ['$scope', '$http', '$window', '$routeParams', function ($scope, $http, $window, $routeParams) {
         //pagination
         $scope.pagination = {
             totalItems: 1,
@@ -13,28 +13,43 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
             maxSize: 6
         };
         $scope.pageChanged = function () {
-            $scope.updateItems();
+            var begin = ($scope.pagination.currentPage - 1) * $scope.pagination.itemsPerPage;
+            var end = begin + $scope.pagination.itemsPerPage;
+            $scope.currentItems = $scope.allItems.slice(begin, end);
             $window.scrollTo(0, 0);
         };
 
         //items
+        $scope.allItems = [];
         $scope.currentItems = [];
-        $scope.updateItems = function () {
-            $http.get('public/item/all' + '?page=' + ($scope.pagination.currentPage - 1) + '&size=' + $scope.pagination.itemsPerPage)
-                .success(function (items) {
-                    $scope.currentItems = items;
-                    console.log($scope.currentItems);
-                });
+        //init
+        $scope.init = function () {
+            $http.get('public/item/all').success(function (data) {
+                $scope.allItems = data;
+                $scope.pagination.totalItems = data.length;
+                $scope.pageChanged();
+            });
         };
+
         $scope.addToCartButton = function (pressedIndex) {
             var itemIndex = $scope.currentItems[pressedIndex].itemId;
             console.log(itemIndex);
         };
-        //init
-        $scope.init = function () {
-            $http.get('public/item/num').success(function (number) {
-                $scope.pagination.totalItems = number;
+    }])
+    .filter('searchFor', function () {
+        return function (arr, searchString) {
+            console.log(searchString);
+            if (!searchString) {
+                return arr;
+            }
+            var result = [];
+            searchString = searchString.toLowerCase();
+            angular.forEach(arr, function (item) {
+                if (item.name.toLowerCase().indexOf(searchString) !== -1) {
+                    result.push(item);
+                }
             });
-            $scope.updateItems();
-        }
-    }]);
+            return result;
+        };
+    });
+
