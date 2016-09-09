@@ -39,6 +39,7 @@ public class ItemController {
         return itemService.updateItemById(itemId, item);
     }
 
+    //PUBLIC
     @RequestMapping(value = Route.ITEM_READ)
     public Item getItem(@RequestParam("id") long itemId){
         return itemService.getItemById(itemId);
