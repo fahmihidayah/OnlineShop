@@ -16,11 +16,7 @@ angular.module('onlineShop.routes', ['ngRoute'])
                 templateUrl: URL + '/items/items-view.html'
                 //controller: 'ItemsController'
             })
-            .when('/items/:filter', {
-                templateUrl: URL + '/items/items-view.html'
-                //controller: 'ItemsController'
-            })
-            .when('/item/:id',{
+            .when('/item/:id', {
                 templateUrl: URL + '/item/item-view.html'
             })
             .when('/cart', {
@@ -37,6 +33,9 @@ angular.module('onlineShop.routes', ['ngRoute'])
             })
             .when('/addItem', {
                 templateUrl: URL + '/addItem/addItem-view.html'
+            })
+            .when('/editItem/:id', {
+                templateUrl: URL + '/editItem/editItem-view.html'
             });
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });

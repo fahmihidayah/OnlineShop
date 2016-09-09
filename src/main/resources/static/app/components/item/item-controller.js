@@ -13,7 +13,6 @@ angular.module('onlineShop.item', ['ngRoute', 'ui.bootstrap'])
         $scope.init = function(){
             var itemId = $routeParams.id;
             $http.get("/public/item/?id="+itemId).success(function(data){
-                console.log(data);
                 $scope.currentItem = data;
             })
         }

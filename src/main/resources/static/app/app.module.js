@@ -18,7 +18,8 @@ angular.module('onlineShop', [
         'onlineShop.login',
         'onlineShop.register',
         //admin part
-        'onlineShop.admin.addItem'])
+        'onlineShop.admin.addItem',
+        'onlineShop.admin.editItem'])
 
     .controller('NavHeaderController', ['$scope', '$location', '$rootScope', '$window', '$http', function ($scope, $location, $rootScope, $window, $http) {
         //init if needed

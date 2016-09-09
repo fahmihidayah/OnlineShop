@@ -1,0 +1,79 @@
+<div ng-controller="AdminEditItemController" ng-init="init()">
+    <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Item id</label>
+            <div class="col-sm-10"><label class="control-label text-muted">{{item.itemId}}</label></div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       ng-model="item.name"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       focus="true"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-10">
+                    <textarea type="text"
+                              name="description"
+                              class="form-control"
+                              ng-model="item.description"
+                              required-message="'This is required'"
+                              validate-on="dirty"
+                              required>
+                        </textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Item code</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="itemCode"
+                       class="form-control"
+                       ng-model="item.itemCode"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Quantity</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="quantity"
+                       class="form-control"
+                       ng-model="item.quantity"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Price</label>
+            <div class="col-sm-10">
+                <input type="number"
+                       name="price"
+                       class="form-control"
+                       ng-model="item.price"
+                       invalid-message="'It is not a number"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">File input</label>
+            <input type="file" id="inputFile">
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Edit item</button>
+            </div>
+        </div>
+    </form>
+</div>

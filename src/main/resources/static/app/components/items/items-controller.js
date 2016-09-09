@@ -32,13 +32,22 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
         };
 
         $scope.addToCartButton = function (pressedIndex) {
-            var itemIndex = $scope.currentItems[pressedIndex].itemId;
-            console.log(itemIndex);
+            var itemId = $scope.currentItems[pressedIndex].itemId;
+            console.log(itemId);
         };
+        $scope.deleteButton = function(pressedIndex){
+            var itemId = $scope.currentItems[pressedIndex].itemId;
+            console.log(itemId);
+            if(confirm('Are you sure you want to delete this item')){
+                $http.get('api/item/delete/?id='+itemId).success(function(){
+                    console.log('item deleted');
+                    $scope.init();
+                })
+            }
+        }
     }])
     .filter('searchFor', function () {
         return function (arr, searchString) {
-            console.log(searchString);
             if (!searchString) {
                 return arr;
             }
