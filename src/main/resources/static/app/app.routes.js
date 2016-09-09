@@ -10,32 +10,30 @@ angular.module('onlineShop.routes', ['ngRoute'])
             .otherwise('/')
             .when('/', {
                 templateUrl: URL + '/home/home-view.html'
-                //controller: 'Home'
             })
             .when('/items', {
                 templateUrl: URL + '/items/items-view.html'
-                //controller: 'ItemsController'
             })
             .when('/item/:id', {
                 templateUrl: URL + '/item/item-view.html'
             })
             .when('/cart', {
                 templateUrl: URL + '/cart/cart-view.html'
-                //controller: 'CartController'
             })
             .when('/login', {
                 templateUrl: URL + '/login/login-view.html',
-                controller: 'LoginController'
             })
             .when('/register', {
                 templateUrl: URL + '/register/register-view.html'
-                //controller: 'RegisterController'
             })
             .when('/addItem', {
                 templateUrl: URL + '/addItem/addItem-view.html'
             })
             .when('/editItem/:id', {
                 templateUrl: URL + '/editItem/editItem-view.html'
+            })
+            .when('/users', {
+                templateUrl: URL + '/users/users-view.html'
             });
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });
