@@ -29,14 +29,13 @@ public class ItemController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_DELETE)
-    public String deleteItem(long itemId){
+    public void deleteItem(@RequestParam("id") long itemId){
         itemService.deleteItemById(itemId);
-        return "OK";
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_UPDATE)
-    public Item updateItem(@RequestParam("id")long itemId, Item item){
+    public Item updateItem(@RequestParam("id")long itemId, @RequestBody Item item){
         return itemService.updateItemById(itemId, item);
     }
 

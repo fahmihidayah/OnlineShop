@@ -27,9 +27,6 @@ public class Item {
     @Column(name = "QUANTITY")
     private long quantity;
 
-    @Column(name = "RESERVED_QUANTITY")
-    private long reservedQuantity;
-
     @Column(name = "PRICE")
     private BigDecimal price;
 
@@ -40,7 +37,6 @@ public class Item {
         this.itemCode = itemCode;
         this.name = name;
         this.price = price;
-        this.reservedQuantity = 0;
     }
 
     public long getItemId() {
@@ -49,14 +45,6 @@ public class Item {
 
     public void setItemId(long itemId) {
         this.itemId = itemId;
-    }
-
-    public long getReservedQuantity() {
-        return reservedQuantity;
-    }
-
-    public void setReservedQuantity(long reservedQuantity) {
-        this.reservedQuantity = reservedQuantity;
     }
 
     public String getName() {

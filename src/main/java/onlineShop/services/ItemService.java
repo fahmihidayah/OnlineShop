@@ -68,12 +68,15 @@ public class ItemService implements IItemService {
 
     @Override
     public Item updateItemById(long itemId, Item itemData) {
+        System.out.println(itemData);
         Item item = itemRepository.findOne(itemId);
+        System.out.println(item);
         item.setPrice(itemData.getPrice());
         item.setQuantity(itemData.getQuantity());
         item.setDescription(itemData.getDescription());
         item.setItemCode(itemData.getItemCode());
         item.setName(itemData.getName());
+        System.out.println(item);
         return itemRepository.save(item);
     }
 
