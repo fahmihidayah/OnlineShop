@@ -72,20 +72,4 @@ public class ItemService implements IItemService {
         item.setQuantity(newQuantity);
         return itemRepository.save(item);
     }
-
-    @Override
-    public Item reserveItem(long itemId, long reservationQuantity) {
-        Item item = itemRepository.findOne(itemId);
-        item.setQuantity(item.getQuantity() - reservationQuantity);
-        item.setReservedQuantity(item.getReservedQuantity() + reservationQuantity);
-        return itemRepository.save(item);
-    }
-
-    @Override
-    public Item reverseReservation(long itemId, long reservationQuantity) {
-        Item item = itemRepository.findOne(itemId);
-        item.setQuantity(item.getQuantity() + reservationQuantity);
-        item.setReservedQuantity(item.getReservedQuantity() - reservationQuantity);
-        return itemRepository.save(item);
-    }
 }

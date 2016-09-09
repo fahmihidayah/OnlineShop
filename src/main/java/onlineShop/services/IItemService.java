@@ -29,7 +29,4 @@ public interface IItemService {
 
     Item updateQuantity(long itemId, long newQuantity);
 
-    Item reserveItem(long itemId, long reservationQuantity);
-
-    Item reverseReservation(long itemId, long reservationQuantity);
 }
