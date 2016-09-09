@@ -7,8 +7,6 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Damian Bartos
@@ -55,8 +53,7 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private List<Address> addresses;
+    private Address addresses;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -68,7 +65,6 @@ public class User {
     private Role role;
 
     protected User() {
-        addresses = new LinkedList<>();
         enabled = true;
     }
 
@@ -76,7 +72,6 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.email = email;
-        addresses = new LinkedList<>();
         enabled = true;
     }
 
@@ -136,11 +131,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Address> getAddresses() {
+    public Address getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(Address addresses) {
         this.addresses = addresses;
     }
 
