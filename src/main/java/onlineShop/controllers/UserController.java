@@ -28,6 +28,7 @@ public class UserController {
         return userService.getAllUsers(pageable);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_LIST)
     public List<User> getAllUser(){
         return userService.getAllUsers();
@@ -38,6 +39,7 @@ public class UserController {
     public User getUserById(@RequestParam("id") long userId){
         return userService.getUserById(userId);
     }
+
 
     @RequestMapping(value = Route.USER_UPDATE)
     public User updateUser(@RequestBody User user){
