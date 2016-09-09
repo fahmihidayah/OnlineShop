@@ -51,7 +51,7 @@ public class User {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private Address addresses;
 

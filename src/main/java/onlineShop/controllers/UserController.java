@@ -1,6 +1,5 @@
 package onlineShop.controllers;
 
-import onlineShop.domain.Address;
 import onlineShop.domain.User;
 import onlineShop.routes.Route;
 import onlineShop.services.UserService;
@@ -34,27 +33,23 @@ public class UserController {
         return userService.getAllUsers(pageable);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_READ)
     public User getUserById(@RequestParam("id") long userId){
         return userService.getUserById(userId);
     }
 
     @RequestMapping(value = Route.USER_UPDATE)
-    public String updateUser(@RequestParam("id") long userId, User user){
+    public String updateUser(User user){
+        long userId = userService.getCurrentLoggedUser().getUserId();
         userService.updateUserById(userId, user);
         return "OK";
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_DELETE)
     public String deleteUser(@RequestParam("id") long userId){
         userService.deleteUserById(userId);
         return "OK";
     }
-
-    @RequestMapping(value = Route.USER_ADD_ADDRESS)
-    public String addAddress(@RequestParam("id") long userId, Address address){
-        userService.addAddress(userId, address);
-        return "OK";
-    }
-
 }

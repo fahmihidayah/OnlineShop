@@ -8,6 +8,7 @@ import onlineShop.domain.Role;
 import onlineShop.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,7 +60,8 @@ public class UserService implements IUserService {
 
     @Override
     public User getCurrentLoggedUser() {
-        return null;
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepository.findByUserName(userName);
     }
 
     @Override
@@ -78,19 +80,15 @@ public class UserService implements IUserService {
         user.setLastName(userData.getLastName());
 //        if(userData.getPhoneNumber()!=null)
         user.setPhoneNumber(userData.getPhoneNumber());
+        user.setAddresses(userData.getAddresses());
         return userRepository.save(user);
     }
 
     @Override
-    public User addAddress(long userId, Address address) {
+    public User setAddress(long userId, Address address) {
         User user = userRepository.findOne(userId);
-        user.getAddresses().add(address);
+        user.setAddresses(address);
         return userRepository.save(user);
-    }
-
-    @Override
-    public List<Address> getAllAddressesByUserId(long userId) {
-        return userRepository.findOne(userId).getAddresses();
     }
 
 }

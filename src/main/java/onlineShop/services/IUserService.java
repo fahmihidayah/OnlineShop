@@ -24,13 +24,11 @@ public interface IUserService {
 
     User getUserByUserName(String userName);
 
-    User getCurrentLoggedUser();
+    Object getCurrentLoggedUser();
 
     User changeUserRole(long userId, Role role);
 
     User updateUserById(long userId, User userData);
 
-    User addAddress(long userId, Address address);
-
-    List<Address> getAllAddressesByUserId(long userId);
+    User setAddress(long userId, Address address);
 }
