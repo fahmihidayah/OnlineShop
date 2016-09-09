@@ -22,11 +22,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/user")
-    public Principal user(Principal user){
-        return user;
-    }
-
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_LIST)
     public List<User> getAllUser(Pageable pageable){

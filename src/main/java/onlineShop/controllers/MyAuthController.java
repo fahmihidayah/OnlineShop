@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 /**
  * Created by Damian Bartos
  * 05.09.2016.
@@ -19,6 +21,11 @@ public class MyAuthController {
 
     @Autowired
     UserService userService;
+
+    @RequestMapping(value = "/user")
+    public Principal user(Principal user){
+        return user;
+    }
 
     @RequestMapping(value = Route.REGISTER, method = RequestMethod.POST)
     public User registerUser(@RequestBody User user){
