@@ -1,10 +1,8 @@
 <div ng-controller="CartController">
     <div class="row hidden-xs">
         <p class="col-sm-1 wrap">#</p>
-        <strong class="col-sm-6 ">NAME</strong>
-        <strong class="col-sm-1 ">PRICE</strong>
-        <strong class="col-sm-2 ">QUANTITY</strong>
-        <strong class="col-sm-1 ">VALUE</strong>
+        <strong class="col-sm-8 ">NAME</strong>
+        <strong class="col-sm-2 ">PRICE</strong>
         <strong class="col-sm-1">DELETE</strong>
     </div>
     <div class="col-xs-12" ng-show="cartItems.length==0">
@@ -12,31 +10,19 @@
     </div>
     <div class="row" ng-repeat="item in cartItems">
         <p class="hidden-xs col-sm-1">{{$index+1}}.</p>
-        <a class="col-xs-12 col-sm-6">{{item.name}}NAMENAME</a>
-        <span class="col-xs-3 col-sm-1">{{item.price}}1000.32$</span>
-        <div class="col-xs-3 col-sm-2">
-            <a class="glyphicon glyphicon-chevron-left"></a>
-            <span>{{item.orderedQuantity}}12</span>
-            <a class="glyphicon glyphicon-chevron-right"></a>
-        </div>
-        <span class="col-xs-3 col-sm-1">{{price*item.orderedQuantity}}2000$</span>
-        <button class="close col-xs-3 col-sm-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <hr class="visible-xs">
+        <a class="col-xs-12 col-sm-8">{{item.name}}</a>
+        <span class="col-xs-10 col-sm-2">{{item.price}} $</span>
+        <button class="close col-xs-2 col-sm-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <hr class="visible-xs col-xs-12">
     </div>
     <div class="btn-group" role="group" ng-show="cartItems.length>0">
-        <button type="button" class="btn btn-warning">refresh cart</button>
-        <button type="button" class="btn btn-danger">delete cart</button>
+        <button type="button" class="btn btn-danger">clear cart</button>
     </div>
     <div class="row row-margin-3">
         <strong class="col-xs-12">order information</strong>
         <div class="col-xs-4">
-            <span class="row">Cart value: {{cartValue}} $</span>
-            <span class="row">Shipping cost: {{shippingCost}} $</span>
-            <strong class="row text-success">All: {{orderValue}} $</strong>
-        </div>
-        <div class="col-xs-4">
-            <span class="row">address</span>
-            <span class="row">paid option</span>
+            <span class="row">Cart value: {{cartValue()}} $</span>
+            <strong class="row text-success">All: {{cartValue()}} $</strong>
         </div>
     </div>
     <button class="btn btn-primary" ng-show="cartItems.length>0">make order</button>

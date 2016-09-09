@@ -5,7 +5,11 @@
 angular.module('onlineShop.cart', ['ui.bootstrap', 'ngRoute'])
     .controller('CartController', function ($scope) {
         $scope.cartItems=[];
-        $scope.cartValue=0;
-        $scope.shippingCost=0;
-        $scope.orderValue=0;
+        $scope.cartValue = function(){
+            var temp = 0;
+            $scope.cartItems.forEach(function(item){
+                temp += item.price;
+            });
+            return temp;
+        }
     });
