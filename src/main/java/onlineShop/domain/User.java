@@ -18,11 +18,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY )
     private long userId;
 
     @NotNull
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "USERNAME", unique = true)
     @Length(min = 4, max = 15, message = Messages.USERNAME_LENGTH)
     private String userName;
