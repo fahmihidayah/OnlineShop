@@ -6,7 +6,6 @@ import onlineShop.domain.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,8 +21,8 @@ public class ShoppingCartService implements IShoppingCartService {
     ItemService itemService;
 
     @Override
-    public ShoppingCart create(Date expiredDate) {
-        ShoppingCart shoppingCart = new ShoppingCart(expiredDate);
+    public ShoppingCart create() {
+        ShoppingCart shoppingCart = new ShoppingCart();
         return shoppingCartRepository.save(shoppingCart);
     }
 
@@ -42,18 +41,12 @@ public class ShoppingCartService implements IShoppingCartService {
         ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
         //TODO: Check if it will works
         shoppingCart.setItems(shoppingCartData.getItems());
-        shoppingCart.setExpiredDate(shoppingCartData.getExpiredDate());
         return shoppingCartRepository.save(shoppingCart);
     }
 
     @Override
     public ShoppingCart getShoppingCartById(long shoppingCartId) {
         return shoppingCartRepository.findOne(shoppingCartId);
-    }
-
-    @Override
-    public List<ShoppingCart> getShoppingCartsThatExpiredAt(Date expiredDate) {
-        return shoppingCartRepository.findByExpiredDate(expiredDate);
     }
 
     @Override

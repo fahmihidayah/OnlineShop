@@ -3,7 +3,6 @@ package onlineShop.services;
 import onlineShop.domain.Item;
 import onlineShop.domain.ShoppingCart;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,7 +10,7 @@ import java.util.List;
  * 01.09.2016.
  */
 public interface IShoppingCartService {
-    ShoppingCart create(Date expiredDate);
+    ShoppingCart create();
 
     void deleteShoppingCartById(long shoppingCartId);
 
@@ -20,8 +19,6 @@ public interface IShoppingCartService {
     ShoppingCart updateShoppingCartById(long shoppingCartId, ShoppingCart shoppingCartData);
 
     ShoppingCart getShoppingCartById(long shoppingCartId);
-
-    List<ShoppingCart> getShoppingCartsThatExpiredAt(Date expiredDate);
 
     ShoppingCart addItem(long shoppingCartId, long itemId);
 
