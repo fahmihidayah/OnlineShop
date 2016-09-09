@@ -5,6 +5,7 @@ import onlineShop.routes.Route;
 import onlineShop.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,18 +21,21 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_CREATE)
     public String createItem(Item item){
         itemService.create(item);
         return "OK";
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_DELETE)
     public String deleteItem(long itemId){
         itemService.deleteItemById(itemId);
         return "OK";
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_UPDATE)
     public String updateItem(@RequestParam("id")long itemId, Item item){
         itemService.updateItemById(itemId, item);
