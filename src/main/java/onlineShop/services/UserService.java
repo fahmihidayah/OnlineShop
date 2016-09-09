@@ -28,7 +28,6 @@ public class UserService implements IUserService {
 
     @Override
     public User create(User user) {
-        //TODO: add validation if userName and mail exist
         return userRepository.save(user);
     }
 
@@ -46,6 +45,11 @@ public class UserService implements IUserService {
     @Override
     public List<User> getAllUsers(Pageable pageable) {
         return userRepository.findAll(pageable).getContent();
+    }
+
+    @Override
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
     }
 
     @Override

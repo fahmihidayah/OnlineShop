@@ -6,11 +6,11 @@ import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.List;
 
 /**
@@ -28,6 +28,11 @@ public class UserController {
         return userService.getAllUsers(pageable);
     }
 
+    @RequestMapping(value = Route.USER_LIST)
+    public List<User> getAllUser(){
+        return userService.getAllUsers();
+    }
+
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_READ)
     public User getUserById(@RequestParam("id") long userId){
@@ -35,16 +40,14 @@ public class UserController {
     }
 
     @RequestMapping(value = Route.USER_UPDATE)
-    public String updateUser(User user){
+    public User updateUser(@RequestBody User user){
         long userId = userService.getCurrentLoggedUser().getUserId();
-        userService.updateUserById(userId, user);
-        return "OK";
+        return userService.updateUserById(userId, user);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_DELETE)
-    public String deleteUser(@RequestParam("id") long userId){
+    public void deleteUser(@RequestParam("id") long userId){
         userService.deleteUserById(userId);
-        return "OK";
     }
 }

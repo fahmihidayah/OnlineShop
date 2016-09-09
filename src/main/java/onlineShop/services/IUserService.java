@@ -20,6 +20,8 @@ public interface IUserService {
 
     List<User> getAllUsers(Pageable pageable);
 
+    List<User> getAllUsers();
+
     User getUserById(long userId);
 
     User getUserByUserName(String userName);
