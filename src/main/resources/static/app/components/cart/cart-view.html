@@ -12,14 +12,14 @@
     </div>
     <div class="row" ng-repeat="item in cartItems">
         <p class="hidden-xs col-sm-1">{{$index+1}}.</p>
-        <a class="col-xs-12 col-sm-6">{{name}}NAMENAME</a>
-        <span class="col-xs-3 col-sm-1">{{price}}1000.32$</span>
+        <a class="col-xs-12 col-sm-6">{{item.name}}NAMENAME</a>
+        <span class="col-xs-3 col-sm-1">{{item.price}}1000.32$</span>
         <div class="col-xs-3 col-sm-2">
             <a class="glyphicon glyphicon-chevron-left"></a>
-            <span>{{orderedQuantity}}12</span>
+            <span>{{item.orderedQuantity}}12</span>
             <a class="glyphicon glyphicon-chevron-right"></a>
         </div>
-        <span class="col-xs-3 col-sm-1">{{price*orderedQuantity}}2000$</span>
+        <span class="col-xs-3 col-sm-1">{{price*item.orderedQuantity}}2000$</span>
         <button class="close col-xs-3 col-sm-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <hr class="visible-xs">
     </div>
