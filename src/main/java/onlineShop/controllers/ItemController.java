@@ -4,8 +4,8 @@ import onlineShop.domain.Item;
 import onlineShop.routes.Route;
 import onlineShop.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,9 +23,8 @@ public class ItemController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_CREATE)
-    public String createItem(Item item){
-        itemService.create(item);
-        return "OK";
+    public Item createItem(@RequestBody Item item){
+        return itemService.create(item);
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -37,9 +36,8 @@ public class ItemController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.ITEM_UPDATE)
-    public String updateItem(@RequestParam("id")long itemId, Item item){
-        itemService.updateItemById(itemId, item);
-        return "OK";
+    public Item updateItem(@RequestParam("id")long itemId, Item item){
+        return itemService.updateItemById(itemId, item);
     }
 
     @RequestMapping(value = Route.ITEM_READ)
@@ -48,9 +46,8 @@ public class ItemController {
     }
 
     @RequestMapping(value = Route.ITEM_READ_LIST)
-    public List<Item> getItemList(Pageable pageable){
-        System.out.println(pageable);
-        return itemService.getAllItems(pageable).getContent();
+    public List<Item> getItemList(){
+        return itemService.getAllItems();
     }
 
     @RequestMapping(value = Route.ITEM_MAX_ELEM)

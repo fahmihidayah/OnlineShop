@@ -19,9 +19,15 @@ public class ItemService implements IItemService {
     ItemRepository itemRepository;
 
     @Override
-    public Item create(Item item) {
+    public Item create(Item itemData) {
         //TODO: add validation
-        return itemRepository.save(item);
+        System.out.println(itemData);
+        Item newItem = new Item(itemData.getItemCode(), itemData.getName(), itemData.getPrice());
+        newItem.setDescription(itemData.getDescription());
+        newItem.setQuantity(itemData.getQuantity());
+        newItem.setPrice(itemData.getPrice());
+        System.out.println(newItem);
+        return itemRepository.save(newItem);
     }
 
     @Override
@@ -38,6 +44,11 @@ public class ItemService implements IItemService {
     @Override
     public Page<Item> getAllItems(Pageable pageable) {
         return itemRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Item> getAllItems() {
+        return itemRepository.findAll();
     }
 
     @Override
