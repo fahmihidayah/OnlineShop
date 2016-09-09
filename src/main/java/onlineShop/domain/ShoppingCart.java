@@ -1,8 +1,6 @@
 package onlineShop.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,21 +16,12 @@ public class ShoppingCart {
     @Column(name = "SHOPPING_CART_ID")
     private long shoppingCartId;
 
-    @NotNull
-    @Column(name = "EXPIRED_DATE")
-    private Date expiredDate;
-
     @ManyToMany
     @JoinColumn(name = "ITEM_ID")
     private List<Item> items;
 
-    protected ShoppingCart() {
+    public ShoppingCart() {
         items = new LinkedList<>();
-    }
-
-    public ShoppingCart(Date expiredDate) {
-        this();
-        this.expiredDate = expiredDate;
     }
 
     public long getShoppingCartId() {
@@ -41,14 +30,6 @@ public class ShoppingCart {
 
     public void setShoppingCartId(long shoppingCartId) {
         this.shoppingCartId = shoppingCartId;
-    }
-
-    public Date getExpiredDate() {
-        return expiredDate;
-    }
-
-    public void setExpiredDate(Date expiredDate) {
-        this.expiredDate = expiredDate;
     }
 
     public List<Item> getItems() {
