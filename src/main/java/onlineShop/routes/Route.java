@@ -17,6 +17,7 @@ public abstract class Route {
     private static final String AUTH = "/auth";
 
     //  CRUD
+    private static final String ADD = "/add";
     private static final String CREATE = "/create";
     private static final String READ = "";
     private static final String UPDATE = "/update";
@@ -29,10 +30,10 @@ public abstract class Route {
     public static final String REGISTER = PUBLIC + AUTH + "/register";
 
     //  USER
-    public static final String USER_READ = PUBLIC + USER + READ + ID;
-    public static final String USER_CURRENT_USER = PUBLIC + USER + READ + "/my";
+    public static final String USER_READ = API + USER + READ + ID;
+    public static final String USER_CURRENT_USER = API + USER + READ + "/my";
     public static final String USER_LIST = API + USER + READ + LIST;
-    public static final String USER_UPDATE = PUBLIC + USER + UPDATE;
+    public static final String USER_UPDATE = API + USER + UPDATE;
     public static final String USER_DELETE = API + USER + DELETE;
     public static final String USER_CHANGE_ROLE = API + USER + "/role";
 
@@ -47,19 +48,10 @@ public abstract class Route {
     //  ORDER
     public static final String ORDER_CREATE = API + ORDER + CREATE;
     public static final String ORDER_READ = API + ORDER + READ + "";
-    public static final String ORDER_UPDATE = API + ORDER + UPDATE + "";
-    public static final String ORDER_DELETE = API + ORDER + DELETE + "";
-
-    //  ADDRESS
-    public static final String ADDRESS_CREATE = API + ADDRESS + CREATE;
-    public static final String ADDRESS_READ = API + ADDRESS + READ + "";
-    public static final String ADDRESS_UPDATE = API + ADDRESS + UPDATE + "";
-    public static final String ADDRESS_DELETE = API + ADDRESS + DELETE + "";
 
     //  SHOPPING CART
-    public static final String CART_CREATE = API + CART + CREATE;
-    public static final String CART_READ = API + CART + READ + "";
-    public static final String CART_UPDATE = API + CART + UPDATE + "";
-    public static final String CART_DELETE = API + CART + DELETE + "";
+    public static final String CART_ADD = PUBLIC + CART + ADD;
+    public static final String CART_REMOVE = PUBLIC + CART + DELETE;
+    public static final String CART_READ = API + CART + READ;
 
 }

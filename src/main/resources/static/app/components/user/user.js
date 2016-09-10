@@ -10,7 +10,7 @@ angular.module('onlineShop.user', ['ngRoute', 'angularValidator'])
 
         $scope.submitMyForm = function () {
             if(confirm('Are you sure that you want edit yout user settings')){
-                $http.post("/public/user/update", angular.toJson($scope.user)).success(function(data){
+                $http.post("/api/user/update", angular.toJson($scope.user)).success(function(data){
                     console.log("Item has been edited");
                     $scope.ok = true;
                 }).error(function () {
@@ -22,7 +22,7 @@ angular.module('onlineShop.user', ['ngRoute', 'angularValidator'])
 
         $scope.init = function(){
             var itemId = $routeParams.id;
-            $http.get("/public/user/my").success(function(data){
+            $http.get("/api/user/my").success(function(data){
                 $scope.user = data;
                 console.log(data);
             })
