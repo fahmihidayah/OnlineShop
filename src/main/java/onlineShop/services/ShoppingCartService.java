@@ -52,6 +52,7 @@ public class ShoppingCartService implements IShoppingCartService {
     @Override
     public ShoppingCart addItem(long shoppingCartId, long itemId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
+        itemService.modifyQuantity(itemId, -1);
         Item item = itemService.getItemById(itemId);
         shoppingCart.getItems().add(item);
         return shoppingCartRepository.save(shoppingCart);
@@ -60,6 +61,7 @@ public class ShoppingCartService implements IShoppingCartService {
     @Override
     public ShoppingCart removeItem(long shoppingCartId, long itemId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
+        itemService.modifyQuantity(itemId, +1);
         Item item = itemService.getItemById(itemId);
         shoppingCart.getItems().remove(item);
         return shoppingCartRepository.save(shoppingCart);
