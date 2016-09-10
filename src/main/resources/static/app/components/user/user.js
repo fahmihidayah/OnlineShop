@@ -12,7 +12,9 @@ angular.module('onlineShop.user', ['ngRoute', 'angularValidator'])
             if(confirm('Are you sure that you want edit yout user settings')){
                 $http.post("/public/user/update", angular.toJson($scope.user)).success(function(data){
                     console.log("Item has been edited");
+                    $scope.ok = true;
                 }).error(function () {
+                    $scope.ok = false;
                     console.log("error");
                 })
             }

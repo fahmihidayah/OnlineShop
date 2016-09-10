@@ -1,5 +1,21 @@
 <div ng-controller="EditUserController" ng-init="init()">
 
+    <div class="alert alert-success" role="alert" ng-show="ok==true">
+        <strong>
+            <span>Your user information has been updated</span>
+        </strong>
+        <a href="#/">Go to main page</a>
+    </div>
+
+
+    <div class="alert alert-danger" role="alert" ng-show="ok==false">
+        <strong>
+            <span>Error! Try again</span>
+        </strong>
+        <a href="#/">Or go to main page</a>
+    </div>
+
+
     <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
         <div class="form-group">
             <div class="form-group">
