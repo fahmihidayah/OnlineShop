@@ -25,6 +25,14 @@ angular.module('onlineShop.admin.users', ['ngRoute', 'angularValidator'])
             }
         };
 
+        $scope.deleteUser = function(userId){
+            if(confirm('are you sure that you want delete that user')){
+                $http.get("api/user/delete/?id="+userId).success(function(){
+                    $scope.init();
+                })
+            }
+        };
+
         $scope.pagination = {
             totalItems: 1,
             itemsPerPage: 10,
