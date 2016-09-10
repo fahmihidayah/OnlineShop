@@ -4,7 +4,7 @@
  */
 
 angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValidator'])
-    .controller('RegisterController', function ($scope, $http) {
+    .controller('RegisterController', function ($scope, $http, $location) {
         $scope.myForm = {};
         $scope.user = {};
         $scope.submitMyForm = function(){
@@ -16,6 +16,7 @@ angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValida
                 data: angular.toJson($scope.user)
             }).success(function(){
                 console.log('wyslano');
+                $location.path("/login");
             })
         };
         $scope.loginValidator = function(login){
