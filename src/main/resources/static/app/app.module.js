@@ -24,13 +24,21 @@ angular.module('onlineShop', [
 
     .controller('NavHeaderController', ['$scope', '$location', '$rootScope', '$window', '$http', function ($scope, $location, $rootScope, $window, $http) {
         //init if needed
-        if ($window.localStorage.getItem("authenticated") === null) {
-            $window.localStorage.setItem("authenticated", false);
+        $http.get('user').success(function(data){
+            $rootScope.authenticated = true;
+            $window.localStorage.setItem("authenticated", true);
+        }).error(function(){
             $rootScope.authenticated = false;
-        } else if ($rootScope.authenticated === null) {
-            var temp = $window.localStorage.getItem("authenticated");
-            $rootScope.authenticated = (temp == 'true');
-        }
+            $window.localStorage.setItem("authenticated", false);
+        });
+
+        //if ($window.localStorage.getItem("authenticated") === null) {
+        //    $window.localStorage.setItem("authenticated", false);
+        //    $rootScope.authenticated = false;
+        //} else if ($rootScope.authenticated === null) {
+        //    var temp = $window.localStorage.getItem("authenticated");
+        //    $rootScope.authenticated = (temp == 'true');
+        //}
 
         $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
@@ -45,7 +53,6 @@ angular.module('onlineShop', [
             $http.post('/logout', {}).finally(function() {
                 $rootScope.authenticated = false;
                 $window.localStorage.removeItem("authenticated");
-                $window.localStorage.removeItem("header");
                 $location.path("/");
             });
             //    .error(function(data) {
