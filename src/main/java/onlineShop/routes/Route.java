@@ -29,9 +29,10 @@ public abstract class Route {
     public static final String REGISTER = PUBLIC + AUTH + "/register";
 
     //  USER
-    public static final String USER_READ = API + USER + READ + ID;
+    public static final String USER_READ = PUBLIC + USER + READ + ID;
+    public static final String USER_CURRENT_USER = PUBLIC + USER + READ + "/my";
     public static final String USER_LIST = API + USER + READ + LIST;
-    public static final String USER_UPDATE = API + USER + UPDATE;
+    public static final String USER_UPDATE = PUBLIC + USER + UPDATE;
     public static final String USER_DELETE = API + USER + DELETE;
     public static final String USER_CHANGE_ROLE = API + USER + "/role";
 

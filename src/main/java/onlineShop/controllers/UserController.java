@@ -50,8 +50,14 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+    @RequestMapping(value = Route.USER_CURRENT_USER)
+    public User getCurrentUser(){
+        return userService.getCurrentLoggedUser();
+    }
+
     @RequestMapping(value = Route.USER_UPDATE)
     public User updateUser(@RequestBody User user){
+        System.out.println(user);
         long userId = userService.getCurrentLoggedUser().getUserId();
         return userService.updateUserById(userId, user);
     }

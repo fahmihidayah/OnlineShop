@@ -1,0 +1,102 @@
+<div ng-controller="EditUserController" ng-init="init()">
+
+    <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
+        <div class="form-group">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10"><label class="control-label text-muted">{{user.userName}}</label></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10"><label class="control-label text-muted">{{user.email}}</label></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="firstName"
+                       class="form-control"
+                       ng-model="user.firstName"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="lastName"
+                       class="form-control"
+                       ng-model="user.lastName"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Phone number</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="phoneNumber"
+                       class="form-control"
+                       ng-model="user.phoneNumber"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">City</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="city"
+                       class="form-control"
+                       ng-model="user.addresses.city"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Street</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="street"
+                       class="form-control"
+                       ng-model="user.addresses.street"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">House number</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="houseNumber"
+                       class="form-control"
+                       ng-model="user.addresses.houseNumber"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Zip code</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       name="zipCode"
+                       class="form-control"
+                       ng-model="user.addresses.zipCode"
+                       required-message="'This is required'"
+                       validate-on="dirty"
+                       required></div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+</div>

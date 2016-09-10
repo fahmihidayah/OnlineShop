@@ -17,6 +17,7 @@ angular.module('onlineShop', [
         'onlineShop.cart',
         'onlineShop.login',
         'onlineShop.register',
+        'onlineShop.user',
         //admin part
         'onlineShop.admin.addItem',
         'onlineShop.admin.editItem',

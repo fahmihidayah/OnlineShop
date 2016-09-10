@@ -84,7 +84,10 @@ public class UserService implements IUserService {
         user.setLastName(userData.getLastName());
 //        if(userData.getPhoneNumber()!=null)
         user.setPhoneNumber(userData.getPhoneNumber());
-        user.setAddresses(userData.getAddresses());
+        Address addressData = userData.getAddresses();
+        Address address = new Address(addressData.getStreet(), addressData.getHouseNumber(), addressData.getCity(), addressData.getZipCode());
+        address.setUserId(user.getUserId());
+        user.setAddresses(address);
         return userRepository.save(user);
     }
 

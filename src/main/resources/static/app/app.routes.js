@@ -34,6 +34,9 @@ angular.module('onlineShop.routes', ['ngRoute'])
             })
             .when('/users', {
                 templateUrl: URL + '/users/users-view.html'
+            })
+            .when('/user', {
+                templateUrl: URL + '/user/user-view.html'
             });
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });
