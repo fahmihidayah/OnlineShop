@@ -13,8 +13,9 @@ angular.module('onlineShop.home', ['ngRoute'])
                     console.log(items);
                 });
         };
-        $scope.addToCartButton = function(pressedIndex) {
-            var itemIndex = $scope.currentItems[pressedIndex].itemId;
-            console.log(itemIndex);
+        $scope.addToCartButton = function(itemId) {
+            $http.get('api/cart/add/?id='+itemId).success(function(){
+                console.log("dodano do koszyka");
+            })
         };
     }]);

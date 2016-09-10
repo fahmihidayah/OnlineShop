@@ -31,9 +31,11 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
             });
         };
 
-        $scope.addToCartButton = function (pressedIndex) {
-            var itemId = $scope.currentItems[pressedIndex].itemId;
-            console.log(itemId);
+        $scope.addToCartButton = function (itemId, index) {
+            $http.get('/api/cart/add/?id='+itemId).success(function () {
+                console.log('dodano');
+
+            })
         };
 
         $scope.asAdmin = function(){

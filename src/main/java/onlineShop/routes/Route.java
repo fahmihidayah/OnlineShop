@@ -50,8 +50,8 @@ public abstract class Route {
     public static final String ORDER_READ = API + ORDER + READ + "";
 
     //  SHOPPING CART
-    public static final String CART_ADD = PUBLIC + CART + ADD;
-    public static final String CART_REMOVE = PUBLIC + CART + DELETE;
-    public static final String CART_READ = API + CART + READ;
+    public static final String CART_ADD = API + CART + ADD;
+    public static final String CART_REMOVE = API + CART + DELETE;
+    public static final String CART_READ = API + CART + READ + LIST;
 
 }

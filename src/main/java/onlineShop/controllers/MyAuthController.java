@@ -1,8 +1,10 @@
 package onlineShop.controllers;
 
 import onlineShop.domain.Role;
+import onlineShop.domain.ShoppingCart;
 import onlineShop.domain.User;
 import onlineShop.routes.Route;
+import onlineShop.services.ShoppingCartService;
 import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,9 @@ public class MyAuthController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ShoppingCartService shoppingCartService;
+
     @RequestMapping(value = "/user")
     public Principal user(Principal user){
         return user;
@@ -33,7 +38,8 @@ public class MyAuthController {
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
         newUser.setRole(Role.USER());
-        System.out.println(newUser);
+        ShoppingCart sc = shoppingCartService.create();
+        newUser.setShoppingCart(sc);
         userService.create(newUser);
         return user;
     }

@@ -27,7 +27,7 @@
             <div class="col-xs-12 col-sm-2">
                 <strong class="col-xs-6 col-sm-12">{{item.price}}$</strong>
                 <p class="col-xs-6 col-sm-12">dostepne: {{item.quantity}}</p>
-                <button class="btn btn-primary col-xs-12 col-sm-12" ng-click="addToCartButton($index)">Add to cart
+                <button class="btn btn-primary col-xs-12 col-sm-12" ng-click="addToCartButton(item.itemId)">Add to cart
                 </button>
                 <button class="btn btn-danger col-xs-12 col-sm-6" ng-show="asAdmin()==true" ng-click="deleteButton($index)">Delete</button>
                 <a href="#/editItem/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6" ng-show="asAdmin()==true">Edit</a>

@@ -7,8 +7,11 @@ angular.module('onlineShop.item', ['ngRoute', 'ui.bootstrap'])
     .controller('ItemController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http){
         //current item
         $scope.currentItem = {};
-        $scope.addToCartButton = function(){
+        $scope.addToCartButton = function(itemId){
             //TODO add to cart
+            $http.get('api/cart/add/?id='+itemId).success(function(){
+                console.log("dodano do koszyka");
+            })
         };
         $scope.init = function(){
             var itemId = $routeParams.id;

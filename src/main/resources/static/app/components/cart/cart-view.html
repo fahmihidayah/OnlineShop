@@ -1,4 +1,4 @@
-<div ng-controller="CartController">
+<div ng-controller="CartController" ng-init="init()">
     <div class="row hidden-xs">
         <p class="col-sm-1 wrap">#</p>
         <strong class="col-sm-8 ">NAME</strong>
@@ -12,7 +12,7 @@
         <p class="hidden-xs col-sm-1">{{$index+1}}.</p>
         <a class="col-xs-12 col-sm-8">{{item.name}}</a>
         <span class="col-xs-10 col-sm-2">{{item.price}} $</span>
-        <button class="close col-xs-2 col-sm-1" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button class="close col-xs-2 col-sm-1" aria-label="Close" ng-click="delete(item.itemId)"><span aria-hidden="true">&times;</span></button>
         <hr class="visible-xs col-xs-12">
     </div>
     <div class="btn-group" role="group" ng-show="cartItems.length>0">
