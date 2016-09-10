@@ -18,6 +18,11 @@ angular.module('onlineShop.admin.users', ['ngRoute', 'angularValidator'])
         };
 
         $scope.changeRole = function(userId){
+            if(confirm('are you sure that u want change users role')){
+                $http.get("/api/user/role/?id="+userId).success(function(){
+                    $scope.init();
+                })
+            }
         };
 
         $scope.pagination = {

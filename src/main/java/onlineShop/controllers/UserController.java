@@ -1,5 +1,6 @@
 package onlineShop.controllers;
 
+import onlineShop.domain.Role;
 import onlineShop.domain.User;
 import onlineShop.routes.Route;
 import onlineShop.services.UserService;
@@ -26,6 +27,16 @@ public class UserController {
 //    public List<User> getAllUser(Pageable pageable){
 //        return userService.getAllUsers(pageable);
 //    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @RequestMapping(value = Route.USER_CHANGE_ROLE)
+    public void changeRole(@RequestParam("id") long userId){
+        User user = userService.getUserById(userId);
+        if(user.getRole().getRole().equals("ROLE_ADMIN"))
+            userService.changeUserRole(userId, Role.USER());
+        else if(user.getRole().getRole().equals("ROLE_USER"))
+            userService.changeUserRole(userId, Role.ADMIN());
+    }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @RequestMapping(value = Route.USER_LIST)

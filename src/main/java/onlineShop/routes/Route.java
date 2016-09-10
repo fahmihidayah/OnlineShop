@@ -33,7 +33,7 @@ public abstract class Route {
     public static final String USER_LIST = API + USER + READ + LIST;
     public static final String USER_UPDATE = API + USER + UPDATE;
     public static final String USER_DELETE = API + USER + DELETE;
-    public static final String USER_ADD_ADDRESS = API + USER + "/address" + CREATE;
+    public static final String USER_CHANGE_ROLE = API + USER + "/role";
 
     //  ITEM
     public static final String ITEM_CREATE = API + ITEM + CREATE;
