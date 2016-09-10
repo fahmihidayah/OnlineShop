@@ -55,6 +55,13 @@ angular.module('onlineShop', [
             return temp == 'true';
         };
 
+        $scope.asAdmin = function(){
+            var temp = $window.localStorage.getItem("isAdmin");
+            console.log('asAdmin');
+            console.log(temp == 'true');
+            return temp == 'true';
+        };
+
         $scope.logout = function(){
             $http.post('/logout', {}).finally(function() {
                 $rootScope.authenticated = false;

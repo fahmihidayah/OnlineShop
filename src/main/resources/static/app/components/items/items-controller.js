@@ -35,6 +35,14 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
             var itemId = $scope.currentItems[pressedIndex].itemId;
             console.log(itemId);
         };
+
+        $scope.asAdmin = function(){
+            var temp = $window.localStorage.getItem("isAdmin");
+            console.log('asAdmin');
+            console.log(temp == 'true');
+            return temp == 'true';
+        };
+
         $scope.deleteButton = function(pressedIndex){
             var itemId = $scope.currentItems[pressedIndex].itemId;
             console.log(itemId);

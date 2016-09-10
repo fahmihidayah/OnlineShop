@@ -29,8 +29,8 @@
                 <p class="col-xs-6 col-sm-12">dostepne: {{item.quantity}}</p>
                 <button class="btn btn-primary col-xs-12 col-sm-12" ng-click="addToCartButton($index)">Add to cart
                 </button>
-                <button class="btn btn-danger col-xs-12 col-sm-6" ng-click="deleteButton($index)">Delete</button>
-                <a href="#/editItem/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6">Edit</a>
+                <button class="btn btn-danger col-xs-12 col-sm-6" ng-show="asAdmin()==true" ng-click="deleteButton($index)">Delete</button>
+                <a href="#/editItem/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6" ng-show="asAdmin()==true">Edit</a>
             </div>
         </div>
         <div class="row">

@@ -20,10 +20,12 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
             $http.get('/user', {headers: headers}).success(function (data) {
                 if (data.name) {
                     $rootScope.authenticated = true;
-                    //save header
-                    $window.localStorage.setItem('header', headers);
+                    $rootScope.isAdmin = (data.authorities[0].authority == 'ROLE_ADMIN');
+                    $window.localStorage.setItem("isAdmin", $rootScope.isAdmin);
                 } else {
                     $rootScope.authenticated = false;
+                    $window.localStorage.setItem("isAdmin", false);
+                    $rootScope.isAdmin = false;
                 }
                 //save auth
                 $window.localStorage.setItem("authenticated", $rootScope.authenticated);
@@ -31,6 +33,8 @@ angular.module('onlineShop.login', ['ui.bootstrap', 'ngRoute', 'angularValidator
             }).error(function () {
                 $rootScope.authenticated = false;
                 //save auth
+                $window.localStorage.setItem("isAdmin", false);
+                $rootScope.isAdmin = false;
                 $window.localStorage.setItem("authenticated", $rootScope.authenticated);
                 callback && callback();
             });
