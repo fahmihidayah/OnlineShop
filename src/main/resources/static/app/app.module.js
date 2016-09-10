@@ -27,10 +27,8 @@ angular.module('onlineShop', [
         $http.get('user').success(function(data){
             $rootScope.authenticated = true;
             $window.localStorage.setItem("authenticated", true);
-            console.log(data);
             $rootScope.isAdmin = (data.authorities[0].authority == 'ROLE_ADMIN');
             $window.localStorage.setItem("isAdmin", $rootScope.isAdmin);
-            console.log($rootScope.isAdmin);
         }).error(function(){
             $rootScope.authenticated = false;
             $window.localStorage.setItem("authenticated", false);
@@ -57,8 +55,6 @@ angular.module('onlineShop', [
 
         $scope.asAdmin = function(){
             var temp = $window.localStorage.getItem("isAdmin");
-            console.log('asAdmin');
-            console.log(temp == 'true');
             return temp == 'true';
         };
 

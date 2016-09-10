@@ -38,14 +38,11 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
 
         $scope.asAdmin = function(){
             var temp = $window.localStorage.getItem("isAdmin");
-            console.log('asAdmin');
-            console.log(temp == 'true');
             return temp == 'true';
         };
 
         $scope.deleteButton = function(pressedIndex){
             var itemId = $scope.currentItems[pressedIndex].itemId;
-            console.log(itemId);
             if(confirm('Are you sure you want to delete this item')){
                 $http.get('api/item/delete/?id='+itemId).success(function(){
                     console.log('item deleted');
