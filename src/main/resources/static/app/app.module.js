@@ -27,9 +27,15 @@ angular.module('onlineShop', [
         $http.get('user').success(function(data){
             $rootScope.authenticated = true;
             $window.localStorage.setItem("authenticated", true);
+            console.log(data);
+            $rootScope.isAdmin = (data.authorities[0].authority == 'ROLE_ADMIN');
+            $window.localStorage.setItem("isAdmin", $rootScope.isAdmin);
+            console.log($rootScope.isAdmin);
         }).error(function(){
             $rootScope.authenticated = false;
             $window.localStorage.setItem("authenticated", false);
+            $window.localStorage.setItem("isAdmin", false);
+            $rootScope.isAdmin = false;
         });
 
         //if ($window.localStorage.getItem("authenticated") === null) {
@@ -52,7 +58,9 @@ angular.module('onlineShop', [
         $scope.logout = function(){
             $http.post('/logout', {}).finally(function() {
                 $rootScope.authenticated = false;
+                $rootScope.isAdmin = false;
                 $window.localStorage.removeItem("authenticated");
+                $window.localStorage.removeItem("isAdmin");
                 $location.path("/");
             });
             //    .error(function(data) {
