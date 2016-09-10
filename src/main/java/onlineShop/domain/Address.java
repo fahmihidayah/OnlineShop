@@ -34,11 +34,6 @@ public class Address {
     @Column(name = "ZIP_CODE")
     private String zipCode;
 
-
-    @NotNull
-    @Column(name = "PRIMARY_ADDRESS")
-    private boolean mainAddress;
-
     protected Address() {
     }
 
@@ -47,7 +42,6 @@ public class Address {
         this.houseNumber = houseNumber;
         this.city = city;
         this.zipCode = zipCode;
-        this.mainAddress = false;
     }
 
     public long getAddressId() {
@@ -96,14 +90,6 @@ public class Address {
 
     public void setUserId(long userId) {
         this.userId = userId;
-    }
-
-    public boolean isMainAddress() {
-        return mainAddress;
-    }
-
-    public void setMainAddress(boolean mainAddress) {
-        this.mainAddress = mainAddress;
     }
 
     @Override
