@@ -1,0 +1,18 @@
+<div ng-init="init()">
+    <h1 ng-show="allOrders.length==0" class="text-danger text-center">NO ORDERS!</h1>
+    <div ng-repeat="order in allOrders">
+        <button type="button" class="btn btn-default col-xs-12" ng-click="collapse($index)">
+            <span class="col-xs-6">Order id: {{order.orderId}}</span>
+            <span class="col-xs-6">{{getDate(order.submitDate)}}</span>
+        </button>
+        <hr>
+        <div class="well well-lg col-xs-12" ng-show="isCollapsed($index)==true">
+            <div ng-repeat="item in order.items">
+                <span class="col-xs-2 col-sm-2">{{$index+1}}.</span>
+                <span class="col-xs-5 col-sm-5">{{item.name}}</span>
+                <span class="col-xs-5 col-sm-5">item code: {{item.itemCode}}</span>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
