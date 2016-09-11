@@ -25,5 +25,5 @@
             <strong class="row text-success">All: {{cartValue()}} $</strong>
         </div>
     </div>
-    <button class="btn btn-primary" ng-show="cartItems.length>0">make order</button>
+    <button class="btn btn-primary" ng-click="makeOrder()" ng-show="cartItems.length>0">make order</button>
 </div>
