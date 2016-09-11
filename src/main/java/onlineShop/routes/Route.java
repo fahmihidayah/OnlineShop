@@ -47,7 +47,8 @@ public abstract class Route {
 
     //  ORDER
     public static final String ORDER_CREATE = API + ORDER + CREATE;
-    public static final String ORDER_READ = API + ORDER + READ + "";
+    public static final String ORDER_READ_USER = API + ORDER + READ + "/my";
+    public static final String ORDER_READ = API + ORDER + READ + LIST;
 
     //  SHOPPING CART
     public static final String CART_ADD = API + CART + ADD;
