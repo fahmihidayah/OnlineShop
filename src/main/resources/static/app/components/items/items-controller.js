@@ -35,7 +35,7 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
             $http.get('/api/cart/add/?id='+itemId).success(function () {
                 console.log('dodano');
                 $scope.currentItems[index].quantity -= 1;
-                var mainIndex = ($scope.pagination.currentPage-1)*10 + index;
+                //var mainIndex = ($scope.pagination.currentPage-1)*10 + index;
                 //$scope.allItems[mainIndex].quantity -= 1;
             })
         };
