@@ -20,7 +20,11 @@ public interface IOrderService {
 
     List<Order> getAllOrders(Pageable pageable);
 
+    List<Order> getAllOrders();
+
     Order getOrderById(long orderId);
+
+    List<Order> getOrdersByUserId(long userId);
 
     List<Order> getOrdersBySubmitDate(Date submitDate);
 
@@ -30,6 +34,8 @@ public interface IOrderService {
 
 //    Order addItemToOrder(long orderId, long itemId, long quantity);
 //    Order deleteItemFromOrder(long orderId, long itemId);
+
+    void addItem(long orderId, long itemId);
 
     Order makePaid(long orderId, Date paidDate);
 

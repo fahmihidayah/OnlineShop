@@ -13,6 +13,8 @@ import java.util.List;
  */
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
+    List<Order> findByUserId(long userId);
+
     List<Order> findBySubmitDate(Date submitDate);
 
     List<Order> findByPaidDate(Date paidDate);

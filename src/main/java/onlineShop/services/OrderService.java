@@ -42,8 +42,18 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
+    }
+
+    @Override
     public Order getOrderById(long orderId) {
         return orderRepository.findOne(orderId);
+    }
+
+    @Override
+    public List<Order> getOrdersByUserId(long userId) {
+        return orderRepository.findByUserId(userId);
     }
 
     @Override
@@ -59,6 +69,14 @@ public class OrderService implements IOrderService {
     @Override
     public List<Item> getItemsByOrderId(long orderId) {
         return orderRepository.findOne(orderId).getItems();
+    }
+
+    @Override
+    public void addItem(long orderId, long itemId) {
+        Item item = itemService.getItemById(itemId);
+        Order order = orderRepository.findOne(orderId);
+        order.getItems().add(item);
+        orderRepository.save(order);
     }
 
     @Override
