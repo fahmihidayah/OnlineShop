@@ -21,7 +21,7 @@ angular.module('onlineShop.routes', ['ngRoute'])
                 templateUrl: URL + '/cart/cart-view.html'
             })
             .when('/login', {
-                templateUrl: URL + '/login/login-view.html',
+                templateUrl: URL + '/login/login-view.html'
             })
             .when('/register', {
                 templateUrl: URL + '/register/register-view.html'
@@ -37,6 +37,14 @@ angular.module('onlineShop.routes', ['ngRoute'])
             })
             .when('/user', {
                 templateUrl: URL + '/user/user-view.html'
+            })
+            .when('/orders', {
+                templateUrl: URL + '/orders/orders-view.html',
+                controller: 'AdminAllOrdersController'
+            })
+            .when('/myOrders', {
+                templateUrl: URL + '/orders/orders-view.html',
+                controller: 'UserOrdersController'
             });
         $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
     });
