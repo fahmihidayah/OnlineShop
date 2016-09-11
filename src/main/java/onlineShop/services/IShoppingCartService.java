@@ -16,6 +16,10 @@ public interface IShoppingCartService {
 
     boolean exist(long shoppingCartId);
 
+    void clearShoppingCartAfterOrder(long shoppingCartId);
+
+    void clearShoppingCartWithReturn(long shoppingCartId);
+
     ShoppingCart updateShoppingCartById(long shoppingCartId, ShoppingCart shoppingCartData);
 
     ShoppingCart getShoppingCartById(long shoppingCartId);

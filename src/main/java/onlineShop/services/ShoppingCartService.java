@@ -6,7 +6,9 @@ import onlineShop.domain.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Damian Bartos
@@ -34,6 +36,28 @@ public class ShoppingCartService implements IShoppingCartService {
     @Override
     public boolean exist(long shoppingCartId) {
         return shoppingCartRepository.exists(shoppingCartId);
+    }
+
+    @Override
+    public void clearShoppingCartAfterOrder(long shoppingCartId) {
+        ShoppingCart SC = shoppingCartRepository.findOne(shoppingCartId);
+        SC.setItems(new LinkedList<>());
+        shoppingCartRepository.save(SC);
+    }
+
+    @Override
+    public void clearShoppingCartWithReturn(long shoppingCartId) {
+        ShoppingCart SC = shoppingCartRepository.findOne(shoppingCartId);
+        ListIterator<Item> iterator = SC.getItems().listIterator();
+        while (iterator.hasNext()){
+            itemService.modifyQuantity(iterator.next().getItemId(), +1);
+            iterator.remove();
+        }
+//        for(int i=0; i<SC.getItems().size(); i++){
+//            Item item = SC.getItems().;
+//            itemService.modifyQuantity(item.getItemId(), +1);
+//        }
+        shoppingCartRepository.save(SC);
     }
 
     @Override
