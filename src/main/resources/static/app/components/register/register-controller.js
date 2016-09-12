@@ -7,6 +7,8 @@ angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValida
     .controller('RegisterController', function ($scope, $http, $location) {
         $scope.myForm = {};
         $scope.user = {};
+        $scope.error = false;
+        $scope.errorMSG = "";
         $scope.submitMyForm = function(){
             console.log($scope.myForm);
             console.log($scope.user);
@@ -16,7 +18,12 @@ angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValida
                 data: angular.toJson($scope.user)
             }).success(function(){
                 console.log('wyslano');
+                $scope.error = false;
                 $location.path("/login");
+            }).error(function(){
+                console.log('register error');
+                $scope.error = true;
+                $scope.errorMSG = "username and email are already used";
             })
         };
         $scope.loginValidator = function(login){
