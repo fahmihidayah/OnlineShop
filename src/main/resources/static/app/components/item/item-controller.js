@@ -18,6 +18,7 @@ angular.module('onlineShop.item', ['ngRoute', 'ui.bootstrap'])
             var itemId = $routeParams.id;
             $http.get("/public/item/?id="+itemId).success(function(data){
                 $scope.currentItem = data;
+                console.log(data);
             })
         }
     }]);

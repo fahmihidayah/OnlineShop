@@ -1,6 +1,8 @@
 <div ng-controller="ItemController" ng-init="init()">
     <!--<div class="col-sm-6">-->
-    <img class="thumbnail col-xs-12 col-sm-5" src="../../../assets/img/maxresdefault.jpg">
+    <!--<img class="thumbnail col-xs-12 col-sm-5" src="../../../assets/img/maxresdefault.jpg">-->
+    <img class="thumbnail col-xs-12 col-sm-5" ng-src="{{'data:image/png;base64,'+currentItem.image}}" ng-show="currentItem.image!=null">
+    <img class="thumbnail col-xs-12 col-sm-5" src="../../../assets/img/default-thumbnail.jpg" ng-show="currentItem.image==null" >
     <!--</div>-->
     <div class="col-sm-6 col-sm-offset-1">
         <h1 class="text-uppercase">{{currentItem.name}}</h1>

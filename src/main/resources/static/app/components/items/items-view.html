@@ -14,7 +14,8 @@
         <div class="row">
             <div class="col-xs-12 col-sm-3">
                 <a href="#/item/{{item.itemId}}" class="thumbnail">
-                    <img src="/assets/img/maxresdefault.jpg" alt="item-sale-1">
+                    <img src="/assets/img/default-thumbnail.jpg" ng-show="item.image==null">
+                    <img ng-src="{{'data:image/png;base64,'+item.image}}" ng-show="item.image!=null">
                 </a>
             </div>
             <div class="col-xs-12 col-sm-7">

@@ -3,7 +3,8 @@
         <!--<div class="row row-margin-3">-->
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
-                <img src="/assets/img/maxresdefault.jpg" alt="item-sale-1">
+                <img ng-src="{{'data:image/png;base64,'+item.image}}"  ng-show="item.image!=null">
+                <img src="/assets/img/default-thumbnail.jpg" ng-show="item.image==null">
                 <div class="caption">
                     <h3>{{item.name}}</h3>
                     <p>
