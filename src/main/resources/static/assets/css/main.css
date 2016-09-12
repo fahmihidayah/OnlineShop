@@ -14,6 +14,10 @@ body{
     word-wrap:break-word;
 }
 
+.front_image{
+    /*max-height: 255px;*/
+    /*min-height: 255px;*/
+}
 
 /* rules for xs*/
 @media (max-width: 767px) /* @grid-float-breakpoint -1 */
