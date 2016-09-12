@@ -21,11 +21,13 @@ public class ItemService implements IItemService {
     @Override
     public Item create(Item itemData) {
         //TODO: add validation
+        System.out.println("CREATE ITEM");
         System.out.println(itemData);
         Item newItem = new Item(itemData.getItemCode(), itemData.getName(), itemData.getPrice());
         newItem.setDescription(itemData.getDescription());
         newItem.setQuantity(itemData.getQuantity());
         newItem.setPrice(itemData.getPrice());
+        newItem.setImage(itemData.getImage());
         System.out.println(newItem);
         return itemRepository.save(newItem);
     }
@@ -76,6 +78,7 @@ public class ItemService implements IItemService {
         item.setDescription(itemData.getDescription());
         item.setItemCode(itemData.getItemCode());
         item.setName(itemData.getName());
+        item.setImage(itemData.getImage());
         System.out.println(item);
         return itemRepository.save(item);
     }

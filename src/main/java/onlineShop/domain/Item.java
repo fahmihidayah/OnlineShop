@@ -30,6 +30,9 @@ public class Item {
     @Column(name = "PRICE")
     private BigDecimal price;
 
+    @Column(name = "IMAGE")
+    private byte[] image;
+
     protected Item() {
     }
 
@@ -97,5 +100,13 @@ public class Item {
                 ", quantity=" + quantity +
                 ", price=" + price +
                 '}';
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

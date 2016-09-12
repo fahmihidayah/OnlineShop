@@ -86,6 +86,7 @@ public class UserService implements IUserService {
         Address address = user.getAddresses();
         if(address == null){
             address = new Address(addressData.getStreet(), addressData.getHouseNumber(), addressData.getCity(), addressData.getZipCode());
+            address.setUserId(user.getUserId());
         }else{
             address.setCity(addressData.getCity());
             address.setHouseNumber(addressData.getHouseNumber());

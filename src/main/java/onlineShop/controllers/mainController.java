@@ -4,9 +4,9 @@ import onlineShop.domain.Item;
 import onlineShop.domain.Role;
 import onlineShop.domain.ShoppingCart;
 import onlineShop.domain.User;
-import onlineShop.services.IItemService;
-import onlineShop.services.IUserService;
+import onlineShop.services.ItemService;
 import onlineShop.services.ShoppingCartService;
+import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +20,10 @@ import java.math.BigDecimal;
 @Controller
 public class MainController {
     @Autowired
-    IUserService userService;
+    UserService userService;
 
     @Autowired
-    IItemService itemService;
+    ItemService itemService;
 
     @Autowired
     private ShoppingCartService shoppingCartService;
