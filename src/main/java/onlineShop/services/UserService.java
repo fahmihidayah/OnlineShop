@@ -78,17 +78,26 @@ public class UserService implements IUserService {
     @Override
     public User updateUserById(long userId, User userData) {
         User user = userRepository.findOne(userId);
-//        if(userData.getFirstName()!=null)
         user.setFirstName(userData.getFirstName());
-//        if(userData.getLastName()!=null)
         user.setLastName(userData.getLastName());
-//        if(userData.getPhoneNumber()!=null)
         user.setPhoneNumber(userData.getPhoneNumber());
+
         Address addressData = userData.getAddresses();
-        Address address = new Address(addressData.getStreet(), addressData.getHouseNumber(), addressData.getCity(), addressData.getZipCode());
-        address.setUserId(user.getUserId());
-        user.setAddresses(address);
-        return userRepository.save(user);
+        Address address = user.getAddresses();
+        if(address == null){
+            address = new Address(addressData.getStreet(), addressData.getHouseNumber(), addressData.getCity(), addressData.getZipCode());
+        }else{
+            address.setCity(addressData.getCity());
+            address.setHouseNumber(addressData.getHouseNumber());
+            address.setStreet(addressData.getStreet());
+            address.setZipCode(addressData.getZipCode());
+        }
+        address = addressRepository.save(address);
+//        user.setAddresses(address);
+        System.out.println(user);
+        User temp = userRepository.save(user);
+        System.out.println(temp);
+        return temp;
     }
 
     @Override
