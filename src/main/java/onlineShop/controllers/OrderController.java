@@ -10,6 +10,7 @@ import onlineShop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -56,5 +57,15 @@ public class OrderController {
         List<Order> orders = orderService.getOrdersByUserId(user.getUserId());
         System.out.println(orders);
         return orders;
+    }
+
+    @RequestMapping(value = Route.ORDER_PAID)
+    public Order paidOrder(@RequestParam("id") long orderId){
+        return orderService.makePaid(orderId, new Date());
+    }
+
+    @RequestMapping(value = Route.ORDER_SEND)
+    public Order sendOrder(@RequestParam("id") long orderId){
+        return orderService.makeSent(orderId, new Date());
     }
 }
