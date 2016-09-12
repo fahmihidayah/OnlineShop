@@ -90,7 +90,11 @@ public class ItemService implements IItemService {
     @Override
     public Item modifyQuantity(long itemId, long value) {
         Item item = itemRepository.findOne(itemId);
-        item.setQuantity(item.getQuantity()+value);
-        return itemRepository.save(item);
+        if(item.getQuantity()==0){
+            throw null;
+        }else{
+            item.setQuantity(item.getQuantity()+value);
+            return itemRepository.save(item);
+        }
     }
 }
