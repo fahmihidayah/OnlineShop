@@ -31,10 +31,10 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute', 'angularUtils.dir
             });
         };
 
-        $scope.addToCartButton = function (itemId, index) {
+        $scope.addToCartButton = function (itemId, item) {
             $http.get('/api/cart/add/?id='+itemId).success(function () {
                 console.log('dodano');
-                $scope.currentItems[index].quantity -= 1;
+                item.quantity -= 1;
                 //var mainIndex = ($scope.pagination.currentPage-1)*10 + index;
                 //$scope.allItems[mainIndex].quantity -= 1;
             })
