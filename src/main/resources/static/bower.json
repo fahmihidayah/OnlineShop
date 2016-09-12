@@ -25,6 +25,7 @@
     "bootstrap": "3.3.7",
     "tg-angular-validator":"*",
     "angular-local-storage":"*",
-    "angular-base64":"*"
+    "angular-base64":"*",
+    "angular-utils-pagination":"*"
   }
 }

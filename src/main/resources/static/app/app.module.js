@@ -10,6 +10,7 @@ angular.module('onlineShop', [
         'ui.bootstrap',
         'angularValidator',
         'base64',
+        'angularUtils.directives.dirPagination',
         'onlineShop.focus',
         'onlineShop.routes',
         'onlineShop.home',

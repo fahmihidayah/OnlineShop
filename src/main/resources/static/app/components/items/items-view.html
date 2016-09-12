@@ -3,14 +3,14 @@
     <div class="container">
         <div class="row row-centered">
             <div class="col-sm-5 col-centered">
-                <input type="text" ng-model="searchString" class="form-control" placeholder="Search for...">
+                <input type="text" ng-model="search" class="form-control" placeholder="Search for...">
             </div>
         </div> <!-- /search box -->
     </div>
 
     <hr>
 
-    <div ng-repeat="item in currentItems | searchFor:searchString">
+    <div dir-paginate="item in allItems | searchFor:search | orderBy:'name'| itemsPerPage: 10">
         <div class="row">
             <div class="col-xs-12 col-sm-3">
                 <a href="#/item/{{item.itemId}}" class="thumbnail">
@@ -39,9 +39,14 @@
         </div>
     </div>
     <div class="row row-centered">
-        <ul uib-pagination class="pagination-sm col-centered" ng-model="pagination.currentPage"
-            ng-change="pageChanged()"
-            total-items="pagination.totalItems" max-size="pagination.maxSize" items-per-page="pagination.itemsPerPage"
-            boundary-links="true" num-pages="numPages"></ul>
+        <dir-pagination-controls
+                max-size="10"
+                direction-links="true"
+                boundary-links="true" >
+        </dir-pagination-controls>
+        <!--<ul uib-pagination class="pagination-sm col-centered" ng-model="pagination.currentPage"-->
+            <!--ng-change="pageChanged()"-->
+            <!--total-items="pagination.totalItems" max-size="pagination.maxSize" items-per-page="pagination.itemsPerPage"-->
+            <!--boundary-links="true" num-pages="numPages"></ul>-->
     </div>
 </div>

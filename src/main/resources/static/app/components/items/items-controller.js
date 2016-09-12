@@ -3,7 +3,7 @@
  * 04.09.2016.
  */
 
-angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
+angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute', 'angularUtils.directives.dirPagination'])
     .controller('ItemsController', ['$scope', '$http', '$window', '$routeParams', function ($scope, $http, $window, $routeParams) {
         //pagination
         $scope.pagination = {
@@ -43,6 +43,18 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute'])
         $scope.asAdmin = function(){
             var temp = $window.localStorage.getItem("isAdmin");
             return temp == 'true';
+        };
+
+        $scope.sort = function(keyname){
+            $scope.sortKey = keyname;   //set the sortKey to the param passed
+        };
+
+        $scope.paginate = function (value) {
+            var begin, end, index;
+            begin = ($scope.pagination.currentPage - 1) * $scope.pagination.itemsPerPage;
+            end = begin + $scope.pagination.itemsPerPage;
+            index = $scope.allItems.indexOf(value);
+            return (begin <= index && index < end);
         };
 
         $scope.deleteButton = function(pressedIndex){
