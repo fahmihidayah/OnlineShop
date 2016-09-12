@@ -13,9 +13,9 @@ angular.module('onlineShop.home', ['ngRoute'])
                     console.log(items);
                 });
         };
-        $scope.addToCartButton = function(itemId) {
-            $http.get('api/cart/add/?id='+itemId).success(function(){
-                console.log("dodano do koszyka");
-            })
-        };
+        //$scope.addToCartButton = function(itemId) {
+        //    $http.get('api/cart/add/?id='+itemId).success(function(){
+        //        console.log("dodano do koszyka");
+        //    })
+        //};
     }]);

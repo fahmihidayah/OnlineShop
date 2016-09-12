@@ -11,6 +11,7 @@ angular.module('onlineShop.item', ['ngRoute', 'ui.bootstrap'])
             //TODO add to cart
             $http.get('api/cart/add/?id='+itemId).success(function(){
                 console.log("dodano do koszyka");
+                $scope.currentItem.quantity -= 1;
             })
         };
         $scope.init = function(){
