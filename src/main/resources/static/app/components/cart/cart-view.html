@@ -10,14 +10,14 @@
     </div>
     <div class="row" ng-repeat="item in cartItems">
         <p class="hidden-xs col-sm-1">{{$index+1}}.</p>
-        <a class="col-xs-12 col-sm-8">{{item.name}}</a>
+        <a href="#/item/{{item.itemId}}" class="col-xs-12 col-sm-8">{{item.name}}</a>
         <span class="col-xs-10 col-sm-2">{{item.price}} $</span>
         <button class="close col-xs-2 col-sm-1" aria-label="Close" ng-click="delete(item.itemId)"><span aria-hidden="true">&times;</span></button>
         <hr class="visible-xs col-xs-12">
     </div>
-    <div class="btn-group" role="group" ng-show="cartItems.length>0">
-        <button type="button" class="btn btn-danger">clear cart</button>
-    </div>
+    <!--<div class="btn-group" role="group" ng-show="cartItems.length>0">-->
+        <!--<button type="button" class="btn btn-danger">clear cart</button>-->
+    <!--</div>-->
     <div class="row row-margin-3">
         <strong class="col-xs-12">order information</strong>
         <div class="col-xs-4">
