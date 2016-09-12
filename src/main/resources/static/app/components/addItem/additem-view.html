@@ -20,6 +20,8 @@
                               class="form-control"
                               ng-model="item.description"
                               required-message="'This is required'"
+                              validator="item.description.length<=255"
+                              invalid-message="'Description to long'"
                               validate-on="dirty"
                               required>
                         </textarea>
