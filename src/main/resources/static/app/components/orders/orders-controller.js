@@ -7,6 +7,13 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         $scope.allOrders = [];
         $scope.collapsedArray = [];
 
+        $scope.valueOfOrder = function(index){
+            var temp = 0;
+            $scope.allOrders[index].items.forEach(function(item){
+                temp += item.price;
+            });
+            return temp;
+        };
         $scope.collapse = function(index){
             $scope.collapsedArray[index] = !$scope.collapsedArray[index];
         };
@@ -14,6 +21,8 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
             return $scope.collapsedArray[index]==true;
         };
         $scope.getDate = function (milis) {
+            if(milis==null)
+                return 'NO';
             var date = new Date(milis);
             return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
         };
@@ -22,12 +31,38 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
                 $scope.allOrders = data;
                 console.log(data);
             });
-        }
+        };
+        $scope.isAdmin = function(){
+            return true;
+        };
+        $scope.makePaid = function(index){
+            var orderId = $scope.allOrders[index].orderId;
+            $http.get("api/order/paid/?id="+orderId).success(function(data){
+                console.log(data);
+                console.log($scope.allOrders);
+                $scope.allOrders[index] = data;
+                console.log($scope.allOrders)
+            });
+        };
+        $scope.makeSent = function(index){
+            var orderId = $scope.allOrders[index].orderId;
+            $http.get("api/order/send/?id="+orderId).success(function(data){
+                console.log(data);
+                $scope.allOrders[index] = data;
+            });
+        };
     }])
     .controller('UserOrdersController', ['$scope', '$http', function($scope, $http){
         $scope.allOrders = [];
         $scope.collapsedArray = [];
 
+        $scope.valueOfOrder = function(index){
+            var temp = 0;
+            $scope.allOrders[index].items.forEach(function(item){
+                temp += item.price;
+            });
+            return temp;
+        };
         $scope.collapse = function(index){
             $scope.collapsedArray[index] = !$scope.collapsedArray[index];
         };
@@ -35,6 +70,8 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
             return $scope.collapsedArray[index]==true;
         };
         $scope.getDate = function (milis) {
+            if(milis==null)
+                return 'NO';
             var date = new Date(milis);
             return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
         };
@@ -43,6 +80,8 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
                 $scope.allOrders = data;
                 console.log(data);
             });
+        };
+        $scope.isAdmin = function(){
+            return false;
         }
-
     }]);

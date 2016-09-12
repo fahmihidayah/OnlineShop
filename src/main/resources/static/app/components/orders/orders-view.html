@@ -12,6 +12,18 @@
                 <span class="col-xs-5 col-sm-5">{{item.name}}</span>
                 <span class="col-xs-5 col-sm-5">item code: {{item.itemCode}}</span>
             </div>
+            <div class="row">
+                <span class="col-xs-2">Total items: {{order.items.length}}</span>
+                <span class="col-xs-2">Total Value: {{valueOfOrder($index)}} $</span>
+            </div>
+            <div ng-show="isAdmin()==true" class="row">
+                <button class="btn btn-primary btn-xs col-xs-2" ng-disabled="{{getDate(order.paidDate)!='NO'}}" ng-click="makePaid($index)">Make paid</button>
+                <button class="btn btn-primary btn-xs col-xs-2" ng-disabled="{{getDate(order.sendDate)!='NO'}}" ng-click="makeSent($index)">Make sent</button>
+            </div>
+            <div class="row">
+                <span class="col-xs-2">Paid: {{getDate(order.paidDate)}}</span>
+                <span class="col-xs-2">Sent: {{getDate(order.sendDate)}}</span>
+            </div>
         </div>
         <hr>
     </div>
