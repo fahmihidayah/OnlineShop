@@ -35,7 +35,8 @@ public class ItemService implements IItemService {
     @Override
     public void deleteItemById(long itemId) {
         Item item = itemRepository.findOne(itemId);
-        itemRepository.delete(item);
+        item.setEnabled(false);
+        itemRepository.save(item);
     }
 
     @Override

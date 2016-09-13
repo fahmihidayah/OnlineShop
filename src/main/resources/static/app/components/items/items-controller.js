@@ -25,6 +25,7 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute', 'angularUtils.dir
         //init
         $scope.init = function () {
             $http.get('public/item/all').success(function (data) {
+                console.log(data);
                 $scope.allItems = data;
                 $scope.pagination.totalItems = data.length;
                 $scope.pageChanged();
@@ -57,10 +58,10 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute', 'angularUtils.dir
             return (begin <= index && index < end);
         };
 
-        $scope.deleteButton = function(pressedIndex){
+        $scope.deleteButton = function(pressedIndex, item){
             var itemId = $scope.currentItems[pressedIndex].itemId;
             if(confirm('Are you sure you want to delete this item')){
-                $http.get('api/item/delete/?id='+itemId).success(function(){
+                $http.get('api/item/delete/?id='+item.itemId).success(function(){
                     console.log('item deleted');
                     $scope.init();
                 })

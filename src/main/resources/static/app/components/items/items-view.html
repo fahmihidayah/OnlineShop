@@ -11,42 +11,49 @@
     <hr>
 
     <div dir-paginate="item in allItems | searchFor:search | orderBy:'name'| itemsPerPage: 10">
-        <div class="row">
-            <div class="col-xs-12 col-sm-3">
-                <a href="#/item/{{item.itemId}}" class="thumbnail">
-                    <img src="/assets/img/default-thumbnail.jpg" ng-show="item.image==null">
-                    <img ng-src="{{'data:image/png;base64,'+item.image}}" ng-show="item.image!=null">
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-7">
-                <strong class="col-sm-12">{{item.name}}</strong>
-                <p class="text-info col-sm-12">item code: {{item.itemCode}}</p>
-                <div class="text-muted wrap col-sm-12">
-                    {{item.description}}
+
+        <div ng-if="item.enabled===true">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <a href="#/item/{{item.itemId}}" class="thumbnail">
+                        <img src="/assets/img/default-thumbnail.jpg" ng-show="item.image==null">
+                        <img ng-src="{{'data:image/png;base64,'+item.image}}" ng-show="item.image!=null">
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-7">
+                    <strong class="col-sm-12">{{item.name}}</strong>
+                    <p class="text-info col-sm-12">item code: {{item.itemCode}}</p>
+                    <div class="text-muted wrap col-sm-12">
+                        {{item.description}}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-2">
+                    <strong class="col-xs-6 col-sm-12">{{item.price}}$</strong>
+                    <p class="col-xs-6 col-sm-12">dostepne: {{item.quantity}}</p>
+                    <button class="btn btn-primary col-xs-12 col-sm-12" ng-show="item.quantity>0"
+                            ng-click="addToCartButton(item.itemId, item)">Add to cart
+                    </button>
+                    <button class="btn btn-danger col-xs-12 col-sm-6" ng-show="asAdmin()==true"
+                            ng-click="deleteButton($index, item)">Delete
+                    </button>
+                    <a href="#/editItem/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6"
+                       ng-show="asAdmin()==true">Edit</a>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-2">
-                <strong class="col-xs-6 col-sm-12">{{item.price}}$</strong>
-                <p class="col-xs-6 col-sm-12">dostepne: {{item.quantity}}</p>
-                <button class="btn btn-primary col-xs-12 col-sm-12" ng-show="item.quantity>0" ng-click="addToCartButton(item.itemId, item)">Add to cart
-                </button>
-                <button class="btn btn-danger col-xs-12 col-sm-6" ng-show="asAdmin()==true" ng-click="deleteButton($index)">Delete</button>
-                <a href="#/editItem/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6" ng-show="asAdmin()==true">Edit</a>
+            <div class="row">
+                <!--<hr class="col-xs-12 col-sm-12">-->
             </div>
-        </div>
-        <div class="row">
-            <!--<hr class="col-xs-12 col-sm-12">-->
         </div>
     </div>
     <div class="row row-centered">
         <dir-pagination-controls
                 max-size="10"
                 direction-links="true"
-                boundary-links="true" >
+                boundary-links="true">
         </dir-pagination-controls>
         <!--<ul uib-pagination class="pagination-sm col-centered" ng-model="pagination.currentPage"-->
-            <!--ng-change="pageChanged()"-->
-            <!--total-items="pagination.totalItems" max-size="pagination.maxSize" items-per-page="pagination.itemsPerPage"-->
-            <!--boundary-links="true" num-pages="numPages"></ul>-->
+        <!--ng-change="pageChanged()"-->
+        <!--total-items="pagination.totalItems" max-size="pagination.maxSize" items-per-page="pagination.itemsPerPage"-->
+        <!--boundary-links="true" num-pages="numPages"></ul>-->
     </div>
 </div>

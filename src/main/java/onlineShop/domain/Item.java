@@ -33,13 +33,18 @@ public class Item {
     @Column(name = "IMAGE")
     private byte[] image;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
     protected Item() {
+        enabled = true;
     }
 
     public Item(long itemCode, String name, BigDecimal price) {
         this.itemCode = itemCode;
         this.name = name;
         this.price = price;
+        this.enabled = true;
     }
 
     public long getItemId() {
@@ -108,5 +113,13 @@ public class Item {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
