@@ -1,10 +1,10 @@
 <div ng-controller="CartController" ng-init="init()">
     <div class="row hidden-xs">
         <p class="col-sm-1 wrap">#</p>
-        <strong class="col-sm-5 ">Nazwa</strong>
-        <strong class="col-sm-3 ">Ilość</strong>
+        <strong class="col-sm-6 ">Nazwa</strong>
         <strong class="col-sm-1 ">Sztuka</strong>
-        <strong class="col-sm-1 ">Razem</strong>
+        <strong class="col-sm-1 text-center">Ilość</strong>
+        <strong class="col-sm-1 col-sm-offset-1 ">Razem</strong>
         <strong class="col-sm-1">Usuń</strong>
     </div>
     <div class="col-xs-12" ng-show="cartItems.length==0">
@@ -12,11 +12,15 @@
     </div>
     <div class="row" ng-repeat="item in cartItems">
         <p class="hidden-xs col-sm-1">{{$index+1}}.</p>
-        <a href="#/item/{{item.item.itemId}}" class="col-xs-12 col-sm-5">{{item.item.name}}</a>
-        <span class="col-xs-2 col-sm-3">{{item.quantity}} </span>
-        <span class="col-xs-8 col-sm-1">{{item.item.price}} zł</span>
-        <span class="col-xs-8 col-sm-1">{{price(item.item.price, item.quantity)}} zł</span>
-        <button class="close col-xs-2 col-sm-1" aria-label="Close" ng-click="delete(item.item.itemId)"><span aria-hidden="true">&times;</span></button>
+        <a href="#/item/{{item.item.itemId}}" class="col-xs-12 col-sm-6">{{item.item.name}}</a>
+        <span class="col-xs-4 col-sm-1">{{item.item.price}} zł</span>
+        <div class="col-xs-4 col-sm-2">
+            <span class="col-xs-2 col-sm-2 glyphicon glyphicon-chevron-left"></span>
+            <span class="col-xs-1 col-sm-1">{{item.quantity}} </span>
+            <span class="col-xs-2 col-sm-2 glyphicon glyphicon-chevron-right"></span>
+        </div>
+        <span class="col-xs-3 col-sm-1">{{price(item.item.price, item.quantity)}} zł</span>
+        <button class="close col-xs-1 col-sm-1" aria-label="Close" ng-click="delete(item.item.itemId)"><span aria-hidden="true">&times;</span></button>
         <hr class="visible-xs col-xs-12">
     </div>
     <!--<div class="btn-group" role="group" ng-show="cartItems.length>0">-->
