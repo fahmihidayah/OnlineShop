@@ -1,6 +1,6 @@
 package onlineShop.services;
 
-import onlineShop.domain.Item;
+import onlineShop.domain.ItemQuantity;
 import onlineShop.domain.Order;
 import org.springframework.data.domain.Pageable;
 
@@ -30,7 +30,7 @@ public interface IOrderService {
 
     List<Order> getOrdersByPaidDate(Date paidDate);
 
-    List<Item> getItemsByOrderId(long orderId);
+    List<ItemQuantity> getItemsByOrderId(long orderId);
 
 //    Order addItemToOrder(long orderId, long itemId, long quantity);
 //    Order deleteItemFromOrder(long orderId, long itemId);

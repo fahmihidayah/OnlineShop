@@ -33,7 +33,7 @@ public class Order {
 
     @ManyToMany
     @JoinColumn(name = "ITEM_ID")
-    private List<Item> items;
+    private List<ItemQuantity> items;
 
     protected Order() {
         items = new LinkedList<>();
@@ -84,11 +84,11 @@ public class Order {
         this.sendDate = sentDate;
     }
 
-    public List<Item> getItems() {
+    public List<ItemQuantity> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<ItemQuantity> items) {
         this.items = items;
     }
 

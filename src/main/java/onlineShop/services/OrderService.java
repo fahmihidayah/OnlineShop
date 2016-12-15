@@ -2,6 +2,7 @@ package onlineShop.services;
 
 import onlineShop.dao.OrderRepository;
 import onlineShop.domain.Item;
+import onlineShop.domain.ItemQuantity;
 import onlineShop.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -67,7 +68,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<Item> getItemsByOrderId(long orderId) {
+    public List<ItemQuantity> getItemsByOrderId(long orderId) {
         return orderRepository.findOne(orderId).getItems();
     }
 
@@ -75,7 +76,7 @@ public class OrderService implements IOrderService {
     public void addItem(long orderId, long itemId) {
         Item item = itemService.getItemById(itemId);
         Order order = orderRepository.findOne(orderId);
-        order.getItems().add(item);
+//        order.getItems().add(item);
         orderRepository.save(order);
     }
 
