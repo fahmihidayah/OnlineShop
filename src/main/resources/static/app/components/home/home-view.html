@@ -3,8 +3,8 @@
         <div class="col-sm-6 col-md-4" ng-if="item.enabled===true">
             <div class="thumbnail">
                 <img ng-src="{{'data:image/png;base64,'+item.image}}" class="front_image"
-                     ng-show="item.image!=null">
-                <img src="/assets/img/default-thumbnail.jpg" ng-show="item.image==null">
+                     ng-show="item.image!=null" style="width: 200px; height: 200px">
+                <img src="/assets/img/default-thumbnail.jpg" ng-show="item.image==null" style="width: 200px; height: 200px">
                 <div class="caption">
                     <h3>{{item.name}}</h3>
                     <p>
