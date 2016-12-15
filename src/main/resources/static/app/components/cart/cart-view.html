@@ -1,29 +1,32 @@
 <div ng-controller="CartController" ng-init="init()">
     <div class="row hidden-xs">
         <p class="col-sm-1 wrap">#</p>
-        <strong class="col-sm-8 ">NAME</strong>
-        <strong class="col-sm-2 ">PRICE</strong>
-        <strong class="col-sm-1">DELETE</strong>
+        <strong class="col-sm-5 ">Nazwa</strong>
+        <strong class="col-sm-3 ">Ilość</strong>
+        <strong class="col-sm-1 ">Sztuka</strong>
+        <strong class="col-sm-1 ">Razem</strong>
+        <strong class="col-sm-1">Usuń</strong>
     </div>
     <div class="col-xs-12" ng-show="cartItems.length==0">
-        <h1 class="text-danger text-center">Cart is empty.</h1>
+        <h1 class="text-danger text-center">Koszyk jest pusty</h1>
     </div>
     <div class="row" ng-repeat="item in cartItems">
         <p class="hidden-xs col-sm-1">{{$index+1}}.</p>
-        <a href="#/item/{{item.itemId}}" class="col-xs-12 col-sm-8">{{item.name}}</a>
-        <span class="col-xs-10 col-sm-2">{{item.price}} $</span>
-        <button class="close col-xs-2 col-sm-1" aria-label="Close" ng-click="delete(item.itemId)"><span aria-hidden="true">&times;</span></button>
+        <a href="#/item/{{item.item.itemId}}" class="col-xs-12 col-sm-5">{{item.item.name}}</a>
+        <span class="col-xs-2 col-sm-3">{{item.quantity}} </span>
+        <span class="col-xs-8 col-sm-1">{{item.item.price}} zł</span>
+        <span class="col-xs-8 col-sm-1">{{price(item.item.price, item.quantity)}} zł</span>
+        <button class="close col-xs-2 col-sm-1" aria-label="Close" ng-click="delete(item.item.itemId)"><span aria-hidden="true">&times;</span></button>
         <hr class="visible-xs col-xs-12">
     </div>
     <!--<div class="btn-group" role="group" ng-show="cartItems.length>0">-->
         <!--<button type="button" class="btn btn-danger">clear cart</button>-->
     <!--</div>-->
     <div class="row row-margin-3">
-        <strong class="col-xs-12">order information</strong>
+        <strong class="col-xs-12">informacje zamówinia</strong>
         <div class="col-xs-4">
-            <span class="row">Cart value: {{cartValue()}} $</span>
-            <strong class="row text-success">All: {{cartValue()}} $</strong>
+            <strong class="row text-success">Wartość: {{cartValue()}} zł</strong>
         </div>
     </div>
-    <button class="btn btn-primary" ng-click="makeOrder()" ng-show="cartItems.length>0">make order</button>
+    <button class="btn btn-primary" ng-click="makeOrder()" ng-show="cartItems.length>0">Złóż zamówienie</button>
 </div>

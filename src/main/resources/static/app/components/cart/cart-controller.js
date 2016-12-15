@@ -6,9 +6,9 @@ angular.module('onlineShop.cart', ['ui.bootstrap', 'ngRoute'])
     .controller('CartController', function ($scope, $http, $location) {
         $scope.cartItems=[];
         $scope.cartValue = function(){
-            var temp = 0;
+            let temp = 0;
             $scope.cartItems.forEach(function(item){
-                temp += item.price;
+                temp += item.item.price * item.quantity;
             });
             return temp;
         };
@@ -19,6 +19,10 @@ angular.module('onlineShop.cart', ['ui.bootstrap', 'ngRoute'])
                 console.log(data);
                 $scope.cartItems = data;
             })
+        };
+
+        $scope.price = function(price, quantity){
+            return price * quantity;
         };
 
         $scope.makeOrder = function(){
