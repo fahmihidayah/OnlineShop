@@ -9,7 +9,7 @@ angular.module('onlineShop.user', ['ngRoute', 'angularValidator'])
         $scope.user = {};
 
         $scope.submitMyForm = function () {
-            if(confirm('Are you sure that you want edit yout user settings')){
+            if(confirm('jesteś pewien, że chcesz zakualizować dane?')){
                 $http.post("/api/user/update", angular.toJson($scope.user)).success(function(data){
                     console.log("Item has been edited");
                     $scope.ok = true;

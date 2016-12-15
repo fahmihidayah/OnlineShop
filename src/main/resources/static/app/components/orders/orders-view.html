@@ -1,8 +1,8 @@
 <div ng-init="init()">
-    <h1 ng-show="allOrders.length==0" class="text-danger text-center">NO ORDERS!</h1>
+    <h1 ng-show="allOrders.length==0" class="text-danger text-center">Brak zamówień!</h1>
     <div ng-repeat="order in allOrders">
         <button type="button" class="btn btn-default col-xs-12" ng-click="collapse($index)">
-            <span class="col-xs-6">Order id: {{order.orderId}}</span>
+            <span class="col-xs-6">Numer zamówienia: {{order.orderId}}</span>
             <span class="col-xs-6">{{getDate(order.submitDate)}}</span>
         </button>
         <hr>
@@ -10,19 +10,19 @@
             <div ng-repeat="item in order.items">
                 <span class="col-xs-2 col-sm-2">{{$index+1}}.</span>
                 <span class="col-xs-5 col-sm-5">{{item.name}}</span>
-                <span class="col-xs-5 col-sm-5">item code: {{item.itemCode}}</span>
+                <span class="col-xs-5 col-sm-5">Kod: {{item.itemCode}}</span>
             </div>
             <div class="row">
-                <span class="col-xs-2">Total items: {{order.items.length}}</span>
-                <span class="col-xs-2">Total Value: {{valueOfOrder($index)}} $</span>
+                <span class="col-xs-3">Ilość przedmiotów: {{order.items.length}}</span>
+                <span class="col-xs-3">Wartość zamówienia: {{valueOfOrder($index)}} zł</span>
             </div>
             <div ng-show="isAdmin()==true" class="row">
-                <button class="btn btn-primary btn-xs col-xs-2" ng-disabled="{{getDate(order.paidDate)!='NO'}}" ng-click="makePaid($index)">Make paid</button>
-                <button class="btn btn-primary btn-xs col-xs-2" ng-disabled="{{getDate(order.sendDate)!='NO'}}" ng-click="makeSent($index)">Make sent</button>
+                <button class="btn btn-primary btn-xs col-xs-3" ng-disabled="{{getDate(order.paidDate)!='NIE'}}" ng-click="makePaid($index)">Oznacz zapłacone</button>
+                <button class="btn btn-primary btn-xs col-xs-3" ng-disabled="{{getDate(order.sendDate)!='NIE'}}" ng-click="makeSent($index)">Oznacz wysłane</button>
             </div>
             <div class="row">
-                <span class="col-xs-2">Paid: {{getDate(order.paidDate)}}</span>
-                <span class="col-xs-2">Sent: {{getDate(order.sendDate)}}</span>
+                <span class="col-xs-3">Zapłacono: {{getDate(order.paidDate)}}</span>
+                <span class="col-xs-3">Wysłano: {{getDate(order.sendDate)}}</span>
             </div>
         </div>
         <hr>

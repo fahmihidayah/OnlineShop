@@ -16,30 +16,30 @@
                                ng-model="user.userName"
                                validator="loginValidator(user.userName) === true"
                                invalid-message="loginValidator(user.userName)"
-                               required-message="'This is required'"
+                               required-message="'Pole wymagane'"
                                validate-on="dirty"
                                focus="true"
                                required></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">First Name</label>
+                    <label class="col-sm-2 control-label">Imię</label>
                     <div class="col-sm-10">
                         <input type="text"
                                name="firstName"
                                class="form-control"
                                ng-model="user.firstName"
-                               required-message="'This is required'"
+                               required-message="'Pole wymagane'"
                                validate-on="dirty"
                                required></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Last Name</label>
+                    <label class="col-sm-2 control-label">Nazwisko</label>
                     <div class="col-sm-10">
                         <input type="text"
                                name="lastName"
                                class="form-control"
                                ng-model="user.lastName"
-                               required-message="'This is required'"
+                               required-message="'Pole wymagane'"
                                validate-on="dirty"
                                required></div>
                 </div>
@@ -50,13 +50,13 @@
                                name="emailAddress"
                                class="form-control"
                                ng-model="user.email"
-                               invalid-message="'Thats not a real email address'"
-                               required-message="'This is required'"
+                               invalid-message="'To nie jest adres email'"
+                               required-message="'Pole wymagane'"
                                validate-on="dirty"
                                required></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Password</label>
+                    <label class="col-sm-2 control-label">Hasło</label>
                     <div class="col-sm-10">
                         <input type="password"
                                name="password"
@@ -68,7 +68,7 @@
                                required></div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Confirm Password</label>
+                    <label class="col-sm-2 control-label">Powtórz hasło</label>
                     <div class="col-sm-10">
                         <input type="password"
                                name="confirmPassword"
@@ -76,13 +76,13 @@
                                ng-model="user.confirmPassword"
                                validator="user.password === user.confirmPassword"
                                validate-on="dirty"
-                               invalid-message="'Passwords do not match!'"
+                               invalid-message="'Hasło się nie zgadza!'"
                                required></div>
                 </div>
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Zarejestruj się</button>
                     </div>
                 </div>
             </form>

@@ -71,7 +71,7 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         };
         $scope.getDate = function (milis) {
             if(milis==null)
-                return 'NO';
+                return 'NIE';
             var date = new Date(milis);
             return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
         };

@@ -2,24 +2,24 @@
 
     <div class="alert alert-success" role="alert" ng-show="ok==true">
         <strong>
-            <span>Your user information has been updated</span>
+            <span>Zaktualizowano twoje informacje</span>
         </strong>
-        <a href="#/">Go to main page</a>
+        <a href="#/">wróć do strony głównej</a>
     </div>
 
 
     <div class="alert alert-danger" role="alert" ng-show="ok==false">
         <strong>
-            <span>Error! Try again</span>
+            <span>Błąd, spróbuj ponownie</span>
         </strong>
-        <a href="#/">Or go to main page</a>
+        <a href="#/">lub wróć do strony głównej</a>
     </div>
 
 
     <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
         <div class="form-group">
             <div class="form-group">
-                <label class="col-sm-2 control-label">Username</label>
+                <label class="col-sm-2 control-label">Login</label>
                 <div class="col-sm-10"><label class="control-label text-muted">{{user.userName}}</label></div>
             </div>
         </div>
@@ -32,86 +32,86 @@
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">First Name</label>
+            <label class="col-sm-2 control-label">Imię</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="firstName"
                        class="form-control"
                        ng-model="user.firstName"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Last Name</label>
+            <label class="col-sm-2 control-label">Nazwisko</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="lastName"
                        class="form-control"
                        ng-model="user.lastName"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Phone number</label>
+            <label class="col-sm-2 control-label">Numer telefonu</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="phoneNumber"
                        class="form-control"
                        ng-model="user.phoneNumber"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">City</label>
+            <label class="col-sm-2 control-label">Miasto</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="city"
                        class="form-control"
                        ng-model="user.addresses.city"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Street</label>
+            <label class="col-sm-2 control-label">Ulica</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="street"
                        class="form-control"
                        ng-model="user.addresses.street"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">House number</label>
+            <label class="col-sm-2 control-label">Numer domu</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="houseNumber"
                        class="form-control"
                        ng-model="user.addresses.houseNumber"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">Zip code</label>
+            <label class="col-sm-2 control-label">Kod pocztowy</label>
             <div class="col-sm-10">
                 <input type="text"
                        name="zipCode"
                        class="form-control"
                        ng-model="user.addresses.zipCode"
-                       required-message="'This is required'"
+                       required-message="'Pole wymagane'"
                        validate-on="dirty"
                        required></div>
         </div>
         <hr>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Aktualizuj</button>
             </div>
         </div>
     </form>

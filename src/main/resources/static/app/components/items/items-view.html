@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row row-centered">
             <div class="col-sm-5 col-centered">
-                <input type="text" ng-model="search" class="form-control" placeholder="Search for...">
+                <input type="text" ng-model="search" class="form-control" placeholder="Wyszukaj...">
             </div>
         </div> <!-- /search box -->
     </div>
@@ -22,22 +22,22 @@
                 </div>
                 <div class="col-xs-12 col-sm-7">
                     <strong class="col-sm-12">{{item.name}}</strong>
-                    <p class="text-info col-sm-12">item code: {{item.itemCode}}</p>
+                    <p class="text-info col-sm-12">kod przedmiotu: {{item.itemCode}}</p>
                     <div class="text-muted wrap col-sm-12">
                         {{item.description}}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-2">
-                    <strong class="col-xs-6 col-sm-12">{{item.price}}$</strong>
+                    <strong class="col-xs-6 col-sm-12">{{item.price}} zł</strong>
                     <p class="col-xs-6 col-sm-12">dostepne: {{item.quantity}}</p>
                     <button class="btn btn-primary col-xs-12 col-sm-12" ng-show="item.quantity>0"
-                            ng-click="addToCartButton(item.itemId, item)">Add to cart
+                            ng-click="addToCartButton(item.itemId, item)">Dodaj do koszyka
                     </button>
                     <button class="btn btn-danger col-xs-12 col-sm-6" ng-show="asAdmin()==true"
-                            ng-click="deleteButton($index, item)">Delete
+                            ng-click="deleteButton($index, item)">Usuń
                     </button>
                     <a href="#/editItem/{{item.itemId}}" class="btn btn-warning col-xs-12 col-sm-6"
-                       ng-show="asAdmin()==true">Edit</a>
+                       ng-show="asAdmin()==true">Edytuj</a>
                 </div>
             </div>
             <div class="row">

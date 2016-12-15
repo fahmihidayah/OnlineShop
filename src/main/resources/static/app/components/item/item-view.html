@@ -6,14 +6,14 @@
     <!--</div>-->
     <div class="col-sm-6 col-sm-offset-1">
         <h1 class="text-uppercase">{{currentItem.name}}</h1>
-        <p>itemCode: <span class="text-info">{{currentItem.itemCode}}</span></p>
-        <p>On stock: <span class="text-muted">{{currentItem.quantity}}</span></p>
-        <p>Price: <span class="text-muted">{{currentItem.price}} $</span></p>
-        <button class="btn btn-primary" ng-show="currentItem.quantity>0" ng-click="addToCartButton(currentItem.itemId)">Add to cart</button>
+        <p>Kod przedmiotu: <span class="text-info">{{currentItem.itemCode}}</span></p>
+        <p>Ilość: <span class="text-muted">{{currentItem.quantity}}</span></p>
+        <p>Cena: <span class="text-muted">{{currentItem.price}} zł</span></p>
+        <button class="btn btn-primary" ng-show="currentItem.quantity>0" ng-click="addToCartButton(currentItem.itemId)">Dodaj do koszyka</button>
     </div>
     <div class="row row-centered">
         <div class="col-xs-12 col-sm-9 col-centered">
-            <h3 class="text-center">DESCRIPTION</h3>
+            <h3 class="text-center">OPIS</h3>
             <p class="wrap">{{currentItem.description}}</p>
         </div>
     </div>

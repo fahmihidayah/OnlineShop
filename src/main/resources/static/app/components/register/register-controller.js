@@ -23,13 +23,13 @@ angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValida
             }).error(function(){
                 console.log('register error');
                 $scope.error = true;
-                $scope.errorMSG = "username and email are already used";
+                $scope.errorMSG = "login i email jest już zajęty";
             })
         };
         $scope.loginValidator = function(login){
             if(!login){return}
             if(login.length<4){
-                return "login must be at least " + 4 + " characters long";
+                return "login musi mieć minimum " + 4 + " znaki";
             }
             return true;
         };
@@ -38,15 +38,15 @@ angular.module('onlineShop.register', ['ui.bootstrap', 'ngRoute', 'angularValida
             if(!password){return;}
 
             if (password.length < 6) {
-                return "Password must be at least " + 6 + " characters long";
+                return "hasło musi mieć minimum " + 6 + " znaków";
             }
 
             if (!password.match(/[A-Z]/)) {
-                return "Password must have at least one capital letter";
+                return "Hasło musi miec jedną wielką literę";
             }
 
             if (!password.match(/[0-9]/)) {
-                return "Password must have at least one number";
+                return "Hasło musi mieć jedna cyfrę";
             }
 
             return true;

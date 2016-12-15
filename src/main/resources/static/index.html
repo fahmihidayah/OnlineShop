@@ -26,36 +26,36 @@
 <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavHeaderController">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#/">Online Store</a>
+            <a class="navbar-brand" href="#/">Sklep Online</a>
         </div>
         <ul class="nav navbar-nav">
-            <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
-            <li ng-class="{ active: isActive('/items')}"><a href="#/items">Items</a></li>
+            <li ng-class="{ active: isActive('/')}"><a href="#/">Strona główna</a></li>
+            <li ng-class="{ active: isActive('/items')}"><a href="#/items">Wszystkie przedmioty</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown" ng-show="isLogged() == true && asAdmin()==true">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Admin <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#/addItem"><span class="glyphicon glyphicon-plus"></span> Add item</a></li>
+                    <li><a href="#/addItem"><span class="glyphicon glyphicon-plus"></span> Dodaj przedmiot</a></li>
                     <li class="divider" role="separator"></li>
-                    <li><a href="#/orders"><span class="glyphicon glyphicon-list-alt"></span> All orders</a></li>
-                    <li><a href="#/users"><span class="glyphicon glyphicon-user"></span> All users</a></li>
+                    <li><a href="#/orders"><span class="glyphicon glyphicon-list-alt"></span> Wszystkie zamówienia</a></li>
+                    <li><a href="#/users"><span class="glyphicon glyphicon-user"></span> Wszystkie przedmioty</a></li>
                 </ul>
             </li>
-            <li ng-show="isLogged() == false"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li ng-show="isLogged() == false"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li ng-show="isLogged() == false"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>
+            <li ng-show="isLogged() == false"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>
 
             <!-- after login -->
             <li class="dropdown" ng-show="isLogged() == true">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Panel <span class="caret"></span></a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Konto <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#/user"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-                    <li><a href="#/myOrders"><span class="glyphicon glyphicon-th-list"></span> Your orders</a></li>
+                    <li><a href="#/user"><span class="glyphicon glyphicon-cog"></span> Ustawienia</a></li>
+                    <li><a href="#/myOrders"><span class="glyphicon glyphicon-th-list"></span> Twoje zamówienia</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li><a ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Wyloguj</a></li>
                 </ul>
             </li>
-            <li ng-show="isLogged() == true"><a href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            <li ng-show="isLogged() == true"><a href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Koszyk</a></li>
             <!-- /after login-->
         </ul>
     </div>
