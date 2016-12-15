@@ -26,8 +26,14 @@ angular.module('onlineShop.items', ['ui.bootstrap', 'ngRoute', 'angularUtils.dir
         $scope.init = function () {
             $http.get('public/item/all').success(function (data) {
                 console.log(data);
-                $scope.allItems = data;
-                $scope.pagination.totalItems = data.length;
+                let temp = [];
+                for(let i=0; i<data.length; i++){
+                    if(data[i].enabled == true){
+                        temp.push(data[i]);
+                    }
+                }
+                $scope.allItems = temp;
+                $scope.pagination.totalItems = temp.length;
                 $scope.pageChanged();
             });
         };

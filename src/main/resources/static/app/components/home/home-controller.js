@@ -9,7 +9,14 @@ angular.module('onlineShop.home', ['ngRoute'])
         $scope.init = function () {
             $http.get('public/item/all')
                 .success(function (items) {
-                    $scope.currentItems = items;
+                    // $scope.currentItems = items;
+                    let temp = [];
+                    for(var i=0; i<items.length; i++){
+                        if(items[i].enabled==true){
+                            temp.push(items[i]);
+                        }
+                    }
+                    $scope.currentItems = temp;
                     $scope.currentItems = $scope.currentItems.sort(function(){return 0.5-Math.random()})
                     $scope.currentItems = $scope.currentItems.slice(0, 3);
                     console.log(items);
