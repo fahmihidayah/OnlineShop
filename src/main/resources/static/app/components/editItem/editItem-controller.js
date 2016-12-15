@@ -26,7 +26,7 @@ angular.module('onlineShop.admin.editItem', ['ngRoute', 'angularValidator', 'bas
         };
 
         $scope.submitMyForm = function () {
-            if(confirm('Are you sure that you want edit that item')){
+            if(confirm('Jesteś pewien, że chcesz edytować ten przedmiot')){
                 $scope.readFile(function(){
                     $http.post("/api/item/update/?id="+$scope.item.itemId,angular.toJson($scope.item)).success(function(data){
                         console.log("Item has been edited");
