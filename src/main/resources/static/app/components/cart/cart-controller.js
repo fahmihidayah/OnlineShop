@@ -32,6 +32,17 @@ angular.module('onlineShop.cart', ['ui.bootstrap', 'ngRoute'])
             });
         };
 
+        $scope.addSingleItem = function (itemId) {
+            $http.get('/api/cart/add/?id='+itemId).success(function () {
+                $scope.init();
+            })
+        };
+        $scope.removeSingleItem = function (itemId) {
+            $http.get('/api/cart/delete/item/?id='+itemId).success(function () {
+                $scope.init();
+            })
+        };
+
         $scope.delete = function (itemId) {
             $http.get('api/cart/delete/?id='+itemId).success(function(){
                 $scope.init();
