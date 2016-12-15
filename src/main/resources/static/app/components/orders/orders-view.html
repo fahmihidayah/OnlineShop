@@ -8,13 +8,14 @@
         <hr>
         <div class="well well-lg col-xs-12" ng-show="isCollapsed($index)==true">
             <div ng-repeat="item in order.items">
-                <span class="col-xs-2 col-sm-2">{{$index+1}}.</span>
-                <span class="col-xs-5 col-sm-5">{{item.name}}</span>
-                <span class="col-xs-5 col-sm-5">Kod: {{item.itemCode}}</span>
+                <span class="col-xs-1 col-sm-1">{{$index+1}}.</span>
+                <span class="col-xs-6 col-sm-8">{{item.item.name}}</span>
+                <span class="col-xs-5 col-sm-1">{{item.quantity}} szt.</span>
+                <span class="col-xs-5 col-sm-2">Kod: {{item.item.itemCode}}</span>
             </div>
             <div class="row">
-                <span class="col-xs-3">Ilość przedmiotów: {{order.items.length}}</span>
-                <span class="col-xs-3">Wartość zamówienia: {{valueOfOrder($index)}} zł</span>
+                <span class="col-xs-3">Ilość przedmiotów: {{itemsCount(order)}}</span>
+                <span class="col-xs-3">Wartość zamówienia: {{valueOfOrder(order)}} zł</span>
             </div>
             <div ng-show="isAdmin()==true" class="row">
                 <button class="btn btn-primary btn-xs col-xs-3" ng-disabled="{{getDate(order.paidDate)!='NIE'}}" ng-click="makePaid($index)">Oznacz zapłacone</button>

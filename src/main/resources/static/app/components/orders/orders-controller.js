@@ -7,13 +7,24 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         $scope.allOrders = [];
         $scope.collapsedArray = [];
 
-        $scope.valueOfOrder = function(index){
-            var temp = 0;
-            $scope.allOrders[index].items.forEach(function(item){
-                temp += item.price;
-            });
+        $scope.itemsCount = function (order) {
+            console.log("test");
+            console.log(order);
+            let temp = 0;
+            for(let i=0; i<order.items.length; i++){
+                temp += order.items[i].quantity;
+            }
             return temp;
         };
+
+        $scope.valueOfOrder = function(order){
+            let temp = 0;
+            for(let i=0; i<order.items.length; i++){
+                temp += order.items[i].quantity * order.items[i].item.price;
+            }
+            return temp;
+        };
+
         $scope.collapse = function(index){
             $scope.collapsedArray[index] = !$scope.collapsedArray[index];
         };
@@ -22,7 +33,7 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         };
         $scope.getDate = function (milis) {
             if(milis==null)
-                return 'NO';
+                return 'NIE';
             var date = new Date(milis);
             return date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
         };
@@ -56,11 +67,19 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         $scope.allOrders = [];
         $scope.collapsedArray = [];
 
-        $scope.valueOfOrder = function(index){
-            var temp = 0;
-            $scope.allOrders[index].items.forEach(function(item){
-                temp += item.price;
-            });
+        $scope.itemsCount = function (order) {
+            let temp = 0;
+            for(let i=0; i<order.items.length; i++){
+                temp += order.items[i].quantity;
+            }
+            return temp;
+        };
+
+        $scope.valueOfOrder = function(order){
+            let temp = 0;
+            for(let i=0; i<order.items.length; i++){
+                temp += order.items[i].quantity * order.items[i].item.price;
+            }
             return temp;
         };
         $scope.collapse = function(index){
