@@ -1,6 +1,6 @@
 <div ng-controller="HomeController" ng-init="init()">
     <div ng-repeat="item in currentItems">
-        <div class="col-sm-6 col-md-4" ng-if="item.enabled===true">
+        <div class="col-sm-6 col-md-4" style="margin-top: 30px;" ng-if="item.enabled===true">
             <div class="thumbnail">
                 <img ng-src="{{'data:image/png;base64,'+item.image}}" class="front_image"
                      ng-show="item.image!=null" style="width: 200px; height: 200px">
