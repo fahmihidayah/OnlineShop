@@ -1,87 +1,91 @@
-<div ng-controller="RegisterController">
-
-    <div class="alert alert-danger" ng-show="error">
-        {{errorMSG}}
-    </div>
-
-    <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Login</label>
-            <div class="col-sm-10">
-                <input type="text"
-                       name="userName"
-                       class="form-control"
-                       ng-model="user.userName"
-                       validator="loginValidator(user.userName) === true"
-                       invalid-message="loginValidator(user.userName)"
-                       required-message="'This is required'"
-                       validate-on="dirty"
-                       focus="true"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">First Name</label>
-            <div class="col-sm-10">
-                <input type="text"
-                       name="firstName"
-                       class="form-control"
-                       ng-model="user.firstName"
-                       required-message="'This is required'"
-                       validate-on="dirty"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Last Name</label>
-            <div class="col-sm-10">
-                <input type="text"
-                       name="lastName"
-                       class="form-control"
-                       ng-model="user.lastName"
-                       required-message="'This is required'"
-                       validate-on="dirty"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
-                <input type="email"
-                       name="emailAddress"
-                       class="form-control"
-                       ng-model="user.email"
-                       invalid-message="'Thats not a real email address'"
-                       required-message="'This is required'"
-                       validate-on="dirty"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password"
-                       name="password"
-                       class="form-control"
-                       ng-model="user.password"
-                       validator="passwordValidator(user.password) === true"
-                       invalid-message="passwordValidator(user.password)"
-                       validate-on="dirty"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Confirm Password</label>
-            <div class="col-sm-10">
-                <input type="password"
-                       name="confirmPassword"
-                       class="form-control"
-                       ng-model="user.confirmPassword"
-                       validator="user.password === user.confirmPassword"
-                       validate-on="dirty"
-                       invalid-message="'Passwords do not match!'"
-                       required></div>
-        </div>
-        <hr>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Submit</button>
+<div ng-controller="RegisterController" class="container">
+    <div class="row row-centered">
+        <div class="col col-xs-5 col-centered">
+            <div class="alert alert-danger" ng-show="error">
+                {{errorMSG}}
             </div>
+
+            <form angular-validator-submit="submitMyForm()" name="myForm" class="form-horizontal" novalidate
+                  angular-validator>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Login</label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                               name="userName"
+                               class="form-control"
+                               ng-model="user.userName"
+                               validator="loginValidator(user.userName) === true"
+                               invalid-message="loginValidator(user.userName)"
+                               required-message="'This is required'"
+                               validate-on="dirty"
+                               focus="true"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">First Name</label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                               name="firstName"
+                               class="form-control"
+                               ng-model="user.firstName"
+                               required-message="'This is required'"
+                               validate-on="dirty"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Last Name</label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                               name="lastName"
+                               class="form-control"
+                               ng-model="user.lastName"
+                               required-message="'This is required'"
+                               validate-on="dirty"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email"
+                               name="emailAddress"
+                               class="form-control"
+                               ng-model="user.email"
+                               invalid-message="'Thats not a real email address'"
+                               required-message="'This is required'"
+                               validate-on="dirty"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               ng-model="user.password"
+                               validator="passwordValidator(user.password) === true"
+                               invalid-message="passwordValidator(user.password)"
+                               validate-on="dirty"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Confirm Password</label>
+                    <div class="col-sm-10">
+                        <input type="password"
+                               name="confirmPassword"
+                               class="form-control"
+                               ng-model="user.confirmPassword"
+                               validator="user.password === user.confirmPassword"
+                               validate-on="dirty"
+                               invalid-message="'Passwords do not match!'"
+                               required></div>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>

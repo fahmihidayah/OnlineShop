@@ -1,35 +1,40 @@
 <div ng-controller="LoginController">
-    <div class="alert alert-danger" ng-show="error">
-        There was a problem logging in. Please try again.
-    </div>
-    <form angular-validator-submit="submitForm()" name="myForm" class="form-horizontal" novalidate angular-validator>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Username</label>
-            <div class="col-sm-10">
-                <input type="text"
-                       name="username"
-                       class="form-control"
-                       ng-model="credentials.username"
-                       required-message="'This is required'"
-                       validate-on="dirty"
-                       focus="true"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password"
-                       name="password"
-                       class="form-control"
-                       ng-model="credentials.password"
-                       required-message="'This is required'"
-                       validate-on="dirty"
-                       required></div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary">Log in</button>
+    <div class="row row-centered">
+        <div class="col col-centered col-xs-5">
+            <div class="alert alert-danger" ng-show="error">
+                There was a problem logging in. Please try again.
             </div>
+            <form angular-validator-submit="submitForm()" name="myForm" class="form-horizontal" novalidate
+                  angular-validator>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text"
+                               name="username"
+                               class="form-control"
+                               ng-model="credentials.username"
+                               required-message="'This is required'"
+                               validate-on="dirty"
+                               focus="true"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password"
+                               name="password"
+                               class="form-control"
+                               ng-model="credentials.password"
+                               required-message="'This is required'"
+                               validate-on="dirty"
+                               required></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
