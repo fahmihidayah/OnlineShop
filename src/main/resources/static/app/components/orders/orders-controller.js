@@ -8,8 +8,6 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         $scope.collapsedArray = [];
 
         $scope.itemsCount = function (order) {
-            console.log("test");
-            console.log(order);
             let temp = 0;
             for(let i=0; i<order.items.length; i++){
                 temp += order.items[i].quantity;
@@ -40,7 +38,13 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         $scope.init = function(){
             $http.get('/api/order/all').success(function(data){
                 $scope.allOrders = data;
+                $scope.allOrders.sort(function (a, b) {
+                   if(a.orderId < b.orderId) return -1;
+                   if(a.orderId > b.orderId) return 1;
+                    return 0;
+                });
                 console.log(data);
+
             });
         };
         $scope.isAdmin = function(){
@@ -97,6 +101,11 @@ angular.module('onlineShop.orders', ['ui.bootstrap', 'ngRoute'])
         $scope.init = function(){
             $http.get('/api/order/my').success(function(data){
                 $scope.allOrders = data;
+                $scope.allOrders.sort(function (a, b) {
+                    if(a.orderId < b.orderId) return -1;
+                    if(a.orderId > b.orderId) return 1;
+                    return 0;
+                });
                 console.log(data);
             });
         };

@@ -18,6 +18,11 @@ angular.module('onlineShop.cart', ['ui.bootstrap', 'ngRoute'])
                 console.log('cart list');
                 console.log(data);
                 $scope.cartItems = data;
+                $scope.cartItems.sort(function (a, b) {
+                    if(a.item.name < b.item.name) return -1;
+                    if(a.item.name > b.item.name) return 1;
+                    return 0;
+                })
             })
         };
 
