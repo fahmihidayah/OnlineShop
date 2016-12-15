@@ -18,7 +18,7 @@ public class ShoppingCart {
 
     @ManyToMany
     @JoinColumn(name = "ITEM_ID")
-    private List<Item> items;
+    private List<ItemQuantity> items;
 
     public ShoppingCart() {
         items = new LinkedList<>();
@@ -32,11 +32,11 @@ public class ShoppingCart {
         this.shoppingCartId = shoppingCartId;
     }
 
-    public List<Item> getItems() {
+    public List<ItemQuantity> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<ItemQuantity> items) {
         this.items = items;
     }
 }

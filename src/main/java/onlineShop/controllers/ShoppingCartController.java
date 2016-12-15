@@ -1,6 +1,6 @@
 package onlineShop.controllers;
 
-import onlineShop.domain.Item;
+import onlineShop.domain.ItemQuantity;
 import onlineShop.domain.User;
 import onlineShop.routes.Route;
 import onlineShop.services.ShoppingCartService;
@@ -24,22 +24,27 @@ public class ShoppingCartController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = Route.CART_ADD)
+    @RequestMapping(value = Route.CART_ADD_SINGLE_ITEM)
     public void addItem(@RequestParam("id") long itemId){
         User user = userService.getCurrentLoggedUser();
-        shoppingCartService.addItem(user.getShoppingCart().getShoppingCartId(), itemId);
+        shoppingCartService.addSingleItem(user.getShoppingCart().getShoppingCartId(), itemId);
     }
 
-    @RequestMapping(value = Route.CART_REMOVE)
+    @RequestMapping(value = Route.CART_REMOVE_SINGLE_ITEM)
     public void removeItem(@RequestParam("id") long itemId){
         User user = userService.getCurrentLoggedUser();
-        shoppingCartService.removeItem(user.getShoppingCart().getShoppingCartId(), itemId);
+        shoppingCartService.removeSingleItem(user.getShoppingCart().getShoppingCartId(), itemId);
+    }
+
+    @RequestMapping(value = Route.CART_ITEM_REMOVE)
+    public void deleteItem(@RequestParam("id") long itemId){
+        User user = userService.getCurrentLoggedUser();
+        shoppingCartService.deleteItem(user.getShoppingCart().getShoppingCartId(), itemId);
     }
 
     @RequestMapping(value = Route.CART_READ)
-    public List<Item> getItemList(){
+    public List<ItemQuantity> getItemList(){
         User user = userService.getCurrentLoggedUser();
-        System.out.println(shoppingCartService.getItemList(user.getShoppingCart().getShoppingCartId()));
         return shoppingCartService.getItemList(user.getShoppingCart().getShoppingCartId());
     }
 }

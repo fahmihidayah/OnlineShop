@@ -1,6 +1,6 @@
 package onlineShop.services;
 
-import onlineShop.domain.Item;
+import onlineShop.domain.ItemQuantity;
 import onlineShop.domain.ShoppingCart;
 
 import java.util.List;
@@ -24,9 +24,11 @@ public interface IShoppingCartService {
 
     ShoppingCart getShoppingCartById(long shoppingCartId);
 
-    ShoppingCart addItem(long shoppingCartId, long itemId);
+    ShoppingCart addSingleItem(long shoppingCartId, long itemId);
 
-    ShoppingCart removeItem(long shoppingCartId, long itemId);
+    ShoppingCart removeSingleItem(long shoppingCartId, long itemId);
 
-    List<Item> getItemList(long shoppingCartId);
+    List<ItemQuantity> getItemList(long shoppingCartId);
+
+    ShoppingCart deleteItem(long shoppingCartId, long itemId);
 }

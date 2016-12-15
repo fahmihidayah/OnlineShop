@@ -52,8 +52,9 @@ public abstract class Route {
     public static final String ORDER_PAID = API + ORDER + "/paid";
     public static final String ORDER_SEND = API + ORDER + "/send";
     //  SHOPPING CART
-    public static final String CART_ADD = API + CART + ADD;
-    public static final String CART_REMOVE = API + CART + DELETE;
+    public static final String CART_ADD_SINGLE_ITEM = API + CART + ADD;
+    public static final String CART_REMOVE_SINGLE_ITEM = API + CART + DELETE + "/item";
     public static final String CART_READ = API + CART + READ + LIST;
+    public static final String CART_ITEM_REMOVE = API + CART + DELETE;
 
 }

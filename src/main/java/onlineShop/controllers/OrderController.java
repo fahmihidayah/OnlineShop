@@ -1,6 +1,5 @@
 package onlineShop.controllers;
 
-import onlineShop.domain.Item;
 import onlineShop.domain.Order;
 import onlineShop.domain.User;
 import onlineShop.routes.Route;
@@ -36,12 +35,12 @@ public class OrderController {
     public void makeOrder(){
         User user = userService.getCurrentLoggedUser();
         Order tempOrder = new Order(new Date());
-        List<Item> items = shoppingCartService.getItemList(user.getShoppingCart().getShoppingCartId());
-        tempOrder.setUserId(user.getUserId());
-        Order order = orderService.create(tempOrder);
-        for (Item item : items) {
-            orderService.addItem(order.getOrderId(), item.getItemId());
-        }
+//        List<Item> items = shoppingCartService.getItemList(user.getShoppingCart().getShoppingCartId());
+//        tempOrder.setUserId(user.getUserId());
+//        Order order = orderService.create(tempOrder);
+//        for (Item item : items) {
+//            orderService.addSingleItem(order.getOrderId(), item.getItemId());
+//        }
         shoppingCartService.clearShoppingCartAfterOrder(user.getShoppingCart().getShoppingCartId());
     }
 

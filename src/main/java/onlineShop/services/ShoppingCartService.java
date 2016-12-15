@@ -1,7 +1,9 @@
 package onlineShop.services;
 
+import onlineShop.dao.ItemQuantityRepository;
 import onlineShop.dao.ShoppingCartRepository;
 import onlineShop.domain.Item;
+import onlineShop.domain.ItemQuantity;
 import onlineShop.domain.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,9 @@ import java.util.ListIterator;
 public class ShoppingCartService implements IShoppingCartService {
     @Autowired
     ShoppingCartRepository shoppingCartRepository;
+
+    @Autowired
+    ItemQuantityRepository itemQuantityRepository;
 
     @Autowired
     ItemService itemService;
@@ -48,9 +53,9 @@ public class ShoppingCartService implements IShoppingCartService {
     @Override
     public void clearShoppingCartWithReturn(long shoppingCartId) {
         ShoppingCart SC = shoppingCartRepository.findOne(shoppingCartId);
-        ListIterator<Item> iterator = SC.getItems().listIterator();
+        ListIterator<ItemQuantity> iterator = SC.getItems().listIterator();
         while (iterator.hasNext()){
-            itemService.modifyQuantity(iterator.next().getItemId(), +1);
+            itemService.modifyQuantity(iterator.next().getItem().getItemId(), +1);
             iterator.remove();
         }
 //        for(int i=0; i<SC.getItems().size(); i++){
@@ -74,26 +79,49 @@ public class ShoppingCartService implements IShoppingCartService {
     }
 
     @Override
-    public ShoppingCart addItem(long shoppingCartId, long itemId) {
+    public ShoppingCart addSingleItem(long shoppingCartId, long itemId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
         itemService.modifyQuantity(itemId, -1);
         Item item = itemService.getItemById(itemId);
-        shoppingCart.getItems().add(item);
+        ItemQuantity itemQuantity;
+        try {
+            itemQuantity = shoppingCart.getItems().stream().filter(itemQuantity1 -> itemQuantity1.getItem().equals(item)).findFirst().get();
+            itemQuantity.setQuantity(itemQuantity.getQuantity() + 1);
+            itemQuantityRepository.save(itemQuantity);
+        } catch (Exception e) {
+            itemQuantity = new ItemQuantity();
+            itemQuantity.setItem(item);
+            itemQuantity.setQuantity(1);
+            itemQuantity = itemQuantityRepository.save(itemQuantity);
+            shoppingCart.getItems().add(itemQuantity);
+        }
         return shoppingCartRepository.save(shoppingCart);
     }
 
     @Override
-    public ShoppingCart removeItem(long shoppingCartId, long itemId) {
+    public ShoppingCart removeSingleItem(long shoppingCartId, long itemId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
         itemService.modifyQuantity(itemId, +1);
-        Item item = itemService.getItemById(itemId);
-        shoppingCart.getItems().remove(item);
+        ItemQuantity itemQuantity = shoppingCart.getItems().stream().filter(itemQuantityTemp -> itemQuantityTemp.getItem().getItemId() == itemId).findFirst().get();
+        itemQuantity.setQuantity(itemQuantity.getQuantity() - 1);
+        itemQuantityRepository.save(itemQuantity);
         return shoppingCartRepository.save(shoppingCart);
     }
 
     @Override
-    public List<Item> getItemList(long shoppingCartId) {
+    public List<ItemQuantity> getItemList(long shoppingCartId) {
         ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
         return shoppingCart.getItems();
+    }
+
+    @Override
+    public ShoppingCart deleteItem(long shoppingCartId, long itemId) {
+        ShoppingCart shoppingCart = shoppingCartRepository.findOne(shoppingCartId);
+        Item item = itemService.getItemById(itemId);
+        ItemQuantity itemQuantity = shoppingCart.getItems().stream().filter(itemQuantity1 -> itemQuantity1.getItem().equals(item)).findFirst().get();
+        itemService.modifyQuantity(itemId, itemQuantity.getQuantity());
+        shoppingCart.getItems().remove(itemQuantity);
+        itemQuantityRepository.delete(itemQuantity);
+        return null;
     }
 }
