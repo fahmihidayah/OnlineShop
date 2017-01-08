@@ -50,7 +50,7 @@ public class User {
     private String phoneNumber;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID")
+//    @JoinColumn(name = "USER_ID", referencedColumnName="USER_ID")
     private Address addresses;
 
     @OneToOne(cascade = CascadeType.ALL)

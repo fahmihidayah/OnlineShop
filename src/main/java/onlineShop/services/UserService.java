@@ -65,7 +65,10 @@ public class UserService implements IUserService {
     @Override
     public User getCurrentLoggedUser() {
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepository.findByUserName(userName);
+        User user = userRepository.findByUserName(userName);
+        User one = userRepository.findOne(user.getUserId());
+        System.out.println("current logged " + one);
+        return one;
     }
 
     @Override
@@ -81,23 +84,30 @@ public class UserService implements IUserService {
         user.setFirstName(userData.getFirstName());
         user.setLastName(userData.getLastName());
         user.setPhoneNumber(userData.getPhoneNumber());
-
+        System.out.println("loaded user " + user);
         Address addressData = userData.getAddresses();
         Address address = user.getAddresses();
         if(address == null){
             address = new Address(addressData.getStreet(), addressData.getHouseNumber(), addressData.getCity(), addressData.getZipCode());
+            System.out.println("nowy");
+            System.out.println(address);
             address.setUserId(user.getUserId());
+//            address = addressRepository.save(address);
+//            user.setAddresses(address);
         }else{
+            System.out.println("update");
+            System.out.println(address);
             address.setCity(addressData.getCity());
             address.setHouseNumber(addressData.getHouseNumber());
             address.setStreet(addressData.getStreet());
             address.setZipCode(addressData.getZipCode());
+//            address = addressRepository.save(address);
         }
-        address = addressRepository.save(address);
-//        user.setAddresses(address);
+        user.setAddresses(address);
         System.out.println(user);
         User temp = userRepository.save(user);
         System.out.println(temp);
+        System.out.println("findOne " + userRepository.findOne(temp.getUserId()));
         return temp;
     }
 

@@ -10,11 +10,13 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "ADDRESSES")
 public class Address {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "ADDRESS_ID")
+//    private long addressId;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ADDRESS_ID")
-    private long addressId;
-
     @NotNull
     @Column(name = "USER_ID")
     private long userId;
@@ -44,13 +46,13 @@ public class Address {
         this.zipCode = zipCode;
     }
 
-    public long getAddressId() {
-        return addressId;
-    }
+//    public long getAddressId() {
+//        return addressId;
+//    }
 
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
-    }
+//    public void setAddressId(long addressId) {
+//        this.addressId = addressId;
+//    }
 
     public String getStreet() {
         return street;
@@ -95,7 +97,7 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "addressId=" + addressId +
+//                "addressId=" + addressId +
                 ", userId=" + userId +
                 ", street='" + street + '\'' +
                 ", houseNumber='" + houseNumber + '\'' +

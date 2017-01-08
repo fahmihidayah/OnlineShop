@@ -59,7 +59,10 @@ public class UserController {
     public User updateUser(@RequestBody User user){
         System.out.println(user);
         long userId = userService.getCurrentLoggedUser().getUserId();
-        return userService.updateUserById(userId, user);
+        User tempUser = userService.updateUserById(userId, user);
+        System.out.println("controller " + tempUser.getAddresses());
+        System.out.println("controller " + tempUser);
+        return tempUser;
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
